@@ -28,27 +28,16 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET).authenticated().anyRequest()
-				.authenticated().and().httpBasic();
+		http.csrf().disable()
+				.authorizeRequests()
+				.antMatchers("/auth/**").permitAll()
+				.anyRequest()
+				.authenticated()
+				.and()
+				.httpBasic();
 
 		return http.build();
 	}
-
-//	@Bean
-//		public UserDetailsService users() {
-//			UserDetails admin = User.builder()
-//								.username("admin")
-//								.password("admin")
-//								.roles("ADMIN")
-//								.build();
-//				UserDetails user = User.builder()
-//								.username("user")
-//								.password("1234")
-//								.roles("USER")
-//								.build();
-//				
-//				return new InMemoryUserDetailsManager(admin, user);
-//		}
 
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)

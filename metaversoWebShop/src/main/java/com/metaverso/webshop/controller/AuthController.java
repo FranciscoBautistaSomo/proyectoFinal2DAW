@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.metaverso.webshop.dto.AuthResponseDTO;
 import com.metaverso.webshop.dto.LoginDto;
 import com.metaverso.webshop.dto.RegistroDto;
 import com.metaverso.webshop.model.Usuario;
 import com.metaverso.webshop.repository.IRoleRepository;
 import com.metaverso.webshop.repository.IUsuarioRepository;
+import com.metaverso.webshop.security.JWTGenerator;
 import com.metaverso.webshop.model.Role;
 
 @RestController
@@ -30,24 +32,28 @@ public class AuthController {
 		private IRoleRepository iroleRepository;
 		private PasswordEncoder passwordEncoder;
 		
+		private JWTGenerator jwtGenerator;
+		
 		@Autowired
 		public AuthController(AuthenticationManager authenticationManager, IUsuarioRepository iusuarioRepository,
-				IRoleRepository iroleRepository, PasswordEncoder passwordEncoder) {
+				IRoleRepository iroleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator ) {
 			
 			this.authenticationManager = authenticationManager;
 			this.iusuarioRepository = iusuarioRepository;
 			this.iroleRepository = iroleRepository;
 			this.passwordEncoder = passwordEncoder;
+			this.jwtGenerator = jwtGenerator;
 		}
 		
 		@PostMapping("login")
-		public  ResponseEntity<String> login(@RequestBody LoginDto loginDto){
+		public  ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
 			Authentication authentication = authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(
 			                loginDto.getNombre(),
 			                loginDto.getPassword()));		
 			 SecurityContextHolder.getContext().setAuthentication(authentication);
-			 return new ResponseEntity<>("Usuario logeado correctamente", HttpStatus.OK);
+			 String token = jwtGenerator.generarToken(authentication);
+			 return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
 			
 		}
 		

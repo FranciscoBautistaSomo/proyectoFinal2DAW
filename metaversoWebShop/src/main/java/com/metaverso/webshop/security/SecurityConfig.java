@@ -32,6 +32,10 @@ public class SecurityConfig {
 		this.userDetailsService = userDetailsService;
 		this.authEntryPoint = authEntryPoint;
 	}
+	
+	String[] resources = new String[] {
+			"/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**","/assets/**", "/vendor/**"
+	};
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -43,6 +47,8 @@ public class SecurityConfig {
 						 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 						 .and()
 						.authorizeRequests()
+						.antMatchers(resources).permitAll()
+						.antMatchers("/administrador/**", "/home", "/signup").permitAll()
 						.antMatchers("/auth/**").permitAll()
 						.anyRequest()
 						.authenticated()

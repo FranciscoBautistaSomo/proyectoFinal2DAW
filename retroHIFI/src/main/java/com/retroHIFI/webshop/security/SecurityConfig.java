@@ -49,7 +49,7 @@ public class SecurityConfig {
 						 .and()
 						.authorizeRequests()
 						.antMatchers(resources).permitAll()
-						.antMatchers("/administrador/**", "/productos/**", "/edit/**", "/images/**").permitAll()
+						.antMatchers( "/", "/index", "/signup","/administrador/**", "/productos/**", "/productohome/**", "/usuario/**","/cart/**","/delete/**","/getCart/**").permitAll()
 						.antMatchers("/auth/**").permitAll()
 						.anyRequest()
 						.authenticated()

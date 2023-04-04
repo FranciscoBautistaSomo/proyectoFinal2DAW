@@ -34,7 +34,7 @@ public class SecurityConfig {
 	}
 	
 	String[] resources = new String[] {
-			"/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**","/assets/**", "/vendor/**"
+			"/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**","/assets/**", "/vendor/**", "/images/**"
 	};
 
 	@Bean
@@ -48,7 +48,7 @@ public class SecurityConfig {
 						 .and()
 						.authorizeRequests()
 						.antMatchers(resources).permitAll()
-						.antMatchers("/administrador/**", "/productos/**", "/edit/**").permitAll()
+						.antMatchers("/administrador/**", "/productos/**", "/edit/**", "/images/**").permitAll()
 						.antMatchers("/auth/**").permitAll()
 						.anyRequest()
 						.authenticated()

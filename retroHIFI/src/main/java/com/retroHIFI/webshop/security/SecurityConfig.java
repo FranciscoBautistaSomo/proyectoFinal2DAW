@@ -25,7 +25,7 @@ import com.retroHIFI.webshop.security.JwtAuthEntryPoint;
 public class SecurityConfig {
 
 	private JwtAuthEntryPoint authEntryPoint;
-	
+
 	private CustomUserDetailsService userDetailsService;
 
 	@Autowired
@@ -33,29 +33,19 @@ public class SecurityConfig {
 		this.userDetailsService = userDetailsService;
 		this.authEntryPoint = authEntryPoint;
 	}
-	
-	String[] resources = new String[] {
-			"/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**","/assets/**", "/vendor/**", "/images/**"
-	};
+
+	String[] resources = new String[] { "/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**",
+			"/assets/**", "/vendor/**", "/images/**" };
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable()
-						.exceptionHandling()
-						.authenticationEntryPoint(authEntryPoint)
-						 .and()
-						 .sessionManagement()
-						 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-						 .and()
-						.authorizeRequests()
-						.antMatchers(resources).permitAll()
-						.antMatchers( "/", "/index", "/signup","/administrador/**", "/productos/**", "/productohome/**", "/usuario/**","/cart/**","/delete/**","/getCart/**").permitAll()
-						.antMatchers("/auth/**").permitAll()
-						.anyRequest()
-						.authenticated()
-						.and()
-						.httpBasic();
-		 http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		http.csrf().disable().exceptionHandling().authenticationEntryPoint(authEntryPoint).and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests().antMatchers(resources)
+				.permitAll()
+				.antMatchers("/", "/index", "/signup", "/administrador/**", "/productos/**", "/productohome/**",
+						"/usuario/**", "/cart/**", "/delete/**", "/getCart/**", "/order/**", "/saveOrder/**", "/search/**")
+				.permitAll().antMatchers("/auth/**").permitAll().anyRequest().authenticated().and().httpBasic();
+		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}
 
@@ -66,11 +56,13 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	PasswordEncoder passwordEncoder() {	return new BCryptPasswordEncoder();}
-	
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 	@Bean
-	public  JWTAuthenticationFilter jwtAuthenticationFilter() {
-        return new JWTAuthenticationFilter();
-    }
+	public JWTAuthenticationFilter jwtAuthenticationFilter() {
+		return new JWTAuthenticationFilter();
+	}
 
 }

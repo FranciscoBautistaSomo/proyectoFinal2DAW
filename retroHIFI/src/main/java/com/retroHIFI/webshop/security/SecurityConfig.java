@@ -43,7 +43,7 @@ public class SecurityConfig {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests().antMatchers(resources)
 				.permitAll()
 				.antMatchers("/", "/index", "/signup", "/administrador/**", "/productos/**", "/productohome/**",
-						"/usuario/**", "/cart/**", "/delete/**", "/getCart/**", "/order/**", "/saveOrder/**", "/search/**")
+						"/usuario/**", "/cart/**", "/delete/**", "/getCart/**", "/order/**", "/saveOrder/**", "/search/**", "/auth/**", "/registro/**")
 				.permitAll().antMatchers("/auth/**").permitAll().anyRequest().authenticated().and().httpBasic();
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 		return http.build();

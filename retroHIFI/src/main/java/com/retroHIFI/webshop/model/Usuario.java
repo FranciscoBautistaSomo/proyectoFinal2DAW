@@ -21,7 +21,7 @@ public class Usuario  {
 	private Integer id;
 	private String username;
 	private String nombre;
-	private String apellido;
+	private String apellidos;
 	private String email;
 	private String direccion;
 	private String telefono;	

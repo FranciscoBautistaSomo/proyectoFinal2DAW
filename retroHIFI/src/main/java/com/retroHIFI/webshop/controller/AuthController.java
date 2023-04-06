@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ import com.retroHIFI.webshop.security.JWTGenerator;
 
 //@RestController
 @Controller
-@RequestMapping("/auth")
+@RequestMapping("/usuario")
 public class AuthController {
 		private AuthenticationManager authenticationManager;
 		private IUsuarioRepository iusuarioRepository;
@@ -45,6 +46,11 @@ public class AuthController {
 			this.iroleRepository = iroleRepository;
 			this.passwordEncoder = passwordEncoder;
 			this.jwtGenerator = jwtGenerator;
+		}
+		
+		@GetMapping("/registro")
+		public String create() {
+			return "usuario/registro";
 		}
 		
 		@PostMapping("login")
@@ -71,22 +77,29 @@ public class AuthController {
 //	        return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
 //	    }
 		
-		@PostMapping("registro")
-		public ResponseEntity<String> registro(@RequestBody RegistroDto registroDto){
+				
+		@PostMapping("save")
+		public String save( RegistroDto registroDto){
 				if (iusuarioRepository.existsByNombre(registroDto.getNombre())) {
-					return new ResponseEntity<>("¡Nombre de usuario existente!!", HttpStatus.BAD_REQUEST);
+					//return new ResponseEntity<>("¡Nombre de usuario existente!!", HttpStatus.BAD_REQUEST);
 				}
 				
 				Usuario user = new Usuario();
+				user.setUsername(registroDto.getUsername());
 				user.setNombre(registroDto.getNombre());
-		        user.setPassword(passwordEncoder.encode((registroDto.getPassword())));
+				user.setApellidos(registroDto.getApellidos());
+				user.setEmail(registroDto.getEmail());
+				user.setDireccion(registroDto.getDireccion());
+				user.setTelefono(registroDto.getTelefono());
+				user.setPassword(passwordEncoder.encode((registroDto.getPassword())));
 		        
 		        Role roles = iroleRepository.findByNombre("USER").get();
 		        user.setRoles(Collections.singletonList(roles));
 		        
 		        iusuarioRepository.save(user);
 		        
-		        return new ResponseEntity<>("User registered success!", HttpStatus.OK);
+		        return "redirect:/";
+		       // return new ResponseEntity<>("User registered success!", HttpStatus.OK);
 				
 		}
 		

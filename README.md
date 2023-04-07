@@ -16,8 +16,14 @@ https://www.figma.com/file/F9vmz08bPcICDmfIaz7Fq9/Untitled?node-id=0%3A1&t=bcuWC
 
 ### Tecnologías
 
-## BACKEND
+### BACKEND
   El backend se realizará en **JAVA** con el framework **Spring Boot**. Se ha decidido por esta tecnología ya que es la que hemos usado tanto en el periodo Dual de formación en la empresa, como el que estamos usando en nuestro periodo de formación FCT, y si todo va bien, posiblemente sea la tecnología que utilicemos para el desarrollo laboral en el caso de que la empresa nos ofrezca una oportunidad laboral. 
   Por tanto poder desarrollar el proyecto final con esta tecnología, me permitiría afianzar y aumentar los conocimientos en la citada tecnología.
   Además utilizaré MySql para la base de datos.
+  
+### FRONTEND
+  En le lado del **Frontend** utilizaré las plantillas de Thymeleaf de Spring Boot junto con CSS y JAVASCRIPT con Jquery.
+
+### DESPLIEGE
+  Para el despliegue me basaré en los servicios en la nube que encontramos en AWS.
 

@@ -8,7 +8,7 @@
 
 ### Funcionamiento 
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FF9vmz08bPcICDmfIaz7Fq9%2FUntitled%3Fnode-id%3D0%253A1%26t%3DbcuWCTEkwVzFxfm7-1" allowfullscreen></iframe>
+https://www.figma.com/file/F9vmz08bPcICDmfIaz7Fq9/Untitled?node-id=0%3A1&t=bcuWCTEkwVzFxfm7-1
 
   Como se aprecia en el diagrama la aplicación web tendrá una pagina de entrada donde los usuarios podran registrarse o logearse según el caso y a continuación podrán ver las distintas secciones con sus articulos así como realizar las compras que deseen.
   Contamos con un perfil Administrador que se encargará de realizar las tareas de mantenimiento de productos y usuarios del sitio web.

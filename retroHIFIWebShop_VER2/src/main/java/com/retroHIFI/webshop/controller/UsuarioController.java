@@ -72,8 +72,8 @@ public class UsuarioController {
 	@PostMapping("save")
 	public String save(RegistroDto registroDto) {
 		if (iusuarioRepository.existsByUsername(registroDto.getUsername())) {
-//			// return new ResponseEntity<>("¡Nombre de usuario existente!!",
-//			// HttpStatus.BAD_REQUEST);
+//			 return new ResponseEntity<>("¡Nombre de usuario existente!!",
+//			 HttpStatus.BAD_REQUEST);
 		}
 		Usuario user = new Usuario();
 		user.setUsername(registroDto.getUsername());
@@ -134,31 +134,31 @@ public class UsuarioController {
 		return "redirect:/";
 	}
 	
-//	@GetMapping("/compras")
-//	public String obtenerCompras(Model model, HttpSession session) {
-//		model.addAttribute("sesion", session.getAttribute("idusuario"));
-//		
-//		Usuario usuario= usuarioService.findById(  Integer.parseInt(session.getAttribute("idusuario").toString()) ).get();
-//		List<Orden> ordenes= ordenService.findByUsuario(usuario);
-//		logger.info("ordenes {}", ordenes);
-//		
-//		model.addAttribute("ordenes", ordenes);
-//		
-//		return "usuario/compras";
-//	}
-//	
-//	@GetMapping("/detalle/{id}")
-//	public String detalleCompra(@PathVariable Integer id, HttpSession session, Model model) {
-//		logger.info("Id de la orden: {}", id);
-//		Optional<Orden> orden=ordenService.findById(id);
-//		
-//		model.addAttribute("detalles", orden.get().getDetalle());
-//		
-//		
-//		//session
-//		model.addAttribute("sesion", session.getAttribute("idusuario"));
-//		return "usuario/detallecompra";
-//	}
+	@GetMapping("/compras")
+	public String obtenerCompras(Model model, HttpSession session) {
+		model.addAttribute("sesion", session.getAttribute("idusuario"));
+		
+		Usuario usuario= usuarioService.findById(  Integer.parseInt(session.getAttribute("idusuario").toString()) ).get();
+		List<Orden> ordenes= ordenService.findByUsuario(usuario);
+		logger.info("ordenes {}", ordenes);
+		
+		model.addAttribute("ordenes", ordenes);
+		
+		return "usuario/compras";
+	}
+	
+	@GetMapping("/detalle/{id}")
+	public String detalleCompra(@PathVariable Integer id, HttpSession session, Model model) {
+		logger.info("Id de la orden: {}", id);
+		Optional<Orden> orden=ordenService.findById(id);
+		
+		model.addAttribute("detalles", orden.get().getDetalle());
+		
+		
+		//session
+		model.addAttribute("sesion", session.getAttribute("idusuario"));
+		return "usuario/detallecompra";
+	}
 	
 	@GetMapping("/cerrar")
 	public String cerrarSesion( HttpSession session ) {

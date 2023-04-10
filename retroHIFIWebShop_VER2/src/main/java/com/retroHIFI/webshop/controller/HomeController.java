@@ -67,22 +67,28 @@ public class HomeController {
 	}
 	
 	@GetMapping("productohome/{id}")
-	public String productoHome(@PathVariable Integer id, Model model) {
+	public String productoHome(@PathVariable Integer id, Model model, HttpSession session) {
 		log.info("id enviado como parametro {}", id);
+		
+		//Usuario usuario = usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+		
 		Producto producto = new Producto();
 		Optional<Producto> productoOptional = productoService.get(id);
 		producto = productoOptional.get();
 		
 		model.addAttribute("producto", producto);
+		//model.addAttribute("usuario", usuario);
 		
 		return "usuario/productohome";
 	}
 	
 	@PostMapping("/cart")
-	public String addcart(@RequestParam Integer id, @RequestParam Integer cantidad, Model model) {
+	public String addcart(@RequestParam Integer id, @RequestParam Integer cantidad, Model model, HttpSession session) {
 		DetalleOrden detalleOrden = new DetalleOrden();
 		Producto producto = new Producto();
 		double sumaTotal = 0;
+		
+		Usuario usuario = usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 		
 		Optional<Producto> optionalProducto = productoService.get(id);
 		log.info("Producto añadido: {}", optionalProducto.get());
@@ -107,6 +113,7 @@ public class HomeController {
 		orden.setTotal(sumaTotal);
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
+		model.addAttribute("usuario", usuario);
 		return "usuario/carrito";
 	}
 	
@@ -137,30 +144,35 @@ public class HomeController {
 	}
 	
 	@GetMapping("/getCart")
-	public String getCart(Model model) {		
+	public String getCart(Model model, HttpSession session) {		
+		
 		model.addAttribute("cart", detalles);
-		model.addAttribute("orden", orden);		
+		model.addAttribute("orden", orden);
+		
+		model.addAttribute("sesion", session.getAttribute("idusuario"));
 		return "/usuario/carrito";		
 	}
 	
 	@GetMapping("/order")
-	public String order(Model model) {
-		Usuario usuario = usuarioService.findById(3).get();
+	public String order(Model model, HttpSession session) {
+		Usuario usuario = usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+		
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
 		model.addAttribute("usuario", usuario);
+		
 		return "usuario/resumenorden";
 	}
 	
 	//Guardar la orden
 	@GetMapping("/saveOrder")
-	public String saveOrder() {
+	public String saveOrder(HttpSession session) {
 		Date fechaCreacion = new Date();
 		orden.setFechaCreacion(fechaCreacion);
 		orden.setNumero(ordenService.generarNumeroOrden());
 		
 		//Usuario
-		Usuario usuario = usuarioService.findById(3).get();
+		Usuario usuario = usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 		
 		orden.setUsuario(usuario);
 		ordenService.save(orden);

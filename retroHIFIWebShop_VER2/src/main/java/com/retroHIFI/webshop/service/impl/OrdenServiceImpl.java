@@ -2,12 +2,14 @@ package com.retroHIFI.webshop.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.metamodel.model.convert.internal.OrdinalEnumValueConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.retroHIFI.webshop.model.Orden;
+import com.retroHIFI.webshop.model.Usuario;
 import com.retroHIFI.webshop.repository.IOrdenRepository;
 import com.retroHIFI.webshop.service.IOrdenService;
 
@@ -55,6 +57,16 @@ public class OrdenServiceImpl implements IOrdenService{
 		}		
 		
 		return numeroConcatenado;		
+	}
+	
+	@Override
+	public List<Orden> findByUsuario(Usuario usuario){
+		return ordenRepository.findByUsuario(usuario);
+	}
+
+	@Override
+	public Optional<Orden> findById(Integer id) {
+		return ordenRepository.findById(id);
 	}
 
 	

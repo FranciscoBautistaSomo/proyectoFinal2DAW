@@ -1,5 +1,7 @@
 package com.retroHIFI.webshop.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpSession;
 
 import com.retroHIFI.webshop.model.DetalleOrden;
 import com.retroHIFI.webshop.model.Orden;
@@ -52,8 +56,13 @@ public class HomeController {
 	Orden orden = new Orden();
 	
 	@GetMapping("")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
 		model.addAttribute("productos",  productoService.findAll());
+		
+		
+		//Session
+		model.addAttribute("sesion", session.getAttribute("idusuario"));
+		
 		return "usuario/home";
 	}
 	

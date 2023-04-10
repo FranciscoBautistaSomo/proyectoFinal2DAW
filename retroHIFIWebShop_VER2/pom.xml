@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.retroHIFI</groupId>
-	<artifactId>retroHIFIWebShop</artifactId>
+	<artifactId>retroHIFIWebShop_VER2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>retroHIFIWebShop</name>
 	<description>Proyecto ecommerce electrodomesticos retro</description>

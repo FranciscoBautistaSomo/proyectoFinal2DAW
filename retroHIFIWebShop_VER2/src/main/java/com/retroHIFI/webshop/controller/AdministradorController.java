@@ -52,11 +52,9 @@ public class AdministradorController {
 	@GetMapping("/detalles/{id}")
 	public String detalle(Model model, @PathVariable Integer id) {
 		
-		//Optional<Orden> ordenOptional = ordenService.findById(id);
+		Orden orden = ordenService.findById(id).get();		
 		
-		//Orden orden = ordenOptional.get();
-		
-		//model.addAttribute("detalle", orden.getDetalle());
+		model.addAttribute("detalles", orden.getDetalle());
 		
 		return "administrador/detalleorden";
 	}

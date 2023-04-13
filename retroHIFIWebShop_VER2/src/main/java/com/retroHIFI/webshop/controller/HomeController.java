@@ -68,28 +68,29 @@ public class HomeController {
 	@GetMapping("/productohome/{id}")
 	public String productoHome(@PathVariable Integer id, Model model, HttpSession session) {
 
-		if (session == null) {
+		Object idsesion = (session.getAttribute("idusuario"));
+//		log.info("id enviado de la sesion {}", idsesion);
+		if (idsesion == null) {
 			Producto producto = new Producto();
 			Optional<Producto> productoOptional = productoService.get(id);
 			producto = productoOptional.get();
-			model.addAttribute("producto", producto);
+			model.addAttribute("producto", producto);			
 			return "usuario/productohome";
 		} else {
-			Integer idsesion = Integer.parseInt(session.getAttribute("idusuario").toString());
-			log.info("id enviado de la sesion {}", idsesion);
-
-			Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString()))
-					.get();
+			Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 			log.info("idusuario logeado {}", usuario.getId());
 			Producto producto = new Producto();
 			Optional<Producto> productoOptional = productoService.get(id);
 			producto = productoOptional.get();
-
 			model.addAttribute("producto", producto);
 			model.addAttribute("usuario", usuario);
-
 			return "usuario/productohome";
 		}
+//		Producto producto = new Producto();
+//		Optional<Producto> productoOptional = productoService.get(id);
+//		producto = productoOptional.get();
+//		model.addAttribute("producto", producto);			
+//		return "usuario/productohome";
 
 	}
 

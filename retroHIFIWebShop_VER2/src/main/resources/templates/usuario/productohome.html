@@ -24,15 +24,20 @@
 <body>
 
 	<!-- Navigation -->
-  <div th:include="usuario/template_usuario.html::header"  th:if="${ usuario.id == null}"></div>
+	<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">	</div>
 	
-	<div th:include="usuario/template_usuario.html::header-user"   th:if="${ usuario.id > 1 }"> </div>	
-	 
-	<div th:include="administrador/template_admin.html::header"    th:if="${ usuario.id == 1 }" ></div>
+	<div th:include="usuario/template_usuario.html::header-user"  th:unless="${sesion==null}"> </div>
 	<!-- Page Content -->
 	<div class="container">
 
+		<!--<div	th:switch="${#authentication} ? ${#authorization.expression('isAuthenticated()')} : ${false}">
+			<span th:case="${false}">User is not logged in</span>
+			<span	th:case="${true}">Logged in user</span> 
+			<span th:case="*">Should	never happen, but who knows...</span>
+		</div>
 
+
+		 <div th:text=" ' id usuario: '+${usuario.id}"></div> -->
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
 			Spring eCommerce <small>Producto</small>
@@ -49,16 +54,17 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<a href="#"> <img class="img-fluid rounded"
-							th:src="@{../assets/{img} (img=${producto.imagen})} "  alt="">
+							th:src="@{../assets/{img} (img=${producto.imagen})} " alt="">
 						</a>
 					</div>
 					<div class="col-lg-6">
 						<form th:action="@{/cart}" method="POST">
-						<input type="hidden" th:value="${producto.id}" name="id">
+							<input type="hidden" th:value="${producto.id}" name="id">
 							<h2 class="card-title" th:text="${producto.nombre}"></h2>
 
 							<ul class="list-group">
-								<li class="list-group-item"><h5 th:text=" 'Precio: '+ ${producto.precio} "></h5></li>
+								<li class="list-group-item"><h5
+										th:text=" 'Precio: '+ ${producto.precio} "></h5></li>
 								<li class="list-group-item">
 									<p th:text=" 'Descripción: '+ ${producto.descripcion} "></p>
 								</li>
@@ -83,8 +89,7 @@
 	<!-- /.container -->
 
 	<!-- Footer -->
-	<div th:include="usuario/template_usuario.html::footer">
-	</div>
+	<div th:include="usuario/template_usuario.html::footer"></div>
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>

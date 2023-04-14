@@ -24,9 +24,13 @@
 <body>
 
 	<!-- Navigation -->
-	<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">	</div>
+		
+	<div th:switch="${session.idusuario}">
+		<div th:include="administrador/template_admin.html::header" th:case ="${ 1 }" ></div>
+		<div th:include="usuario/template_usuario.html::header"  th:case ="${ null}"></div>
+		<div th:include="usuario/template_usuario.html::header-user"  th:case=" * " ></div>
+	</div>
 	
-	<div th:include="usuario/template_usuario.html::header-user"  th:unless="${sesion==null}"> </div>
 	<!-- Page Content -->
 	<div class="container">
 
@@ -34,10 +38,10 @@
 			<span th:case="${false}">User is not logged in</span>
 			<span	th:case="${true}">Logged in user</span> 
 			<span th:case="*">Should	never happen, but who knows...</span>
-		</div>
+		</div>-->
 
 
-		 <div th:text=" ' id usuario: '+${usuario.id}"></div> -->
+		 <div th:text=" ' id usuario '+${session.idusuario}"></div> 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
 			Spring eCommerce <small>Producto</small>

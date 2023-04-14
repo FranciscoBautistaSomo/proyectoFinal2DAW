@@ -69,8 +69,8 @@ public class HomeController {
 	public String productoHome(@PathVariable Integer id, Model model, HttpSession session) {
 
 		Object idsesion = (session.getAttribute("idusuario"));
-//		log.info("id enviado de la sesion {}", idsesion);
-		if (idsesion == null) {
+		log.info("id enviado de la sesion {}", idsesion);
+		if (idsesion == null) {		
 			Producto producto = new Producto();
 			Optional<Producto> productoOptional = productoService.get(id);
 			producto = productoOptional.get();
@@ -86,12 +86,6 @@ public class HomeController {
 			model.addAttribute("usuario", usuario);
 			return "usuario/productohome";
 		}
-//		Producto producto = new Producto();
-//		Optional<Producto> productoOptional = productoService.get(id);
-//		producto = productoOptional.get();
-//		model.addAttribute("producto", producto);			
-//		return "usuario/productohome";
-
 	}
 
 	@PostMapping("/cart")

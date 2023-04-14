@@ -122,6 +122,7 @@ public class UsuarioController {
 			
 			if (user.get().getTipo().equals("ADMIN")) {
 				logger.info("If, Soy del tipo: {}", user.get().getTipo());
+				//logger.info("If, idusuario: {}", idusuario);
 				return "redirect:/administrador";
 			}else {
 				logger.info("Else, Soy del tipo: {}", user.get().getTipo());

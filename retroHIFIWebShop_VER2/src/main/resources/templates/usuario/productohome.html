@@ -34,13 +34,7 @@
 	<!-- Page Content -->
 	<div class="container">
 
-		<!--<div	th:switch="${#authentication} ? ${#authorization.expression('isAuthenticated()')} : ${false}">
-			<span th:case="${false}">User is not logged in</span>
-			<span	th:case="${true}">Logged in user</span> 
-			<span th:case="*">Should	never happen, but who knows...</span>
-		</div>-->
-
-
+		
 		 <div th:text=" ' id usuario '+${session.idusuario}"></div> 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
@@ -79,7 +73,7 @@
 							</ul>
 
 
-							<button type="submit" class="btn btn-dark">Añadir al
+							<button type="submit" class="btn btn-dark disabled"  th:classappend=" ${session.idusuario > 0} ? 'btn-success' : ' '  ">Añadir al
 								carrito</button>
 
 						</form>

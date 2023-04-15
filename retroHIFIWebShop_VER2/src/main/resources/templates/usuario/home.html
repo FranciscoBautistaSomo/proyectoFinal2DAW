@@ -24,10 +24,15 @@
 <body>
 
 	<!-- Navigation -->
-	<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">	
+	<div th:switch="${session.idusuario}">
+		<div th:include="administrador/template_admin.html::header" th:case ="${ 1 }" ></div>
+		<div th:include="usuario/template_usuario.html::header"  th:case ="${ null}"></div>
+		<div th:include="usuario/template_usuario.html::header-user"  th:case=" * " ></div>
+	</div>
+	<!--  <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">	
 	</div>
 	
-	<div th:include="usuario/template_usuario.html::header-user"  th:unless="${sesion==null}"> </div>
+	<div th:include="usuario/template_usuario.html::header-user"  th:unless="${sesion==null}"> </div>-->
 
 	<!-- Page Content -->
 	<div class="container">
@@ -49,7 +54,7 @@
 						<p class="card-text" th:text="${producto.nombre}"></p>
 					</div>
 					<div class="card-footer">
-						<a th:href="@{/productohome/{id}  (id=${producto.id})  }" class="btn btn-success">Ver
+						<a th:href="@{/productohome/{id}  (id=${producto.id})  }" class="btn btn-success"  th:classappend=" ${session.idusuario == null} ? 'disabled btn-danger' : ' '  ">Ver
 							producto</a>
 					</div>
 				</div>

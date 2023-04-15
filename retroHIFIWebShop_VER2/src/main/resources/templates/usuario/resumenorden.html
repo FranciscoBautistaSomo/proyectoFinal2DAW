@@ -23,7 +23,12 @@
 <body>
 
   <!-- Navigation -->
- <div th:include="usuario/template_usuario.html::header"></div>
+ <!--  <div th:include="usuario/template_usuario.html::header"></div>-->
+ <div th:switch="${session.idusuario}">
+		<div th:include="administrador/template_admin.html::header" th:case ="${ 1 }" ></div>
+		<div th:include="usuario/template_usuario.html::header"  th:case ="${ null}"></div>
+		<div th:include="usuario/template_usuario.html::header-user"  th:case=" * " ></div>
+	</div>
 
     <!-- Page Content -->
     <div class="container">
@@ -84,7 +89,7 @@
 
           <ul class="list-group">
             <li class="list-group-item"><h5 th:text=" 'Total: '+ ${orden.total} "> </h5></li>
-            <a th:href="@{saveOrder}" class="btn btn-dark">Generar</a>
+            <a th:href="@{saveOrder}" class="btn btn-dark">Comprar</a>
           </ul>
         </div>
       </div>

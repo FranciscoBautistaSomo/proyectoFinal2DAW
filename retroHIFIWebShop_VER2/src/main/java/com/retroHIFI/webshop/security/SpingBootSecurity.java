@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.retroHIFI.webshop.service.impl.UserDetailsServiceImpl;
 
@@ -32,8 +33,8 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 		 .sessionManagement()
-         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-         .and()		
+        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+        .and()		
 		.authorizeRequests()
 		.antMatchers(resources).permitAll()
 		.antMatchers("/**","/index").permitAll()
@@ -45,12 +46,12 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 			.permitAll()
 			.defaultSuccessUrl("/usuario/acceder")
 			.failureUrl("/login?error=true")
-            .usernameParameter("username")
-            .passwordParameter("password")
-            .and()
-            .logout()
-            .permitAll()
-            .logoutSuccessUrl("/login?logout");
+           .usernameParameter("username")
+           .passwordParameter("password")
+           .and()
+           .logout()
+           .permitAll()
+           .logoutSuccessUrl("/login?logout");
 	}
 
 	@Bean

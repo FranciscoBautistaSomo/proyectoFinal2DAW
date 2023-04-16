@@ -38,12 +38,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		Usuario appUser;
 		//Buscar el usuario con el repositorio y si no existe lanzar una exepcion
 		Optional<Usuario> optionalUser = userRepository.findByUsername(username);
-		
-		if (optionalUser.isPresent()) {
+		Usuario userTest = optionalUser.get();
+		if (userTest != null && userTest.isEnabled()) {
 			log.info("Este es el username {}", optionalUser.get().getId());
 			session.setAttribute("idusuario", optionalUser.get().getId());
 			System.out.println(session);
-			appUser = optionalUser.get();
+			appUser = userTest;
 //			return new User(usuario.getUsername(), usuario.getPassword(), mapRolesToAuthorities(usuario.getRoles()));
 		}else {
 			throw new UsernameNotFoundException("Usuario no encontrado");			

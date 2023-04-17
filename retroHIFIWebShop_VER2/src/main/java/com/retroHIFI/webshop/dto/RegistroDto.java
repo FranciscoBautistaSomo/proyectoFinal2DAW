@@ -12,4 +12,5 @@ public class RegistroDto {
 	private String telefono;
 	private String tipo;
 	private String password;
+	private boolean enabled;
 }

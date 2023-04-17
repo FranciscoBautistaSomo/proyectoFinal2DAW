@@ -18,6 +18,7 @@ public class Producto {
 	private String imagen;
 	private double precio;
 	private int cantidad;
+	private boolean enabled;
 	
 	@ManyToOne
 	private Usuario usuario;

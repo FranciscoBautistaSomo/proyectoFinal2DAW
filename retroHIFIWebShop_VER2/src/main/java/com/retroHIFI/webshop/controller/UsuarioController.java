@@ -84,6 +84,7 @@ public class UsuarioController {
 		user.setTelefono(registroDto.getTelefono());
 		user.setTipo("USER");
 		user.setPassword(passwordEncoder.encode((registroDto.getPassword())));
+		user.setEnabled(true);
 
 		Role roles = iroleRepository.findByNombre("USER").get();
 		user.setRoles(Collections.singletonList(roles));

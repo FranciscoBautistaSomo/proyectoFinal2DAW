@@ -10,6 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -135,6 +138,27 @@ public class UsuarioController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("/perfil")
+	public String entrarPerfil(Model model, HttpSession session) {		
+		
+		Optional<Usuario> usuarioOp=usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString()));
+		logger.info("Usuario de db: {}", usuarioOp.get());
+		
+		Usuario usuario= usuarioOp.get();
+
+		model.addAttribute("usuarios", usuario);
+		
+//		Usuario usuario = usuarioService.findByEmail(emailLogueado);
+//		
+//		List<Orden> ordenes = ordenService.findByUsuario(usuario);
+//		
+//		model.addAttribute("ordenes", ordenes);
+		
+		return "usuario/perfil";		
+	}
+	
+	
 	
 	@GetMapping("/compras")
 	public String obtenerCompras(Model model, HttpSession session) {

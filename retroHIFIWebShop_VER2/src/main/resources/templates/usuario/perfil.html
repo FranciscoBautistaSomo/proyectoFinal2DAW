@@ -8,11 +8,16 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Spring eCommerce</title>
-<link rel="icon" href="../static/assets/icon.png"	th:href="@{/assets/icon.png}" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"	crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"	rel="stylesheet" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" 	rel="stylesheet" type="text/css" />
-<link th:href="@{/css/styles.css}"  rel="stylesheet" />
+<link rel="icon" href="../static/assets/icon.png"
+	th:href="@{/assets/icon.png}" />
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+	crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/css/styles.css}" rel="stylesheet" />
 
 <!-- Bootstrap core CSS -->
 <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
@@ -26,7 +31,7 @@
 <body id="page-top">
 
 	<!-- Navigation -->
-  	<div th:include="usuario/template_usuario.html::header-user" > </div>
+	<div th:include="usuario/template_usuario.html::header-user"></div>
 
 	<div class="container p-4">
 		<!--  <a th:href="@{/}"><img src="../static/assets/img/logo.png"
@@ -35,15 +40,15 @@
 		<!-- <div sec:authorize="isAuthenticated()">
 		<b>Usuario:</b> <span sec:authentication="name">Username</span>&nbsp;<i><span sec:authentication="principal.authorities">Roles</span></i>
 	</div> -->
-	
-	 <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Perfil</small>
-      </h1>
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item active">Perfil</li>
-      </ol>
+		<h1 class="mt-4 mb-3">
+			Spring eCommerce <small>Perfil</small>
+		</h1>
+
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+			<li class="breadcrumb-item active">Perfil</li>
+		</ol>
 
 		<div class="cositas bg-light pt-4 border border-4">
 
@@ -51,18 +56,24 @@
 
 			<th:block th:each="usuario : ${usuarios}">
 				<div class="p-4 pb-2">
-					<b>Correo electrónico:</b><p th:text="${usuario.email}"></p>
-					<b>Username:</b><p th:text="${usuario.username}"></p>
-					<b>Nombre:</b><p th:text="${usuario.nombre}"></p>
-					<b>Apellidos:</b><p th:text="${usuario.apellidos}"></p>
-					<b>Dirección:</b><p th:text="${usuario.direccion}"></p>
-					<b>Telefono:</b><p th:text="${usuario.telefono}"></p>
+					<b>Correo electrónico:</b>
+					<p th:text="${usuario.email}"></p>
+					<b>Username:</b>
+					<p th:text="${usuario.username}"></p>
+					<b>Nombre:</b>
+					<p th:text="${usuario.nombre}"></p>
+					<b>Apellidos:</b>
+					<p th:text="${usuario.apellidos}"></p>
+					<b>Dirección:</b>
+					<p th:text="${usuario.direccion}"></p>
+					<b>Telefono:</b>
+					<p th:text="${usuario.telefono}"></p>
 					<!--  <b>DNI:</b><p th:text="${usuario.dni}"></p>-->
 				</div>
 
 				<div class="text-center pb-4">
 					<button class="btn btn-dark ">
-						<a th:href="@{/modificarPerfil/}+${usuario.id}">Modificar
+						<a th:href="@{modificarPerfil/}+${usuario.id}">Modificar
 							datos</a>
 					</button>
 				</div>
@@ -97,38 +108,15 @@
 			</div>-->
 
 		</div>
-
 	</div>
 
 	<footer class="footer py-4">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-4 text-lg-start">Copyright &copy; GAME OVER
-					2023</div>
-				<div class="col-lg-4 my-3 my-lg-0">
-					<a class="btn btn-dark btn-social mx-2" href="#!"
-						aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a
-						class="btn btn-dark btn-social mx-2" href="#!"
-						aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> <a
-						class="btn btn-dark btn-social mx-2" href="#!"
-						aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a
-						class="btn btn-dark btn-social mx-2" href="#!"
-						aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-				</div>
-				<div class="col-lg-4 text-lg-end">
-					<a class="link-dark text-decoration-none me-3" href="#!">Términos
-						de privacidad</a> <a class="link-dark text-decoration-none" href="#!">Condiciones
-						de uso</a>
-				</div>
-			</div>
-		</div>
+		<!-- Footer -->
+		<div th:include="usuario/template_usuario.html::footer"></div>
 	</footer>
-
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script th:src="@{/js/scripts.js}"></script>
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
 

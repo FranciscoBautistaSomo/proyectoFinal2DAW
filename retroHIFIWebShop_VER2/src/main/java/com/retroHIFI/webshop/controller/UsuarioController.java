@@ -158,6 +158,27 @@ public class UsuarioController {
 		return "usuario/perfil";		
 	}
 	
+	@GetMapping("/modificarPerfil/{id}")
+	public String modificarPerfil(@PathVariable Integer id, Model model) {
+		Optional<Usuario> usuario=usuarioService.findById(id);
+		//Usuario usuario = usuarioOp.get();
+		model.addAttribute("usuario", usuario);
+		return "usuario/modificarPerfil";
+	}
+	
+	@PostMapping("/update")
+	public String update(Usuario usuario) {		
+		if (usuario != null) {
+			
+			Role roles = iroleRepository.findByNombre("USER").get();
+			usuario.setRoles(Collections.singletonList(roles));
+			
+			usuarioService.update(usuario);
+		}
+		
+		return "redirect:/";
+	}
+	
 	
 	
 	@GetMapping("/compras")
@@ -178,9 +199,7 @@ public class UsuarioController {
 		logger.info("Id de la orden: {}", id);
 		Optional<Orden> orden=ordenService.findById(id);
 		
-		model.addAttribute("detalles", orden.get().getDetalle());
-		
-		
+		model.addAttribute("detalles", orden.get().getDetalle());		
 		//session
 		model.addAttribute("sesion", session.getAttribute("idusuario"));
 		return "usuario/detallecompra";

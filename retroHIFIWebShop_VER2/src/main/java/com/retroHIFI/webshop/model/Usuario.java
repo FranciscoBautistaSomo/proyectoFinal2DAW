@@ -29,7 +29,8 @@ public class Usuario  {
 		private String password;
 		private boolean enabled;
 		
-		@OneToMany(mappedBy = "usuario",  cascade = CascadeType.REMOVE, orphanRemoval = true)
+		//@OneToMany(mappedBy = "usuario",  cascade = CascadeType.REMOVE, orphanRemoval = true)
+		@OneToMany(mappedBy = "usuario",  cascade = CascadeType.REMOVE)
 		private List<Producto> productos;
 		
 		@OneToMany(mappedBy = "usuario")

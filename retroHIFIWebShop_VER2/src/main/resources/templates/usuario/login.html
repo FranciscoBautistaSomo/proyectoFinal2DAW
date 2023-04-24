@@ -60,6 +60,17 @@
 
 
 		<form th:action="@{/usuario/login}" method="post">
+			<!--Mensajes de error-->
+			<div class="alert alert-danger mb-4 w-50 d-block m-auto text-center" th:if="${param.error}"
+				th:with="errorMsg=${session[SPRING_SECURITY_LAST_EXCEPTION].message}">
+				Su intento de logearse ha fallado.<br /> Razón: <span
+					th:text="${errorMsg}">Email o contraseña erroneo.</span>
+			</div>
+			<!--Mensajes de logout-->
+			<div th:if="${param.logout}">
+				<div class="alert alert-info mb-4 w-50 d-block m-auto text-center">Ha cerrado sesión exitosamente</div>
+			</div>
+			
 			<div class="form-group">
 				<label for="email"> Username: </label>
 				<!--  <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required autocomplete="off">-->
@@ -82,14 +93,7 @@
 					</button>
 				</div>
 			</div>
-		</form>
-		<div th:if="${param.error}" class="alert alert-danger" role="alert">
-			Nombre de usuario o contraseña erroneo.</div>
-		<div th:if="${param.logout}" class="alert alert-success" role="alert">
-			Ha cerrado la sesión.</div>
-		<a th:href="@{/usuario/registro}" class="card-link">Si aún no
-			tiene cuenta aqui puede registrarse</a>
-	</div>
+		</form>		
 	<!-- /.container -->
 
 	<!-- Footer -->

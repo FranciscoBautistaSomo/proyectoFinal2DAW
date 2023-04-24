@@ -57,9 +57,7 @@ public class UsuarioController {
 	BCryptPasswordEncoder passEncode= new BCryptPasswordEncoder();
 		
 	@Autowired
-	public UsuarioController( IUsuarioRepository iusuarioRepository,IRoleRepository iroleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator ) {
-		
-		
+	public UsuarioController( IUsuarioRepository iusuarioRepository,IRoleRepository iroleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator ) {		
 		this.iusuarioRepository = iusuarioRepository;
 		this.iroleRepository = iroleRepository;
 		this.passwordEncoder = passwordEncoder;
@@ -208,6 +206,6 @@ public class UsuarioController {
 	@GetMapping("/cerrar")
 	public String cerrarSesion( HttpSession session ) {
 		session.removeAttribute("idusuario");
-		return "redirect:/";
+		return "redirect:/logout";
 	}
 }

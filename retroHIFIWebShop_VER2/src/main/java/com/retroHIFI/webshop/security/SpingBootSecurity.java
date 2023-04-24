@@ -22,7 +22,7 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 	UserDetailsServiceImpl userDetailServiceImpl;
 
 	String[] resources = new String[] { "/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**",
-			"/assets/**", "/vendor/**", "/images/**" };
+			"/assets/**", "/vendor/**", "/images/**","/error/**" };
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -40,18 +40,18 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers("/**","/index", "/modificarPerfil/**").permitAll()
 		.antMatchers("/administrador/**").access("hasRole('ADMIN')")
 		.antMatchers("/productos/**").access("hasRole('ADMIN')")
-			.anyRequest().authenticated()
-			.and()
-			.formLogin().loginPage("/usuario/login")
-			.permitAll()
-			.defaultSuccessUrl("/usuario/acceder")
-			.failureUrl("/login?error=true")
-           .usernameParameter("username")
-           .passwordParameter("password")
-           .and()
-           .logout()
-           .permitAll()
-           .logoutSuccessUrl("/login?logout");
+		.anyRequest().authenticated()
+		.and()
+		.formLogin().loginPage("/usuario/login")
+		.permitAll()
+		.defaultSuccessUrl("/usuario/acceder")		
+        .usernameParameter("username")
+        .passwordParameter("password")
+        .and()
+        .logout()       
+        .permitAll()
+        .and()
+        .exceptionHandling().accessDeniedPage("/403");
 	}
 
 	@Bean

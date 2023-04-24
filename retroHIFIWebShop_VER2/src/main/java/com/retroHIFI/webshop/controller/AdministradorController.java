@@ -3,6 +3,7 @@ package com.retroHIFI.webshop.controller;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ public class AdministradorController {
 	
 	
 	@GetMapping("")
+	@Secured("ADMIN")
 	public String home(Model model) {
 		
 		List<Producto> productos = productoService.findAll();
@@ -38,18 +40,21 @@ public class AdministradorController {
 	}
 	
 	@GetMapping("/usuarios")
+	@Secured("ADMIN")
 	public String usuarios(Model model) {
 		model.addAttribute("usuarios", usuarioService.findAll());
 		return "administrador/usuarios";
 	}
 	
 	@GetMapping("/ordenes")
+	@Secured("ADMIN")
 	public String ordenes(Model model) {
 		model.addAttribute("ordenes", ordenService.findAll());
 		return "administrador/ordenes";
 	}
 	
 	@GetMapping("/detalles/{id}")
+	@Secured("ADMIN")
 	public String detalle(Model model, @PathVariable Integer id) {
 		
 		Orden orden = ordenService.findById(id).get();		

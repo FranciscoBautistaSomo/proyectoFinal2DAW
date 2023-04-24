@@ -83,11 +83,11 @@ public class UsuarioController {
 		user.setEmail(registroDto.getEmail());
 		user.setDireccion(registroDto.getDireccion());
 		user.setTelefono(registroDto.getTelefono());
-		user.setTipo("USER");
+		user.setTipo("ROLE_USER");
 		user.setPassword(passwordEncoder.encode((registroDto.getPassword())));
 		user.setEnabled(true);
 
-		Role roles = iroleRepository.findByNombre("USER").get();
+		Role roles = iroleRepository.findByAuthority("ROLE_USER").get();
 		user.setRoles(Collections.singletonList(roles));
 
 		iusuarioRepository.save(user);
@@ -168,7 +168,7 @@ public class UsuarioController {
 	public String update(Usuario usuario) {		
 		if (usuario != null) {
 			
-			Role roles = iroleRepository.findByNombre("USER").get();
+			Role roles = iroleRepository.findByAuthority("ROLE_USER").get();
 			usuario.setRoles(Collections.singletonList(roles));
 			
 			usuarioService.update(usuario);

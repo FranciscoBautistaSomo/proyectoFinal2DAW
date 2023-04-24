@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.retroHIFI.webshop.model.Role;
 
 public interface IRoleRepository extends JpaRepository<Role, Integer>{
-	Optional<Role> findByNombre(String nombre);
+	Optional<Role> findByAuthority(String authority);
 }

@@ -35,14 +35,15 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	}
 	
 	@Override
-	public Optional<Usuario> findByUsername(String username) throws UsernameNotFoundException{
+	public Optional<Usuario> findByUsername(String username) throws UsernameNotFoundException, UserNotEnabledException{
 				Optional<Usuario> usuarioOp = usuarioRepository.findByUsername(username);
 				Usuario usuario = usuarioOp.get();				
 				if(usuario == null) {
 					throw new UsernameNotFoundException("El usuario no existe");		
+				}else if (!(usuario).isEnabled()) {
+					throw new UserNotEnabledException("Usuario deshabilitado. Pongase en contacto con el administrador.");			
 				}
-				return usuarioOp;
-				
+				return usuarioOp;				
 	}	 
 
 	@Override

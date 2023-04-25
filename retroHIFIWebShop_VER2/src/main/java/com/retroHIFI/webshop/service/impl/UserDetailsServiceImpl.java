@@ -44,7 +44,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			session.setAttribute("idusuario", optionalUser.get().getId());
 			System.out.println(session);
 			appUser = userTest;
-//			return new User(usuario.getUsername(), usuario.getPassword(), mapRolesToAuthorities(usuario.getRoles()));
 		}else {
 			throw new UsernameNotFoundException("Usuario no encontrado");			
 		}	
@@ -57,7 +56,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	            grantList.add(grantedAuthority);
 	    }
 	    
-	    UserDetails usuarioDetalles = (UserDetails) new User(appUser.getUsername(), appUser.getPassword(), grantList);
+	    UserDetails usuarioDetalles = (UserDetails) new User(appUser.getUsername(), appUser.getPassword(), appUser.getEnabled(), true, true, true, 
+	    												 grantList);
 		
 		return usuarioDetalles;
 	}

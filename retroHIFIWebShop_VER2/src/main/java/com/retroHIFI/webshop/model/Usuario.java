@@ -19,14 +19,23 @@ public class Usuario  {
 		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer id;
+		@Column(unique = true)
 		private String username;
+		
 		private String nombre;
+		
 		private String apellidos;
+		
 		private String email;
+		
 		private String direccion;
+		
 		private String telefono;
+		
 		private String tipo;
+		
 		private String password;
+		
 		private boolean enabled;
 		
 		//@OneToMany(mappedBy = "usuario",  cascade = CascadeType.REMOVE, orphanRemoval = true)
@@ -48,4 +57,16 @@ public class Usuario  {
 	    public void setRole(List<Role> roles) {
 	    	this.roles = roles;
 	    }
+	    
+	    public Boolean getEnabled() {
+			return enabled;
+		}
+
+		public void setEnabled(Boolean enabled) {
+			this.enabled = enabled;
+		}
+
+		public boolean isEnabled() {
+			return enabled;
+		}
 }

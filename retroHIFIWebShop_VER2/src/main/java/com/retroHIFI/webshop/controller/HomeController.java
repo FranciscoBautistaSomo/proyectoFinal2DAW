@@ -79,6 +79,7 @@ public class HomeController {
 		} else {
 			Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 			log.info("idusuario logeado {}", usuario.getId());
+			log.info("tipo logeado {}", usuario.getTipo());
 			Producto producto = new Producto();
 			Optional<Producto> productoOptional = productoService.get(id);
 			producto = productoOptional.get();

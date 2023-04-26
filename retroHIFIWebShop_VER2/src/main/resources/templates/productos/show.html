@@ -47,6 +47,7 @@
         <th scope="col">Descripción</th>
         <th scope="col">Inventario</th>
         <th scope="col">Precio</th>
+         <th scope="col">Categoría</th>
         <th scope="col">Acción</th>
         <th scope="col">Acción</th>
       </tr>
@@ -57,6 +58,7 @@
         <td th:text="${producto.descripcion}"></td>
         <td th:text="${producto.cantidad}"></td>
         <td th:text="${producto.precio}"></td>
+        <td th:text="${producto.categoria.nombre}"></td>
         <td><a  class="btn btn-warning" th:href="@{productos/edit/{id} (id=${producto.id}) }">Editar</a> </td>
         <td> <!--<a  class="btn btn-danger" th:href="@{productos/delete/{id} (id=${producto.id}) }">Eliminar</a>-->  
         <a  th:onclick="eliminar([[${producto.id}]])"  class="btn btn-danger" >Eliminar</a></td>
@@ -69,8 +71,8 @@
  <div th:include="administrador/template_admin.html::footer" ></div>
 
  <!-- Bootstrap core JavaScript -->
-    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
-    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
     
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

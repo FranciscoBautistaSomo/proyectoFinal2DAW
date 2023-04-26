@@ -44,4 +44,9 @@ public class ProductoServiceImpl implements IProductoService {
 		return productoRepository.findAll();
 	}
 
+	@Override
+	public Optional<Producto> findByIdCategoria(Integer idCategoria) {
+		return productoRepository.findById(idCategoria);
+	}
+
 }

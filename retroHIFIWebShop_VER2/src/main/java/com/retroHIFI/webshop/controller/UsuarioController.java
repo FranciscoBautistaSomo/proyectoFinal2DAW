@@ -168,14 +168,11 @@ public class UsuarioController {
 	
 	@PostMapping("/update")
 	public String update(Usuario usuario) {		
-		if (usuario != null) {
-			
+		if (usuario != null) {			
 			Role roles = iroleRepository.findByAuthority("ROLE_USER").get();
-			usuario.setRoles(Collections.singletonList(roles));
-			
+			usuario.setRoles(Collections.singletonList(roles));			
 			usuarioService.update(usuario);
-		}
-		
+		}		
 		return "redirect:/";
 	}
 	

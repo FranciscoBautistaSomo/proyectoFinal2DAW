@@ -10,6 +10,7 @@ import lombok.Data;
 @Table(name="productos")
 @Data
 public class Producto {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -22,8 +23,8 @@ public class Producto {
 	
 	@ManyToOne
 	private Usuario usuario;
-
 	
-	
+	@ManyToOne
+	private Categoria categoria;	
 	
 }

@@ -1,13 +1,20 @@
 package com.retroHIFI.webshop.service.impl;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.retroHIFI.webshop.exception.UserNotEnabledException;
+import com.retroHIFI.webshop.model.Role;
 import com.retroHIFI.webshop.model.Usuario;
 import com.retroHIFI.webshop.repository.IUsuarioRepository;
 import com.retroHIFI.webshop.service.IUsuarioService;
@@ -19,13 +26,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		
 	@Override
 	public Optional<Usuario> findById(Integer id) throws UsernameNotFoundException, UserNotEnabledException{
-		Optional<Usuario> usuarioOp = usuarioRepository.findById(id);
-		Usuario usuario = usuarioOp.get();				
-		if(usuario == null) {
-			throw new UsernameNotFoundException("Email o contraseña erroneo");		
-		}else if (!(usuario).isEnabled()) {
-			throw new UserNotEnabledException("Usuario deshabilitado. Pongase en contacto con el administrador.");			
-		}
+		Optional<Usuario> usuarioOp = usuarioRepository.findById(id);			
 		return usuarioOp;	
 	}
 
@@ -37,15 +38,9 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	@Override
 	public Optional<Usuario> findByUsername(String username) throws UsernameNotFoundException, UserNotEnabledException{
 				Optional<Usuario> usuarioOp = usuarioRepository.findByUsername(username);
-				Usuario usuario = usuarioOp.get();				
-				if(usuario == null) {
-					throw new UsernameNotFoundException("El usuario no existe");		
-				}else if (!(usuario).isEnabled()) {
-					throw new UserNotEnabledException("Usuario deshabilitado. Pongase en contacto con el administrador.");			
-				}
 				return usuarioOp;				
-	}	 
-
+	}
+	
 	@Override
 	public Optional<Usuario> findByEmail(String email) {
 		
@@ -61,6 +56,6 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	public void update(Usuario usuario) {
 		usuarioRepository.save(usuario);		
 	}
-	
 
+	
 }

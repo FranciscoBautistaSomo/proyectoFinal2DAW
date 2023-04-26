@@ -31,7 +31,6 @@ public class AdministradorController {
 	
 	
 	@GetMapping("")
-	@Secured("ADMIN")
 	public String home(Model model) {
 		
 		List<Producto> productos = productoService.findAll();
@@ -40,21 +39,18 @@ public class AdministradorController {
 	}
 	
 	@GetMapping("/usuarios")
-	@Secured("ADMIN")
 	public String usuarios(Model model) {
 		model.addAttribute("usuarios", usuarioService.findAll());
 		return "administrador/usuarios";
 	}
 	
 	@GetMapping("/ordenes")
-	@Secured("ADMIN")
 	public String ordenes(Model model) {
 		model.addAttribute("ordenes", ordenService.findAll());
 		return "administrador/ordenes";
 	}
 	
 	@GetMapping("/detalles/{id}")
-	@Secured("ADMIN")
 	public String detalle(Model model, @PathVariable Integer id) {
 		
 		Orden orden = ordenService.findById(id).get();		

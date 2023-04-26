@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.retroHIFI.webshop.exception.UserNotEnabledException;
 import com.retroHIFI.webshop.model.Role;
 import com.retroHIFI.webshop.model.Usuario;
 import com.retroHIFI.webshop.repository.IUsuarioRepository;
@@ -33,20 +34,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, UserNotEnabledException {
 		log.info("Este es el username {}", username);
-		Usuario appUser;
+		Usuario appUser = new Usuario();
 		//Buscar el usuario con el repositorio y si no existe lanzar una exepcion
 		Optional<Usuario> optionalUser = userRepository.findByUsername(username);
-		Usuario userTest = optionalUser.get();
-		if (userTest != null && userTest.isEnabled()) {
+		Usuario userTest = optionalUser.get();		
+		if(userTest == null) {
+			throw new UsernameNotFoundException("Email o contraseña erroneo");		
+		}else if (!(userTest).isEnabled()) {
+			throw new UserNotEnabledException("Usuario deshabilitado. Pongase en contacto con el administrador.");			
+		}else if (userTest != null && userTest.isEnabled()) {
 			log.info("Este es el username {}", optionalUser.get().getId());
 			session.setAttribute("idusuario", optionalUser.get().getId());
 			System.out.println(session);
 			appUser = userTest;
-		}else {
-			throw new UsernameNotFoundException("Usuario no encontrado");			
-		}	
+		}
 		
 		//Mapear nuestra lista de Authority con la de spring security
 		List grantList = new ArrayList();

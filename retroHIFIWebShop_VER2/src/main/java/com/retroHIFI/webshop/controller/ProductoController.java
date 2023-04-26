@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.retroHIFI.webshop.model.Producto;
+import com.retroHIFI.webshop.repository.ICategoriaRepository;
+import com.retroHIFI.webshop.repository.IProductoRepository;
+import com.retroHIFI.webshop.service.ICategoriaService;
 import com.retroHIFI.webshop.service.IProductoService;
 import com.retroHIFI.webshop.service.UploadFileService;
 
@@ -28,6 +31,9 @@ public class ProductoController {
 	
 	@Autowired
 	private IProductoService productoService;
+	
+	@Autowired
+	private IProductoRepository productoRepository;
 	
 	@Autowired
 	private UploadFileService upload;
@@ -103,5 +109,28 @@ public class ProductoController {
 		productoService.delete(id);
 		return "redirect:/productos ";
 	}
+	
+	@GetMapping("/audio")
+	public String listarAudio(Model model) {
+		model.addAttribute("productos", productoRepository.mostrarAudio());
+		
+		return "productos/categoria";
+	}
+	
+	@GetMapping("/video")
+	public String listarVideo(Model model) {
+		model.addAttribute("productos", productoRepository.mostrarVideo());
+		
+		return "productos/categoria";
+	}
+	
+	@GetMapping("/segMano")
+	public String listarSegMano(Model model) {
+		model.addAttribute("productos", productoRepository.mostrarSegMano());
+		
+		return "productos/categoria";
+	}
+	
+	
 	
 }

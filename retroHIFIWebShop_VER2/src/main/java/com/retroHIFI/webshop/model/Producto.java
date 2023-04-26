@@ -24,7 +24,8 @@ public class Producto {
 	@ManyToOne
 	private Usuario usuario;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "categoria_id_categoria")
 	private Categoria categoria;	
 	
 }

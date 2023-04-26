@@ -57,10 +57,9 @@ public class ProductoController {
 		if (producto.getId()==null) {//cuando se crea un producto
 			String nombreImagen = upload.saveImage(file);
 			producto.setImagen(nombreImagen);
-		} else {
-				
-		}
+		} 
 		
+		producto.setEnabled(true);
 		productoService.save(producto);
 		return "redirect:/productos";
 	}
@@ -91,6 +90,7 @@ public class ProductoController {
 			producto.setImagen(nombreImagen);
 		}
 		producto.setUsuario(p.getUsuario());
+		producto.setEnabled(true);
 		productoService.update(producto);
 		return "redirect:/productos ";
 	}

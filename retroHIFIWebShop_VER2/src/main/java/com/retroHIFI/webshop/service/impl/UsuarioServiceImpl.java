@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.retroHIFI.webshop.exception.UserNotEnabledException;
+import com.retroHIFI.webshop.model.Producto;
 import com.retroHIFI.webshop.model.Role;
 import com.retroHIFI.webshop.model.Usuario;
 import com.retroHIFI.webshop.repository.IUsuarioRepository;
@@ -56,6 +57,13 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	public void update(Usuario usuario) {
 		usuarioRepository.save(usuario);		
 	}
+
+	@Override
+	public Optional<Usuario> get(Integer id) {
+		return usuarioRepository.findById(id);
+	}
+	
+	
 
 	
 }

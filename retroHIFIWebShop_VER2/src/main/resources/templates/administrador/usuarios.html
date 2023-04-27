@@ -42,14 +42,14 @@
   <table class="table">
     <thead>
       <tr>
-      	<th scope="col">Username</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Email</th>
-        <th scope="col">Dirección</th>
-         <th scope="col">Telefono</th>
-         <th scope="col">Activo</th>
-         <th scope="col">Acción</th>
+      	<th scope="col" class="text-center">Username</th>
+        <th scope="col" class="text-center">Nombre</th>
+        <th scope="col" class="text-center">Apellidos</th>
+        <th scope="col" class="text-center">Email</th>
+        <th scope="col" class="text-center">Dirección</th>
+         <th scope="col" class="text-center">Telefono</th>
+         <!-- <th class="text-center" scope="col" class="text-center">Estado</th>-->
+         <th scope="col" class="text-center">Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -57,11 +57,11 @@
        <td th:text="${usuario.username}"></td>
         <td th:text="${usuario.nombre}"></td>
         <td th:text="${usuario.apellidos}"></td>
-        <td th:text="${usuario.email}"></td>
+        <td class="text-center" th:text="${usuario.email}"></td>
         <td th:text="${usuario.direccion}"></td>
-        <td th:text="${usuario.telefono}"></td>
-        <td th:text="${usuario.enabled}"></td>
-        <td><a  class="btn btn-info" href="/">Deshabilitar</a> </td>
+        <td class="text-center" th:text="${usuario.telefono}"></td>
+        <!-- <td th:text="${usuario.enabled}"></td> -->
+        <td class="text-center"><a  class="btn " th:classappend=" ${usuario.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarUser([[${usuario.id}]], [[${usuario.enabled}]])"><span th:text="${usuario.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
       </tr>       
     </tbody>
   </table>
@@ -75,7 +75,10 @@
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
+	
+	<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="/vendor/jquery/funciones.js"></script>
 </body>
 
 </html>

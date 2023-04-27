@@ -110,6 +110,22 @@ public class ProductoController {
 		return "redirect:/productos ";
 	}
 	
+	@GetMapping("/deshabilitar/{id}")
+	public String deshabilitar(@PathVariable Integer id) {
+		
+		Producto p = new Producto();
+		p=productoService.get(id).get();	
+		
+		//deshabilitar pruducto si está habilitado o habilitarlo si esta deshabilitado 
+		if (p.isEnabled()) {			
+			p.setEnabled(false);			
+		}else if(!p.isEnabled()) {
+			p.setEnabled(true);			
+		}		
+		productoService.update(p);
+		return "redirect:/ ";
+	}
+	
 	@GetMapping("/audio")
 	public String listarAudio(Model model) {
 		model.addAttribute("productos", productoRepository.mostrarAudio());

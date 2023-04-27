@@ -43,24 +43,24 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Inventario</th>
-        <th scope="col">Precio</th>
-         <th scope="col">Categoría</th>
-        <th scope="col">Acción</th>
-        <th scope="col">Acción</th>
-        <th scope="col">Acción</th>
+        <th scope="col" class="text-center">Nombre</th>
+        <th scope="col" class="text-center">Descripción</th>
+        <th scope="col" class="text-center">Inventario</th>
+        <th scope="col" class="text-center">Precio</th>
+         <th scope="col" class="text-center">Categoría</th>
+        <th scope="col" class="text-center">Estado</th>
+        <th scope="col" class="text-center">Edición</th>
+        <th scope="col" class="text-center">Eliminar</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="producto:${productos}">
         <td th:text="${producto.nombre}"></td>
         <td th:text="${producto.descripcion}"></td>
-        <td th:text="${producto.cantidad}"></td>
-        <td th:text="${producto.precio}"></td>
-        <td th:text="${producto.categoria.nombre}"></td>
-        <td><a  class="btn btn-info" href="/">Deshabilitar</a> </td>
+        <td class="text-center" th:text="${producto.cantidad}"></td>
+        <td class="text-center" th:text="${producto.precio}"></td>
+        <td class="text-center" th:text="${producto.categoria.nombre}"></td>
+        <td><a  class="btn " th:classappend=" ${producto.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarProduc([[${producto.id}]], [[${producto.enabled}]])"><span th:text="${producto.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
         <td><a  class="btn btn-warning" th:href="@{productos/edit/{id} (id=${producto.id}) }">Editar</a> </td>
         <td> <!--<a  class="btn btn-danger" th:href="@{productos/delete/{id} (id=${producto.id}) }">Eliminar</a>-->  
         <a  th:onclick="eliminar([[${producto.id}]])"  class="btn btn-danger" >Eliminar</a></td>
@@ -78,7 +78,7 @@
     
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src=" vendor/jquery/funciones.js"></script>
+	<script src="vendor/jquery/funciones.js"></script>
 </body>
 
 </html>

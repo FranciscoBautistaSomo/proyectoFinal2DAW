@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.retroHIFI.webshop.dto.RegistroDto;
 import com.retroHIFI.webshop.model.Orden;
+import com.retroHIFI.webshop.model.Producto;
 import com.retroHIFI.webshop.model.Role;
 import com.retroHIFI.webshop.model.Usuario;
 import com.retroHIFI.webshop.service.IOrdenService;
@@ -176,7 +177,21 @@ public class UsuarioController {
 		return "redirect:/";
 	}
 	
-	
+	@GetMapping("/deshabilitar/{id}")
+	public String deshabilitar(@PathVariable Integer id) {
+		
+		Usuario usuario = new Usuario();
+		usuario=usuarioService.get(id).get();	
+		
+		//deshabilitar usuario si está habilitado o habilitarlo si esta deshabilitado 
+		if (usuario.isEnabled()) {			
+			usuario.setEnabled(false);			
+		}else if(!usuario.isEnabled()) {
+			usuario.setEnabled(true);			
+		}		
+		usuarioService.update(usuario);
+		return "redirect:/ ";
+	}	
 	
 	@GetMapping("/compras")
 	public String obtenerCompras(Model model, HttpSession session) {

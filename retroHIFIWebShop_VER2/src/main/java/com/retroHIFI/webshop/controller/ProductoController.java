@@ -129,6 +129,7 @@ public class ProductoController {
 	@GetMapping("/audio")
 	public String listarAudio(Model model) {
 		model.addAttribute("productos", productoRepository.mostrarAudio());
+		model.addAttribute("nombreCat", productoRepository.getNombreCategoria(1));
 		
 		return "productos/categoria";
 	}
@@ -136,6 +137,7 @@ public class ProductoController {
 	@GetMapping("/video")
 	public String listarVideo(Model model) {
 		model.addAttribute("productos", productoRepository.mostrarVideo());
+		model.addAttribute("nombreCat", productoRepository.getNombreCategoria(2));
 		
 		return "productos/categoria";
 	}
@@ -143,6 +145,7 @@ public class ProductoController {
 	@GetMapping("/segMano")
 	public String listarSegMano(Model model) {
 		model.addAttribute("productos", productoRepository.mostrarSegMano());
+		model.addAttribute("nombreCat", productoRepository.getNombreCategoria(3));
 		
 		return "productos/categoria";
 	}

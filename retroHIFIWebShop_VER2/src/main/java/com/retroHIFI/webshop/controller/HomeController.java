@@ -56,11 +56,32 @@ public class HomeController {
 	Orden orden = new Orden();
 
 	@GetMapping("")
-	public String home(Model model, HttpSession session) {
-		model.addAttribute("productos", productoService.findAll());
+	public String home(Model model, HttpSession session, String busqueda,
+	@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "4") int pageSize) {
+		List<Producto> productos; 
+		
+		//model.addAttribute("productos", productos);
+		
+		if (busqueda != null) {
+			productos = productoService.buscador(busqueda);
+			} else {
+			productos = productoService.findAll();
+			}
 
 		// Session
 		model.addAttribute("sesion", session.getAttribute("idusuario"));
+		
+		int start = page * pageSize;
+		int end = Math.min((start + pageSize), productos.size());
+		List<Producto> productosPaginados = productos.subList(start, end);
+
+		model.addAttribute("productos", productosPaginados);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", (int) Math.ceil((double) productos.size() / pageSize));
+		model.addAttribute("pageSize", pageSize);		
+
+		long totalProductos = productos.size();
+		model.addAttribute("totalProductos", totalProductos);	
 
 		return "usuario/home";
 	}

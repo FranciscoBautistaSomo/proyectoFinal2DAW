@@ -63,7 +63,35 @@
 
 		</div>
 		<!-- /.row -->
+		
+		<!-- Paginación -->
+				<div class="ms-3">
+					<div class = "row col-sm-12 justify-content-center align-items-center">
+						<hr class="border border-1 opacity-100">
+						<div class = "col-sm-3">
+							Total Productos: <a th:text="${totalProductos}"></a>
+						</div>
+						<div class = "col-sm-3">
+							<p th:if = "${totalPages > 1}">
+								<a th:each="page : ${#numbers.sequence(0, totalPages - 1)}" th:href="@{/(busqueda=${busqueda}, page=${page}, pageSize=${pageSize})}"
+								   th:text="${page + 1}" class="ms-2"></a>
+								<span th:unless="${currentPage != i}">[[${i}]]</span>&nbsp;&nbsp;</p>
+						</div>
 
+						<div class = "col-sm-2" >
+							<a th:if="${currentPage > 0}" th:href="@{/(busqueda=${busqueda}, page=${currentPage - 1}, pageSize=${pageSize})}"
+							   aria-label="Previous" class="mx-4 fs-5 fw-bold text-decoration-none">Anterior
+							</a>
+						</div>
+
+						<div class="col-sm-2">
+							<a th:if="${currentPage < totalPages - 1}" th:href="@{/(busqueda=${busqueda}, page=${currentPage + 1}, pageSize=${pageSize})}"
+							   aria-label="Next" class="mx-4 fs-5 fw-bold text-decoration-none"> Siguiente
+							</a>
+						</div>
+						<p></p><hr class="border border-1 opacity-100">
+					</div>
+				</div>
 	</div>
 	<!-- /.container -->
 

@@ -49,4 +49,9 @@ public class ProductoServiceImpl implements IProductoService {
 		return productoRepository.findById(idCategoria);
 	}
 
+	@Override
+	public List<Producto> buscador(String busqueda) {
+		return productoRepository.buscador(busqueda	);
+	}
+
 }

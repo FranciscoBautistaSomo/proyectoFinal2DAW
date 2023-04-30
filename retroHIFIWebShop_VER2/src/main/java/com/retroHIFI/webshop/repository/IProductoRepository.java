@@ -26,4 +26,7 @@ public interface IProductoRepository  extends JpaRepository<Producto, Integer>{
 	@Query(value="SELECT nombre FROM Categoria c WHERE c.id_categoria LIKE %:id_categoria%", nativeQuery=true)
 	String  getNombreCategoria(@Param("id_categoria") Integer id_categoria);
 	
+	@Query(value="SELECT * FROM Productos p WHERE p.nombre LIKE %:busqueda% AND p.enabled = 1", nativeQuery=true)
+	List<Producto> buscador(@Param("busqueda") String busqueda);
+	
 }

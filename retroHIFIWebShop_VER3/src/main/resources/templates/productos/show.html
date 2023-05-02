@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Spring eCommerce</title>
+
+
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link th:href="@{css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+   <div th:include="administrador/template_admin.html::header" ></div>
+
+<!-- Page Content -->
+<div class="container">
+
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">
+    Spring eCommerce <small>Productos</small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+    <li class="breadcrumb-item active">Ver Productos</li>
+  </ol>
+
+  <a class="btn btn-primary"  th:href="@{/productos/create}" > Crear Producto</a>
+  <h2>Productos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">Nombre</th>
+        <th scope="col" class="text-center">Descripción</th>
+        <th scope="col" class="text-center">Inventario</th>
+        <th scope="col" class="text-center">Precio</th>
+         <th scope="col" class="text-center">Categoría</th>
+        <th scope="col" class="text-center">Estado</th>
+        <th scope="col" class="text-center">Edición</th>
+        <th scope="col" class="text-center">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="producto:${productos}">
+        <td th:text="${producto.nombre}"></td>
+        <td th:text="${producto.descripcion}"></td>
+        <td class="text-center" th:text="${producto.cantidad}"></td>
+        <td class="text-center" th:text="${producto.precio}"></td>
+        <td class="text-center" th:text="${producto.categoria.nombre}"></td>
+        <td><a  class="btn " th:classappend=" ${producto.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarProduc([[${producto.id}]], [[${producto.enabled}]])"><span th:text="${producto.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
+        <td><a  class="btn btn-warning" th:href="@{productos/edit/{id} (id=${producto.id}) }">Editar</a> </td>
+        <td> <!--<a  class="btn btn-danger" th:href="@{productos/delete/{id} (id=${producto.id}) }">Eliminar</a>-->  
+        <a  th:onclick="eliminar([[${producto.id}]])"  class="btn btn-danger" >Eliminar</a></td>
+      </tr>       
+    </tbody>
+  </table>
+
+</div>
+<!-- /.container -->
+ <div th:include="administrador/template_admin.html::footer" ></div>
+
+ <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="vendor/jquery/funciones.js"></script>
+</body>
+
+</html>

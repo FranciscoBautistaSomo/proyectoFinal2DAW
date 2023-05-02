@@ -131,7 +131,7 @@ public class UsuarioController {
 				return "redirect:/administrador";
 			}else {
 				logger.info("Else, Soy del tipo: {}", user.get().getTipo());
-				return "redirect:/";
+				return "redirect:/usuario/home";
 			}
 		}else {
 			logger.info("Usuario no existe");

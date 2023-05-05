@@ -42,7 +42,7 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 	        .and()		
 			.authorizeRequests()
 			.antMatchers(resources).permitAll()
-			.antMatchers("/","/index", "/usuario/registro").permitAll()			
+			.antMatchers("/","/index", "/usuario/**").permitAll()			
 			.antMatchers("/modificarPerfil/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 			.antMatchers("/administrador/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/administrador").access("hasRole('ROLE_ADMIN')")

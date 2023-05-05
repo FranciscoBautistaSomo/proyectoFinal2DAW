@@ -107,13 +107,13 @@
 						name="enabled"  value="1">
 				</div>
 			</div>
-
-
-
 			<div class="col-sm-2">
 				<button type="submit" class="btn btn-success">Guardar</button>
 			</div>
 		</form>
+		
+		<div class="alert alert-info mb-6 w-100 d-block my-3 text-center" th:if="${param['success']}">Se ha registrado satisfactoriamente</div>
+		<div class="alert alert-danger mb-4 w-100 d-block my-3 text-center" th:if="${param['fail']}">Error al registrarse, revise la información.</div>
 
 	</div>
 

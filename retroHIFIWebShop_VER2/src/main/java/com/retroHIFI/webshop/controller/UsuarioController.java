@@ -73,7 +73,7 @@ public class UsuarioController {
 		return "usuario/registro";
 	}
 	
-	@PostMapping("save")
+	@PostMapping("/save")
 	public String save(RegistroDto registroDto) {
 		if (iusuarioRepository.existsByUsername(registroDto.getUsername())) {
 //			 return new ResponseEntity<>("¡Nombre de usuario existente!!",
@@ -95,7 +95,7 @@ public class UsuarioController {
 
 		iusuarioRepository.save(user);
 
-		return "redirect:/";
+		return "redirect:/usuario/registro?success";
 		// return new ResponseEntity<>("User registered success!", HttpStatus.OK);
 
 	}

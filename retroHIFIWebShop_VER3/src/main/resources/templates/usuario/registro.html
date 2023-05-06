@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Spring eCommerce</title>
+<title>RETRO HI-FI</title>
 
 
 <!-- Bootstrap core CSS -->
@@ -27,7 +27,7 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" th:href="@{/}">Spring Ecommerce</a>
+			<a class="navbar-brand" th:href="@{/}">RETRO HI-FI</a>
 
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -54,7 +54,6 @@
 				<div class="col-md-8">
 					<div class="card-body">
 						<h2>Registro</h2>
-
 					</div>
 				</div>
 			</div>
@@ -108,13 +107,13 @@
 				</div>
 			</div>
 
-
-
 			<div class="col-sm-2">
 				<button type="submit" class="btn btn-success">Guardar</button>
 			</div>
 		</form>
-
+		
+		<div class="alert alert-info mb-6 w-100 d-block my-3 text-center" th:if="${param['success']}">Se ha registrado satisfactoriamente</div>
+		<div class="alert alert-danger mb-4 w-100 d-block my-3 text-center" th:if="${param['fail']}">Error al registrarse, revise la información.</div>
 	</div>
 
 	<!-- /.container -->

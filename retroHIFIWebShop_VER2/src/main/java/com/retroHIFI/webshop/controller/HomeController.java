@@ -32,7 +32,8 @@ import com.retroHIFI.webshop.repository.IRoleRepository;
 import com.retroHIFI.webshop.repository.IUsuarioRepository;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
+@RequestMapping("/usuario")
 public class HomeController {
 
 	private final Logger log = LoggerFactory.getLogger(HomeController.class);

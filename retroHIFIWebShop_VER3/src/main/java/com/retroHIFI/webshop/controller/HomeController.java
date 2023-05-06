@@ -32,7 +32,8 @@ import com.retroHIFI.webshop.repository.IRoleRepository;
 import com.retroHIFI.webshop.repository.IUsuarioRepository;
 
 @Controller
-@RequestMapping("usuario/home")
+//@RequestMapping("usuario/home")
+@RequestMapping("")
 public class HomeController {
 
 	private final Logger log = LoggerFactory.getLogger(HomeController.class);
@@ -55,7 +56,7 @@ public class HomeController {
 	// datos de la orden
 	Orden orden = new Orden();
 
-	@GetMapping("")
+	@GetMapping("usuario/home")
 	public String home(Model model, HttpSession session, String busqueda,
 	@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "4") int pageSize) {
 		List<Producto> productos; 
@@ -83,6 +84,7 @@ public class HomeController {
 		long totalProductos = productos.size();
 		model.addAttribute("totalProductos", totalProductos);	
 
+		//return "usuario/home";
 		return "usuario/home";
 	}
 
@@ -96,7 +98,8 @@ public class HomeController {
 			Optional<Producto> productoOptional = productoService.get(id);
 			producto = productoOptional.get();
 			model.addAttribute("producto", producto);			
-			return "usuario/productohome";
+			//return "usuario/productohome";
+			return "productohome";
 		} else {
 			Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 			log.info("idusuario logeado {}", usuario.getId());

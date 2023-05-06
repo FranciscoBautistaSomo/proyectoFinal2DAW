@@ -19,7 +19,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,15 +55,14 @@ public class UsuarioController {
 	private final Logger logger= LoggerFactory.getLogger(UsuarioController.class);
 	
 	@Autowired
-	private IUsuarioService usuarioService;
-	
+	private IUsuarioService usuarioService;	
 	@Autowired
 	private IOrdenService ordenService;
-	
+		
 	BCryptPasswordEncoder passEncode= new BCryptPasswordEncoder();
 		
 	@Autowired
-	public UsuarioController( IUsuarioRepository iusuarioRepository,IRoleRepository iroleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator ) {		
+	public UsuarioController( IUsuarioRepository iusuarioRepository, IRoleRepository iroleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator ) {		
 		this.iusuarioRepository = iusuarioRepository;
 		this.iroleRepository = iroleRepository;
 		this.passwordEncoder = passwordEncoder;
@@ -71,13 +73,17 @@ public class UsuarioController {
 	@GetMapping("/registro")
 	public String create() {
 		return "usuario/registro";
-	}
+	}	
 	
-	@PostMapping("save")
+	@PostMapping("/save")
 	public String save(RegistroDto registroDto) {
+//		if (bindingResult.hasErrors()) {
+//			logger.info("Hay errores en el formulario, recargando");
+//			return "usuario/registro";
+//		}		
+		
 		if (iusuarioRepository.existsByUsername(registroDto.getUsername())) {
-//			 return new ResponseEntity<>("¡Nombre de usuario existente!!",
-//			 HttpStatus.BAD_REQUEST);
+			// return new ResponseEntity<>("¡Nombre de usuario existente!!",	 HttpStatus.BAD_REQUEST);
 		}
 		Usuario user = new Usuario();
 		user.setUsername(registroDto.getUsername());
@@ -95,9 +101,8 @@ public class UsuarioController {
 
 		iusuarioRepository.save(user);
 
-		return "redirect:/";
+		return "redirect:/usuario/registro?success";
 		// return new ResponseEntity<>("User registered success!", HttpStatus.OK);
-
 	}
 	
 //	@PostMapping("/save")

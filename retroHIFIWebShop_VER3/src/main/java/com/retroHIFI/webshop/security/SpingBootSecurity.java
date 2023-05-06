@@ -23,7 +23,7 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 	UserDetailsServiceImpl userDetailServiceImpl;
 
 	String[] resources = new String[] { "/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**",
-			"/assets/**", "/vendor/**", "/images/**","/error/**","/static/**" };
+			"/assets/**", "/vendor/**", "/images/**","/error/**","/static/**", "/usuario/**", };
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -42,7 +42,8 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 	        .and()		
 			.authorizeRequests()
 			.antMatchers(resources).permitAll()
-			.antMatchers("/","/index", "/usuario/registro").permitAll()			
+			.antMatchers("/","/index/**", "/usuario/**").permitAll()
+			//.antMatchers("/","/index", "/usuario/registro").permitAll()			
 			.antMatchers("/modificarPerfil/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 			.antMatchers("/administrador/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/administrador").access("hasRole('ROLE_ADMIN')")
@@ -50,6 +51,7 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 			.antMatchers("/productos/audio").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 			.antMatchers("/productos/video").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 			.antMatchers("/productos/segMano").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+			.antMatchers("/productos/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/productos/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().authenticated()
 			.and()

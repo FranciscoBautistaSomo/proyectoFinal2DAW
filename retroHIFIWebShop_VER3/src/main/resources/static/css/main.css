@@ -1,12 +1,8 @@
 @import url(./font-awesome.min.css);
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700|Pacifico");
+/*@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700|Pacifico");*/
 @import url("https://fonts.googleapis.com/css2?family=Braah+One&display=swap|Retro");
-
-/*
-	Introspect by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
-*/
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=Oswald:wght@700&display=swap");
 
 /* Reset */
 
@@ -3355,7 +3351,7 @@ body {
 }
 
 #header .logo {
-	font-family: 'Pacifico', cursive;
+	font-family: 'Oswald', sans-serif;
 	display: inline-block;
 	height: inherit;
 	left: 0;
@@ -3369,6 +3365,10 @@ body {
 	text-transform: none;
 	font-weight: normal;
 	padding: 0;
+}
+
+#header .logoHiFi {
+	font-family: 'Arimo', sans-serif;
 }
 
 #header .logo:hover {
@@ -3550,8 +3550,7 @@ body {
 	position: absolute;
 	right: 0;
 	text-align: right;
-	top: 0;
-	vertical-align: middle;
+	top: 0;	
 	width: 5em;
 }
 

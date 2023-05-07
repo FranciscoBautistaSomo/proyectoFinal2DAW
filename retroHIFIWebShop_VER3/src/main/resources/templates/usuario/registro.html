@@ -58,6 +58,11 @@
 				</div>
 			</div>
 		</div>
+		<div class="alert alert-info mb-6 w-100 d-block my-3 text-center"
+			th:if="${param['success']}">Se ha registrado satisfactoriamente</div>
+		<div class="alert alert-danger mb-4 w-100 d-block my-3 text-center"
+			th:if="${param['fail']}">Error al registrarse, revise la
+			información.</div>
 		<form th:action="@{/usuario/save}" method="post">
 			<div class="form-group">
 				<label for="pwd">Username:</label> <input type="text"
@@ -98,12 +103,12 @@
 					class="form-control" id="password" name="password" required
 					placeholder="Ingrese su contraseña" autocomplete="off">
 			</div>
-			
+
 			<div class="form-group">
 				<!-- <label class="control-label col-sm-2" for="img">Descatalogado:</label> -->
 				<div class="col-sm-10">
 					<input type="hidden" class="form-control-file" id="enabled"
-						name="enabled"  value="1">
+						name="enabled" value="1">
 				</div>
 			</div>
 
@@ -111,9 +116,6 @@
 				<button type="submit" class="btn btn-success">Guardar</button>
 			</div>
 		</form>
-		
-		<div class="alert alert-info mb-6 w-100 d-block my-3 text-center" th:if="${param['success']}">Se ha registrado satisfactoriamente</div>
-		<div class="alert alert-danger mb-4 w-100 d-block my-3 text-center" th:if="${param['fail']}">Error al registrarse, revise la información.</div>
 	</div>
 
 	<!-- /.container -->

@@ -99,6 +99,7 @@ video {
 body {
 	position: relative;
 	padding-top: 5em;
+
 }
 
 #header {
@@ -129,6 +130,13 @@ body {
 		width: 90%;
 	}
 
+}
+
+body, input, select, textarea {
+	font-family: "Lato", sans-serif;
+	/*font-size: 15pt;
+	font-weight: 300;
+	line-height: 2;*/
 }
 
 #header .logo {
@@ -227,7 +235,7 @@ body {
 	font-style: normal;
 	font-weight: normal;
 	text-transform: none !important;
-	color: #fff;
+	color: #e5474b;
 	display: block;
 	font-size: 16px;
 	height: 2.25em;

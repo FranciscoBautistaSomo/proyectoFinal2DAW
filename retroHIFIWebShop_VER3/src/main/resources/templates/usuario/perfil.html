@@ -10,8 +10,6 @@
 <title>Spring eCommerce</title>
 <link rel="icon" href="../static/assets/icon.png"
 	th:href="@{/assets/icon.png}" />
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
-	crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
 <link
@@ -24,29 +22,62 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 
 </head>
 
 <body id="page-top">
 
-	<!-- Navigation -->
-	<div th:include="usuario/template_usuario.html::header-user"></div>
+	<!-- Navigation
+	<div th:include="usuario/template_usuario.html::header-user"></div> -->
+
+	<header id="header">
+		<div class="inner">
+			<a href="/" class="logo">RETRO HI-FI</a>
+			<nav id="nav">
+				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
+					th:href="@{/productos/video}">Video</a> <a
+					th:href="@{/productos/segMano}">Segunda Mano</a> <a
+					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
+				<!-- USER MENU --> 
+				<div class="dropdown">
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
+					<div class="dropdown-content">
+						<a th:href="@{/usuario/perfil}">Perfil</a>
+						<a th:href="@{/usuario/compras}">Compras</a>
+						<a th:href="@{/getCart}">Carrito</a>
+						<a th:href="@{/usuario/cerrar}">Salir</a>
+					</div>
+				</div>
+				<!--  ADMIN MENU--> 
+				<div class="dropdown">
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+					<div class="dropdown-content">
+						<a th:href="@{/productos}">Productos</a>
+						<a th:href="@{/administrador/usuarios}">Usuarios</a>
+						<a th:href="@{/administrador/ordenes}">Ordenes</a>
+						<a th:href="@{/usuario/cerrar}">Salir</a>
+					</div>
+				</div>				
+			</nav>			
+		</div>
+	</header>
+	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+
 
 	<div class="container p-4">
-		<!--  <a th:href="@{/}"><img src="../static/assets/img/logo.png"
-			th:src="@{/assets/img/logo.png}" class="w-25 d-block m-auto p-5" /></a>-->
-
-		<!-- <div sec:authorize="isAuthenticated()">
-		<b>Usuario:</b> <span sec:authentication="name">Username</span>&nbsp;<i><span sec:authentication="principal.authorities">Roles</span></i>
-	</div> -->
-
 		<h1 class="mt-4 mb-3">
-			Spring eCommerce <small>Perfil</small>
+			RETRO HI-FI <h3>Perfil</h3>
 		</h1>
 
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+			<li class="breadcrumb-item"><a th:href="@{/usuario/home}">Home</a></li>
 			<li class="breadcrumb-item active">Perfil</li>
 		</ol>
 
@@ -77,36 +108,7 @@
 							datos</a>
 					</button>
 				</div>
-			</th:block>
-			<!--  <h2 class="text-center">Tus compras:</h2>
-			<div class="card m-3">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-lg-12">
-							<table class="table">
-								<thead>
-									<tr>
-										<th scope="col">No. de Orden</th>
-										<th scope="col">Fecha</th>
-										<th scope="col">Total</th>
-										<th scope="col">Acción</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="orden: ${ordenes}">
-										<td th:text="${orden.numero}"></td>
-										<td th:text="${orden.fechaCreacion}"></td>
-										<td th:text="${orden.total}"></td>
-										<td><a th:href="@{/detalle/{id} (id=${orden.id}) }"
-											class="btn btn-success">Ver Detalle</a></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>-->
-
+			</th:block>			
 		</div>
 	</div>
 
@@ -117,6 +119,10 @@
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- Scripts -->
+	<script th:src="@{/vendor/js/skel.min.js}"></script>
+	<script th:src="@{/vendor/js/util.js}"></script>
+	<script th:src="@{/vendor/js/main.js}"></script>
 </body>
 </html>
 

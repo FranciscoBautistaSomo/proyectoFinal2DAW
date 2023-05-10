@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Spring eCommerce</title>
+<title>RETRO HI-FI</title>
 
 
 <!-- Bootstrap core CSS -->
@@ -16,22 +16,58 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link th:href="@{css/heroic-features.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 
 </head>
 
 <body>
 
-	<!-- Navigation -->
-	<div th:include="administrador/template_admin.html::header"></div>
+	<!-- Navigation 
+	<div th:include="administrador/template_admin.html::header"></div>-->
+	<header id="header">
+		<div class="inner">
+			<a href="/" class="logo">RETRO HI-FI</a>
+			<nav id="nav">
+				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
+					th:href="@{/productos/video}">Video</a> <a
+					th:href="@{/productos/segMano}">Segunda Mano</a> <a
+					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="45em"/></a>	
+				<!-- MENU USUARIO--> 
+				<div class="dropdown">
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
+					<div class="dropdown-content">
+						<a th:href="@{/usuario/perfil}">Perfil</a>
+						<a th:href="@{/usuario/compras}">Compras</a>
+						<a th:href="@{/getCart}">Carrito</a>
+						<a th:href="@{/usuario/cerrar}">Salir</a>
+					</div>
+				</div>
+				<!-- MENU ADMINISTRADOR--> 
+				<div class="dropdown">
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"> <img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/> </a>
+					<div class="dropdown-content">
+						<a th:href="@{/productos}">Productos</a>
+						<a th:href="@{/administrador/usuarios}">Usuarios</a>
+						<a th:href="@{/administrador/ordenes}">Ordenes</a>
+						<a th:href="@{/usuario/cerrar}">Salir</a>
+					</div>
+				</div>				
+			</nav>			
+		</div>
+	</header>
+	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
 	<!-- Page Content -->
 	<div class="container">
 
 		<!-- Jumbotron Header -->
 		<header class="jumbotron my-4">
-			<h1 class="display-3">Bienvenido a Spring Ecommerce 2021</h1>
-			<p class="lead">Tu tienda de productos en Línea</p>
+			<h1 class="display-3">Home administración</h1>			
 		</header>
 
 		<!-- Page Features -->
@@ -99,7 +135,11 @@
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
 	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
+	<!-- Scripts -->
+	<script th:src="@{/vendor/js/skel.min.js}"></script>
+	<script th:src="@{/vendor/js/util.js}"></script>
+	<script th:src="@{/vendor/js/main.js}"></script>
+	
 </body>
 
 </html>

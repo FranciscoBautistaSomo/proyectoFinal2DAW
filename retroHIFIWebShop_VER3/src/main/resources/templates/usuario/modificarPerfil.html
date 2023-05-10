@@ -2,88 +2,150 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-	<title>GAME OVER</title>
-	<link rel="icon" href="../static/assets/icon.png" th:href="@{/assets/icon.png}"/>
-	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-	<link th:href="@{/css/styles.css}"  rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>RETRO HI-FI</title>
+<link rel="icon" href="../static/assets/icon.png"
+	th:href="@{/assets/icon.png}" />
 
-	<!-- Bootstrap core CSS -->
-	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"	rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+<!-- Custom styles for this template -->
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
+	rel='stylesheet'>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+
 </head>
 
 <body id="page-top">
 
-<!-- Navigation -->
-  	<div th:include="usuario/template_usuario.html::header-user" > </div>
+	<!-- Navigation 
+	<div th:include="usuario/template_usuario.html::header-user"></div>-->
+	
+	<header id="header">
+		<div class="inner">
+			<a href="/" class="logo">RETRO HI-FI</a>
+			<nav id="nav">
+				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
+					th:href="@{/productos/video}">Video</a> <a
+					th:href="@{/productos/segMano}">Segunda Mano</a> <a
+					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
+				<!-- USER MENU --> 
+				<div class="dropdown">
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
+					<div class="dropdown-content">
+						<a th:href="@{/usuario/perfil}">Perfil</a>
+						<a th:href="@{/usuario/compras}">Compras</a>
+						<a th:href="@{/getCart}">Carrito</a>
+						<a th:href="@{/usuario/cerrar}">Salir</a>
+					</div>
+				</div>
+				<!--  ADMIN MENU--> 
+				<div class="dropdown">
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+					<div class="dropdown-content">
+						<a th:href="@{/productos}">Productos</a>
+						<a th:href="@{/administrador/usuarios}">Usuarios</a>
+						<a th:href="@{/administrador/ordenes}">Ordenes</a>
+						<a th:href="@{/usuario/cerrar}">Salir</a>
+					</div>
+				</div>				
+			</nav>			
+		</div>
+	</header>
+	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+	
 
-<div class="container p-4">
+	<div class="container p-4">
 		<h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Editar Perfil</small>
-      </h1>
+			RETRO HI-FI <h3>Editar Perfil</h3>
+		</h1>
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item"><a th:href="@{/usuario/perfil}">Perfil</a></li>
-        <li class="breadcrumb-item active">Editar Perfil</li>
-      </ol>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a th:href="@{/usuario/home}">Home</a></li>
+			<li class="breadcrumb-item"><a th:href="@{/usuario/perfil}">Perfil</a></li>
+			<li class="breadcrumb-item active">Editar Perfil</li>
+		</ol>
 
 
-	<!--  <a th:href="@{/}"><img src="../static/assets/img/logo.png" th:src="@{/assets/img/logo.png}" class="w-25 d-block m-auto p-5" /></a>-->
+		<!--  <a th:href="@{/}"><img src="../static/assets/img/logo.png" th:src="@{/assets/img/logo.png}" class="w-25 d-block m-auto p-5" /></a>-->
 
-	<div class="cositas bg-light p-4 border border-4">
+		<div class="cositas bg-light p-4 border border-4">
 
-		<h1 class="text-center">Modificar datos:</h1>
+			<h1 class="text-center">Modificar datos:</h1>
 
-		<form th:action="@{/usuario/update}" th:object="${usuario}" method="post">
+			<form th:action="@{/usuario/update}" th:object="${usuario}"
+				method="post">
 
-			<div class="p-4">
-				<input type="hidden" th:field="*{id}">
-				<input type="hidden" th:field="*{password}">
-				<input type="hidden" th:field="*{enabled}" value="1">
-				<input type="hidden" th:field="*{tipo}" value="USER">
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">Username:</span>
-					<input th:field="*{username}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">Nombre:</span>
-					<input th:field="*{nombre}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">Apellidos:</span>
-					<input th:field="*{apellidos}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">Dirección:</span>
-					<input th:field="*{direccion}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-				</div>
-				<!--  <div class="input-group mb-3">
+				<div class="p-4">
+					<input type="hidden" th:field="*{id}"> <input type="hidden"
+						th:field="*{password}"> <input type="hidden"
+						th:field="*{enabled}" value="1"> <input type="hidden"
+						th:field="*{tipo}" value="USER">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">Username:</span>
+						<input th:field="*{username}" type="text" class="form-control"
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default" required>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">Nombre:</span>
+						<input th:field="*{nombre}" type="text" class="form-control"
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default" required>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">Apellidos:</span>
+						<input th:field="*{apellidos}" type="text" class="form-control"
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default" required>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">Dirección:</span>
+						<input th:field="*{direccion}" type="text" class="form-control"
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default">
+					</div>
+					<!--  <div class="input-group mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-default">DNI:</span>
 					<input th:field="*{dni}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>-->
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">Telefono:</span>
-					<input th:field="*{telefono}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">Telefono:</span>
+						<input th:field="*{telefono}" type="text" class="form-control"
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default">
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">email:</span>
+						<input th:field="*{email}" type="text" class="form-control"
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default">
+					</div>
+					<a type="button" class="btn mb-0 pt-4 m-auto d-block w-25"> <input
+						type="submit"
+						class="form-control btn btn-dark btn-block d-block m-auto"
+						value="Actualizar" />
+					</a>
 				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">email:</span>
-					<input th:field="*{email}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-				</div>
-				<a type="button" class="btn mb-0 pt-4 m-auto d-block w-25">
-					<input type="submit" class="form-control btn btn-dark btn-block d-block m-auto" value="Actualizar" />
-				</a>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-</div>
 
 
 	<footer class="footer py-4">
@@ -93,5 +155,9 @@
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- Scripts -->
+	<script th:src="@{/vendor/js/skel.min.js}"></script>
+	<script th:src="@{/vendor/js/util.js}"></script>
+	<script th:src="@{/vendor/js/main.js}"></script>
 </body>
 </html>

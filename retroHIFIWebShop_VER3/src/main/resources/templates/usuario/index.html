@@ -6,22 +6,24 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
 </head>
 <body>
-
-	<!-- Header -->
+	<!-- NAV -->
 	<header id="header">
 		<div class="inner">
-			<a href="/" class="logo">RETRO <span class="logoHiFi">HI-FI</span></a>
+			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a href="/">Home</a> <a href="#one">Sobre nosotros</a> <a
-					href="#two">Productos</a> <a href="#footer">Contacto</a> <a
-					th:href="@{/usuario/home}">Tienda</a> <a
-					th:href="@{/usuario/login}" class="button alt">Login</a>
+				<a href="/">Home</a>
+				<a href="#one">Sobre nosotros</a>
+				<a href="#two">Productos</a> <a href="#footer">Contacto</a>
+				<a th:href="@{/usuario/home}">Tienda</a>
+				<a class="navbar-brand" th:href="@{/usuario/cerrar}"  sec:authorize="isAuthenticated()"><img src="../static/assets/img/salir.png"  th:src="@{/assets/img/salir.png}" height="45em"/></a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="30em"/></a>
 			</nav>
 		</div>
 	</header>
@@ -39,9 +41,8 @@
 				<img th:src="@{/assets/img/LOGO_2.svg}" alt="Logo" />
 			</div>
 			<h1>
-				RETRO HI-FI <span>Para los amantes del audio-visual<br />
-					que no entienden de modas.
-				</span>
+				RETRO HI-FI  <h3>Para los amantes del audio-visual
+					que no entienden de modas.</h3>				
 			</h1>
 			<ul class="actions">
 				<li><a href="#two" class="button alt">Que ofrecemos</a></li>

@@ -39,10 +39,12 @@
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
-					th:href="@{/productos/video}">Video</a> <a
-					th:href="@{/productos/segMano}">Segunda Mano</a> <a
-					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
+				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
+				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/productos/audio}">Audio</a>
+				<a th:href="@{/productos/video}">Video</a>
+				<a th:href="@{/productos/segMano}">Segunda Mano</a>
+				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
 				<!-- MENU USUARIO--> 
 				<div class="dropdown">
 					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
@@ -76,7 +78,7 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			RETRO HI-FI <h3>Detalles compra</h3>
+			RETRO HI-FI <h3>Administración: Detalles de la compra.</h3>
 		</h1>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/usuario/home}">Home</a></li>
@@ -147,10 +149,9 @@
 		<!-- /.container -->
 
 	</div>
-
-	<!-- Footer -->
-	<!-- Footer -->
-	<div th:include="usuario/template_usuario.html::footer"></div>
+	
+	<!-- Footer 
+	<div th:include="usuario/template_usuario.html::footer"></div>-->
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>

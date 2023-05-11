@@ -32,14 +32,14 @@
   	
   		<header id="header">
 		<div class="inner">
-			<a href="/" class="logo">RETRO <span class="logoHiFi">HI-FI</span></a>
+			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
-					th:href="@{/productos/video}">Video</a> <a
-					th:href="@{/productos/segMano}">Segunda Mano</a> <a
-					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
-					src="../static/assets/img/entrar.png"
-					th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
+				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/productos/audio}">Audio</a>
+				<a th:href="@{/productos/video}">Video</a>
+				<a th:href="@{/productos/segMano}">Segunda Mano</a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="45em" /></a>
 				<!-- USER MENU -->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
@@ -69,16 +69,23 @@
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
+	<!-- Banner -->
+	<section id="banner" style="background-image : url('../assets/img/infographic7.jpg');">
+		<div class="inner">
+			<div id="blur">
+				<h1> ADMINISTRACION</h1>
+				<h3>Detalles Orden</h3>
+			</div>
+		</div>
+	</section>
+
+
     <!-- Page Content -->
     <div class="container">
 
 
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Detalles</small>
-      </h1>
-
-      <ol class="breadcrumb">
+      <!-- Breadcrumbs -->
+       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
         <li class="breadcrumb-item"><a th:href="@{/administrador/ordenes}">Ordenes</a></li>
         <li class="breadcrumb-item active">Detalle de Compra</li>
@@ -114,8 +121,8 @@
   </div>
   <!-- /.container -->
 
-  <!-- Footer -->
-	<div th:include="administrador/template_admin.html::footer"></div>
+  <!-- Footer 
+	<div th:include="administrador/template_admin.html::footer"></div>-->
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>

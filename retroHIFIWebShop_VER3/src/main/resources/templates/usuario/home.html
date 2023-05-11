@@ -38,10 +38,12 @@
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
-					th:href="@{/productos/video}">Video</a> <a
-					th:href="@{/productos/segMano}">Segunda Mano</a> <a
-					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
+				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
+				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/productos/audio}">Audio</a>
+				<a th:href="@{/productos/video}">Video</a>
+				<a th:href="@{/productos/segMano}">Segunda Mano</a>
+				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
 				<!-- USER MENU --> 
 				<div class="dropdown">
 					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
@@ -69,14 +71,25 @@
 
 
 	<!-- Page Content -->
-	<div class="container">
+	
 
-		<!-- Jumbotron Header -->
+		<!-- Jumbotron Header 
 		<header class="jumbotron jumbotron-fluid my-4">
 			<h1 class="display-3">Bienvenido a RETRO HI-FI</h1>
 			<p class="lead">Para amantes de lo analógico</p>
-		</header>
+		</header>-->
+			
+		<!-- Banner -->
+	<section id="banner" style="background-image : url('../assets/img/366965.jpg');">
+		<div class="inner">
+			<div class="logoRetro">
+				<img  th:src="@{/assets/img/LOGO_3.svg}" alt="Logo" />
+			</div>		
+			<div id="blur"> <h1>!!Bienvenido a RETRO HI-FI¡¡</h1></div>
+		</div>
+	</section>
 
+<div class="container">
 		<!-- Page Features -->
 		<div class="row text-center">
 
@@ -135,10 +148,27 @@
 	</div>
 	<!-- /.container -->
 
-	<!-- Footer -->
-	<footer class="footer py-4">
+	<!-- Footer
+	<div>
 		<div th:include="usuario/template_usuario.html::footer"></div>
-	</footer>
+	</div> -->
+	<!-- Footer -->
+	<section id="footer">
+		<div class="inner">
+					<h2>CONTACTO</h2>
+					<ul class="actions">
+						<li><span class='bx bxs-phone'></span> <a href="#">(000) 000-0000</a></li>
+						<li><span class='bx bxs-envelope'></span> <a href="#">info@retrohifi.es</a></li>
+						<li><span class='bx bx-world'></span> C. Frederick Terman, 3, 29590 Málaga</li>
+					</ul>
+				</div>
+				<div class="copyright">
+					RETRO HI-FI Diseñado y desarrollado por  Francisco Alberto Bautista Somosierra 2ºDAW</a>.
+				</div>
+	</section>
+	
+	
+	
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>

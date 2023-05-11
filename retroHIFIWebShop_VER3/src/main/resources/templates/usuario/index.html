@@ -18,12 +18,14 @@
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a href="/">Home</a>
+				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
+				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
 				<a href="#one">Sobre nosotros</a>
 				<a href="#two">Productos</a> <a href="#footer">Contacto</a>
 				<a th:href="@{/usuario/home}">Tienda</a>
+				<a th:href="@{/usuario/registro}" sec:authorize="isAnonymous()"><img src="../static/assets/img/sign-in.png" th:src="@{/assets/img/sign-in.png}" height="55em"/></a>
 				<a class="navbar-brand" th:href="@{/usuario/cerrar}"  sec:authorize="isAuthenticated()"><img src="../static/assets/img/salir.png"  th:src="@{/assets/img/salir.png}" height="45em"/></a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="30em"/></a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/login.png" th:src="@{/assets/img/login.png}" height="55em"/></a>
 			</nav>
 		</div>
 	</header>
@@ -40,10 +42,9 @@
 			<div class="logoRetro">
 				<img th:src="@{/assets/img/LOGO_2.svg}" alt="Logo" />
 			</div>
-			<h1>
-				RETRO HI-FI  <h3>Para los amantes del audio-visual
-					que no entienden de modas.</h3>				
-			</h1>
+			<div id="blur">
+				<h1>La tienda para los amantes del audio-visual que no atienden a modas.</h1>			
+			</div>
 			<ul class="actions">
 				<li><a href="#two" class="button alt">Que ofrecemos</a></li>
 			</ul>
@@ -122,27 +123,16 @@
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner">
-			<header>
-				<h2>Get in Touch</h2>
-			</header>
-			<form method="post" action="#">
-				<div class="field half first">
-					<label for="name">Name</label> <input type="text" name="name"
-						id="name" />
+					<h2>CONTACTO</h2>
+					<ul class="actions">
+						<li><span class='bx bxs-phone'></span> <a href="#">(000) 000-0000</a></li>
+						<li><span class='bx bxs-envelope'></span> <a href="#">info@retrohifi.es</a></li>
+						<li><span class='bx bx-world'></span> C. Frederick Terman, 3, 29590 Málaga</li>
+					</ul>
 				</div>
-				<div class="field half">
-					<label for="email">Email</label> <input type="text" name="email"
-						id="email" />
+				<div class="copyright">
+					RETRO HI-FI Diseñado y desarrollado por  Francisco Alberto Bautista Somosierra 2ºDAW</a>.
 				</div>
-				<div class="field">
-					<label for="message">Message</label>
-					<textarea name="message" id="message" rows="6"></textarea>
-				</div>
-				<ul class="actions">
-					<li><input type="submit" value="Send Message" class="alt" /></li>
-				</ul>
-			</form>			
-		</div>
 	</section>
 
 	<!-- Scripts -->

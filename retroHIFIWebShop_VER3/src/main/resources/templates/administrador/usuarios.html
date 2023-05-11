@@ -32,24 +32,22 @@
   <div th:include="administrador/template_admin.html::header"></div>-->
   <header id="header">
 		<div class="inner">
-			<a href="/" class="logo">RETRO <span class="logoHiFi">HI-FI</span></a>
+			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
-					th:href="@{/productos/video}">Video</a> <a
-					th:href="@{/productos/segMano}">Segunda Mano</a> <a
-					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
-					src="../static/assets/img/entrar.png"
-					th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
+				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/productos/audio}">Audio</a>
+				<a th:href="@{/productos/video}">Video</a>
+				<a th:href="@{/productos/segMano}">Segunda Mano</a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" 	th:src="@{/assets/img/entrar.png}" height="45em" /></a>
 				<!-- MENU USUARIO-->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
-						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
-						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/usuario.png}" height="45em" /></a>
+						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img 	src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em" /></a>
 					<div class="dropdown-content">
-						<a th:href="@{/usuario/perfil}">Perfil</a> <a
-							th:href="@{/usuario/compras}">Compras</a> <a
-							th:href="@{/getCart}">Carrito</a> <a th:href="@{/usuario/cerrar}">Salir</a>
+						<a th:href="@{/usuario/perfil}">Perfil</a>
+						<a th:href="@{/usuario/compras}">Compras</a>
+						<a th:href="@{/getCart}">Carrito</a> <a th:href="@{/usuario/cerrar}">Salir</a>
 					</div>
 				</div>
 				<!-- MENU ADMINISTRADOR-->
@@ -58,10 +56,10 @@
 						aria-expanded="false"
 						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
 					<div class="dropdown-content">
-						<a th:href="@{/productos}">Productos</a> <a
-							th:href="@{/administrador/usuarios}">Usuarios</a> <a
-							th:href="@{/administrador/ordenes}">Ordenes</a> <a
-							th:href="@{/usuario/cerrar}">Salir</a>
+						<a th:href="@{/productos}">Productos</a>
+						<a th:href="@{/administrador/usuarios}">Usuarios</a>
+						<a th:href="@{/administrador/ordenes}">Ordenes</a>
+						<a th:href="@{/usuario/cerrar}">Salir</a>
 					</div>
 				</div>
 			</nav>
@@ -69,15 +67,23 @@
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
+<!-- Banner -->
+	<section id="banner" style="background-image : url('../assets/img/infographic7.jpg');">
+		<div class="inner">
+			<div id="blur">
+				<h1> ADMINISTRACION</h1>
+				<h3>Listado de Usuarios</h3>
+			</div>
+		</div>
+	</section>
+
+
+
 <!-- Page Content -->
 <div class="container">
 
 
-  <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">
-    Spring eCommerce <small>Usuarios</small>
-  </h1>
-
+  <!-- Breadcrumbs -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
     <li class="breadcrumb-item active">Ver Usuarios</li>
@@ -113,8 +119,8 @@
 </div>
 <!-- /.container -->
 
-<!-- Footer -->
-<div th:include="administrador/template_admin.html::footer"></div>
+<!-- Footer 
+<div th:include="administrador/template_admin.html::footer"></div>-->
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>

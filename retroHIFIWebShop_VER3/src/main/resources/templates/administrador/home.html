@@ -62,14 +62,20 @@
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
+	<!-- Banner -->
+	<section id="banner" style="background-image : url('../assets/img/infographic7.jpg');">
+		<div class="inner">
+			<div id="blur">
+					<h1>ADMINISTRACION</h1>
+					<h3>Página inicio</h3>
+			</div>
+		</div>
+	</section>
+
+
 	<!-- Page Content -->
 	<div class="container">
-
-		<!-- Jumbotron Header -->
-		<header class="jumbotron my-4">
-			<h1 class="display-3">Home administración</h1>			
-		</header>
-
+		
 		<!-- Page Features -->
 		<div class="row text-center">
 
@@ -129,8 +135,23 @@
 
 	</div>
 	<!-- /.container -->
-	<!-- Footer  -->
-	<div th:include="administrador/template_admin.html::footer"></div>
+	<!-- Footer  
+	<div th:include="administrador/template_admin.html::footer"></div>-->
+	
+	<!-- Footer -->
+	<section id="footer">
+		<div class="inner">
+					<h2>CONTACTO</h2>
+					<ul class="actions">
+						<li><span class='bx bxs-phone'></span> <a href="#">(000) 000-0000</a></li>
+						<li><span class='bx bxs-envelope'></span> <a href="#">info@retrohifi.es</a></li>
+						<li><span class='bx bx-world'></span> C. Frederick Terman, 3, 29590 Málaga</li>
+					</ul>
+				</div>
+				<div class="copyright">
+					RETRO HI-FI Diseñado y desarrollado por  Francisco Alberto Bautista Somosierra 2ºDAW</a>.
+				</div>
+	</section>
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{vendor/jquery/jquery.min.js}"></script>

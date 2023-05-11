@@ -7,7 +7,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Spring eCommerce</title>
+<title>RETRO HI-FI</title>
 <link rel="icon" href="../static/assets/icon.png"
 	th:href="@{/assets/icon.png}" />
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
@@ -24,11 +24,7 @@
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-	crossorigin="anonymous">
-
+<link rel="stylesheet" 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"	crossorigin="anonymous">
 </head>
 
 <body id="page-top">
@@ -40,10 +36,12 @@
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
-					th:href="@{/productos/video}">Video</a> <a
-					th:href="@{/productos/segMano}">Segunda Mano</a> <a
-					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
+				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
+				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/productos/audio}">Audio</a>
+				<a th:href="@{/productos/video}">Video</a>
+				<a th:href="@{/productos/segMano}">Segunda Mano</a>
+				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
 				<!-- USER MENU --> 
 				<div class="dropdown">
 					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
@@ -73,7 +71,7 @@
 
 	<div class="container p-4">
 		<h1 class="mt-4 mb-3">
-			RETRO HI-FI <h3>Perfil</h3>
+			RETRO HI-FI <h3>Perfil Usuario</h3>
 		</h1>
 
 		<ol class="breadcrumb">
@@ -111,11 +109,12 @@
 			</th:block>			
 		</div>
 	</div>
-
-	<footer class="footer py-4">
-		<!-- Footer -->
+	
+<!-- Footer
+	<footer class="footer py-4">		 
 		<div th:include="usuario/template_usuario.html::footer"></div>
-	</footer>
+	</footer>-->
+	
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>

@@ -11,6 +11,16 @@
 
 <title>Spring eCommerce</title>
 
+<!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
 <!-- Bootstrap core CSS -->
 <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"
@@ -18,12 +28,12 @@
 
 <!-- Custom styles for this template -->
 <link th:href="@{css/heroic-features.css}" rel="stylesheet">
-<link rel="stylesheet" th:href="@{/css/main.css}" />
-<link rel="stylesheet"
+<link rel="stylesheet" th:href="@{/css/styleFooter.css}" />
+<!--<link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 	
 </head>
 
@@ -122,17 +132,85 @@
 </div>
 
 
-	<!-- Footer -->
-	<div th:fragment="footer">
-		<footer class="py-5 bg-dark">
+	<!-- Footer-->
+	
+		<!-- <footer class="py-5 bg-dark">
 			<div class="container">
 				<p class="m-0 text-center text-white">Copyright &copy; Spring
 					eCommerce 2021</p>
 			</div>
-			<!-- /.container -->
-		</footer>
+			
+		</footer>-->
 
-	</div>
+	
+<div th:fragment="footer">
+	<footer>
+      <div class="row primary">
+        <div class="column about">
+          <h3>Company Name</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
+            voluptatem corporis error non, corrupti delectus unde, incidunt
+            dolorem quam porro tenetur autem? Maxime aspernatur quas, natus
+            nesciunt harum obcaecati voluptatum.
+          </p>
+        </div>
+        <div class="column links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <a href="#faq">F.A.Q</a>
+            </li>
+            <li>
+              <a href="#cookies-policy">Cookies Policy</a>
+            </li>
+            <li>
+              <a href="#terms-of-services">Terms Of Service</a>
+            </li>
+            <li>
+              <a href="#support">Support</a>
+            </li>
+            <li>
+              <a href="#careers">Careers</a>
+            </li>
+          </ul>
+        </div>
+        <div class="column subscribe">
+          <h3>Subscribe</h3>
+          <div>
+            <input type="email" placeholder="Your email id here" />
+            <button>Subscribe</button>
+          </div>
+          <div class="social">
+            <i class="fa-brands fa-facebook-square"></i>
+            <i class="fa-brands fa-instagram-square"></i>
+            <i class="fa-brands fa-twitter-square"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="row secondary">
+        <div>
+          <p>
+            <i class="fas fa-phone-alt"></i>
+          </p>
+          <p>+12 123456789</p>
+        </div>
+        <div>
+          <p><i class="fas fa-envelope"></i></p>
+          <p>mail@domain.com</p>
+        </div>
+        <div>
+          <p><i class="fas fa-map-marker-alt"></i></p>
+          <p>1234 Pearl Street</p>
+        </div>
+      </div>
+      <div class="row copyright">
+        <p>Copyright &copy; 2021 Coding Artist | All Rights Reserved</p>
+      </div>
+    </footer>
+</div>
+
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{vendor/jquery/jquery.min.js}"></script>

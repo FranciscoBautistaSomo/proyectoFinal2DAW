@@ -17,14 +17,15 @@
 	rel="stylesheet" type="text/css" />
 <link th:href="@{/css/styles.css}" rel="stylesheet" />
 
-<!-- Bootstrap core CSS -->
-<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
-
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet" 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/heroic-features.css}" />
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
+	rel='stylesheet'>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 </head>
 
 <body id="page-top">
@@ -36,88 +37,131 @@
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
-				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
-				<a th:href="@{/productos/audio}">Audio</a>
-				<a th:href="@{/productos/video}">Video</a>
-				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
-				<!-- USER MENU --> 
+				<a th:href="@{/usuario/home}"
+					sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a> <a
+					th:href="@{/administrador}"
+					sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a> <a
+					th:href="@{/productos/audio}">Audio</a> <a
+					th:href="@{/productos/video}">Video</a> <a
+					th:href="@{/productos/segMano}">Segunda Mano</a> <a
+					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
+					src="../static/assets/img/entrar.png"
+					th:src="@{/assets/img/entrar.png}" height="40em" /></a>
+				<!-- USER MENU -->
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
+					<a href="#" role="button" aria-haspopup="true"
+						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
+						src="../static/assets/img/entrar.png"
+						th:src="@{/assets/img/usuario.png}" height="45em" /></a>
 					<div class="dropdown-content">
-						<a th:href="@{/usuario/perfil}">Perfil</a>
-						<a th:href="@{/usuario/compras}">Compras</a>
-						<a th:href="@{/getCart}">Carrito</a>
-						<a th:href="@{/usuario/cerrar}">Salir</a>
+						<a th:href="@{/usuario/perfil}">Perfil</a> <a
+							th:href="@{/usuario/compras}">Compras</a> <a
+							th:href="@{/getCart}">Carrito</a> <a th:href="@{/usuario/cerrar}">Salir</a>
 					</div>
 				</div>
-				<!--  ADMIN MENU--> 
+				<!--  ADMIN MENU-->
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+					<a href="#" role="button" aria-haspopup="true"
+						aria-expanded="false"
+						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img
+						src="../static/assets/img/entrar.png"
+						th:src="@{/assets/img/admin.png}" height="30em" /></a>
 					<div class="dropdown-content">
-						<a th:href="@{/productos}">Productos</a>
-						<a th:href="@{/administrador/usuarios}">Usuarios</a>
-						<a th:href="@{/administrador/ordenes}">Ordenes</a>
-						<a th:href="@{/usuario/cerrar}">Salir</a>
+						<a th:href="@{/productos}">Productos</a> <a
+							th:href="@{/administrador/usuarios}">Usuarios</a> <a
+							th:href="@{/administrador/ordenes}">Ordenes</a> <a
+							th:href="@{/usuario/cerrar}">Salir</a>
 					</div>
-				</div>				
-			</nav>			
+				</div>
+			</nav>
 		</div>
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
-
-
-	<div class="container p-4">
-		<h1 class="mt-4 mb-3">
-			RETRO HI-FI <h3>Perfil Usuario</h3>
-		</h1>
-
-		<ol class="breadcrumb">
+	<div class="container">
+		<ul class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/usuario/home}">Home</a></li>
-			<li class="breadcrumb-item active">Perfil</li>
-		</ol>
-
-		<div class="cositas bg-light pt-4 border border-4">
-
-			<h2 class="text-center">Tus datos:</h2>
-
+			<li class="breadcrumb-item active"><a>Perfil</a></li>
+		</ul>
+		<form action="#">
 			<th:block th:each="usuario : ${usuarios}">
-				<div class="p-4 pb-2">
-					<b>Correo electrónico:</b>
-					<p th:text="${usuario.email}"></p>
-					<b>Username:</b>
-					<p th:text="${usuario.username}"></p>
-					<b>Nombre:</b>
-					<p th:text="${usuario.nombre}"></p>
-					<b>Apellidos:</b>
-					<p th:text="${usuario.apellidos}"></p>
-					<b>Dirección:</b>
-					<p th:text="${usuario.direccion}"></p>
-					<b>Telefono:</b>
-					<p th:text="${usuario.telefono}"></p>
-					<!--  <b>DNI:</b><p th:text="${usuario.dni}"></p>-->
+				<h1>Usuario <i th:text="${usuario.username}"></i></h1>
+					<h3>Datos del Perfil</h3>				
+				<div class="row">
+					<div class="col-25">
+						<label for="fname">Username</label>
+					</div>
+					<div class="col-75">
+						<input th:value="${usuario.username}" type="text" disabled />
+					</div>
 				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="fname">Email</label>
+					</div>
+					<div class="col-75">
+						<input th:value="${usuario.email}" type="text" id="fname"
+							name="email" disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="lname">Nombre</label>
+					</div>
+					<div class="col-75">
+						<input th:value="${usuario.nombre}" type="text" id="lname"
+							disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="country">Apellidos</label>
+					</div>
+					<div class="col-75">
+						<input th:value="${usuario.apellidos}" type="text" id="lname"
+							disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="country">Dirección</label>
+					</div>
+					<div class="col-75">
+						<input th:value="${usuario.direccion}" type="text" id="lname"
+							name="direccion" disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="country">Teléfono</label>
+					</div>
+					<div class="col-75">
+						<input th:value="${usuario.telefono}" type="text" id="lname"
+							disabled />
+					</div>
+				</div>
+				<div id="actualizar">
+					<a class="boton_personalizado"  th:href="@{modificarPerfil/}+${usuario.id}">MODIFICAR</a>
+				</div>
+			</th:block>
+		</form>
 
-				<div class="text-center pb-4">
-					<button class="btn btn-dark ">
-						<a th:href="@{modificarPerfil/}+${usuario.id}">Modificar
-							datos</a>
-					</button>
-				</div>
-			</th:block>			
-		</div>
 	</div>
-	
-<!-- Footer
+
+
+
+	<!--<div class="row">
+			<input type="submit" value="Submit">
+		</div>-->
+	</div>
+
+	<!-- Footer
 	<footer class="footer py-4">		 
 		<div th:include="usuario/template_usuario.html::footer"></div>
 	</footer>-->
-	
+
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	<!-- Scripts -->
 	<script th:src="@{/vendor/js/skel.min.js}"></script>
 	<script th:src="@{/vendor/js/util.js}"></script>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
@@ -12,25 +11,18 @@
 
 <title>RETRO HI-FI</title>
 
-
-<!-- Bootstrap core CSS -->
-<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
-
 <!-- Custom styles for this template -->
-<link rel="stylesheet" th:href="@{/css/main.css}" />
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/styleReg.css}" />
+<!-- <link rel="stylesheet" th:href="@{/css/main.css}" /> -->
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
+	rel='stylesheet'>
 
 </head>
 
 <body>
 
 	<!-- Navigation -->
-	<header id="header">
+	<!--<header id="header">
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<!--  <nav id="nav">
@@ -49,8 +41,8 @@
 						<a th:href="@{/getCart}">Carrito</a>
 						<a th:href="@{/usuario/cerrar}">Salir</a>
 					</div>
-				</div>--> 
-				<!--  ADMIN MENU
+				</div>-->
+	<!--  ADMIN MENU
 				<div class="dropdown">
 					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
 					<div class="dropdown-content">
@@ -67,100 +59,68 @@
 
 	<!-- Page Content -->
 	<div class="container">
-
-		<div class="card mb-3">
-			<div class="row no-gutters">
-				<div class="col-md-4"></div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h2>Registro</h2>
+		<div class="title">Registration</div>
+		<div class="alert success" th:if="${param['success']}">
+			<span class="closebtn" th:onclick="cerrar()">&times;</span> <strong>Felicidades!</strong>
+			Se ha registrado satisfactoriamente.
+		</div>
+		<div class="alert warning" th:if="${param['fail']}">
+			<span class="closebtn" th:onclick="cerrar()">&times;</span> <strong>Error!</strong>
+			Error al registrarse, revise la información  introducida.
+		</div>
+		<div class="content">
+			<form th:action="@{/usuario/save}" method="post">
+				<div class="user-details">
+					<div class="input-box">
+						<span class="details">Username</span> <input type="text"
+							placeholder="Introduzca su nombre de usuario" name="username"
+							required>
+					</div>
+					<div class="input-box">
+						<span class="details">Password</span> <input type="password"
+							placeholder="Introduzca su password" name="password" required>
+					</div>
+					<div class="input-box">
+						<span class="details">Nombre</span> <input type="text"
+							placeholder="Introduzca su nombre" name="nombre" required>
+					</div>
+					<div class="input-box">
+						<span class="details">Apellidos</span> <input type="text"
+							placeholder="Introduzca sus apellidos" name="apellidos" required>
+					</div>
+					<div class="input-box">
+						<span class="details">Email</span> <input type="email"
+							placeholder="Introduzca su email" name="email" required>
+					</div>
+					<div class="input-box">
+						<span class="details">Teléfono</span> <input type="text"
+							placeholder="Introduzca su telefono" name="telefono" required>
+					</div>
+					<div class="input-box">
+						<span class="details">Direccion</span> <input type="text"
+							placeholder="Introduzca su dirección" name="direccion" required>
+					</div>
+					<div class="input-box">
+						<input type="hidden" name="enabled" value="1" required>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="alert alert-info mb-6 w-100 d-block my-3 text-center"
-			th:if="${param['success']}">Se ha registrado satisfactoriamente</div>
-		<div class="alert alert-danger mb-4 w-100 d-block my-3 text-center"
-			th:if="${param['fail']}">Error al registrarse, revise la
-			información.</div>
-		<form th:action="@{/usuario/save}" method="post">
-			<div class="form-group">
-				<label for="pwd">Username:</label> <input type="text"
-					class="form-control" id="username" name="username" required
-					placeholder="Ingrese su username" autocomplete="off">
-			</div>
-			<div class="form-group">
-				<label for="nombre">Nombre:</label> <input type="text"
-					class="form-control" id="nombre" name="nombre" required
-					placeholder="Ingrese su nombre" autocomplete="off">
-			</div>
-			<div class="form-group">
-				<label for="apellido">Apellidos:</label> <input type="text"
-					class="form-control" id="apellidos" name="apellidos" required
-					placeholder="Ingrese su apellido" autocomplete="off">
-			</div>
-
-			<div class="form-group">
-				<label for="email">Email:</label> <input type="email"
-					class="form-control" id="email" name="email" required
-					placeholder="Ingrese su email" autocomplete="off">
-			</div>
-
-			<div class="form-group">
-				<label for="direccion">Dirección:</label> <input type="text"
-					class="form-control" id="direccion" name="direccion" required
-					placeholder="Ingrese su dirección" autocomplete="off">
-			</div>
-
-			<div class="form-group">
-				<label for="telefono">Telefono:</label> <input type="text"
-					class="form-control" id="telefono" name="telefono" required
-					placeholder="Ingrese su telefono" autocomplete="off">
-			</div>
-
-			<div class="form-group">
-				<label for="pwd">Contraseña</label> <input type="password"
-					class="form-control" id="password" name="password" required
-					placeholder="Ingrese su contraseña" autocomplete="off">
-			</div>
-
-			<div class="form-group">
-				<!-- <label class="control-label col-sm-2" for="img">Descatalogado:</label> -->
-				<div class="col-sm-10">
-					<input type="hidden" class="form-control-file" id="enabled"
-						name="enabled" value="1">
+				<div class="button">
+					<input type="submit" value="Registrarse">
 				</div>
-			</div>
+			</form>
+			<form th:action="@{/}">
+				<div class="button">
+					<input type="submit" value="VOLVER" />
+				</div>
+			</form>
 
-			<div class="col-sm-2">
-				<button type="submit" class="btn btn-success">Guardar</button>
-			</div>
-		</form>
+
+		</div>
 	</div>
 
-	<!-- /.container -->
+	<!-- Scripts -->
+	<script src="/vendor/jquery/funciones.js"></script>
 
-	<!-- Footer 
-	<div th:include="usuario/template_usuario.html::footer"></div>
-
-	<!-- Footer -->
-	<section id="footer">
-		<div class="inner">
-					<h2>CONTACTO</h2>
-					<ul class="actions">
-						<li><span class='bx bxs-phone'></span> <a href="#">(000) 000-0000</a></li>
-						<li><span class='bx bxs-envelope'></span> <a href="#">info@retrohifi.es</a></li>
-						<li><span class='bx bx-world'></span> C. Frederick Terman, 3, 29590 Málaga</li>
-					</ul>
-				</div>
-				<div class="copyright">
-					RETRO HI-FI Diseñado y desarrollado por  Francisco Alberto Bautista Somosierra 2ºDAW</a>.
-				</div>
-	</section>
-
-	<!-- Bootstrap core JavaScript -->
-	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 

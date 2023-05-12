@@ -21,7 +21,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	font-size: 100%;
 	font: inherit;
 	/*vertical-align: baseline;*/
-	vertical-align: sub;
+	/*vertical-align: sub;*/
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -3347,10 +3347,10 @@ body.is-loading #banner:after {
 
 /* Footer */
 #footer {
-		background-image : url('../assets/img/bg.jpg');
-		background-position:  0px -10em;
+		/*background-image : url('../assets/img/bg.jpg');
+		background-position:  0px -10em;*/
 		padding: 6em 0 4em 0;
-		/*background: #25a2c3;*/
+		background: #25a2c3;
 		text-align: center;
 		color: #c8e7f0;
 	}

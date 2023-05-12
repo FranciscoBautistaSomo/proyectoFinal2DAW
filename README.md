@@ -26,4 +26,18 @@ https://www.figma.com/file/F9vmz08bPcICDmfIaz7Fq9/Untitled?node-id=0%3A1&t=bcuWC
 
 ### DESPLIEGE
   Para el despliegue me basaré en los servicios en la nube que encontramos en AWS.
+  
+  
+  
+###HISTORICO
+DISEÑO Y MODELADO DE LA BASE DE DATOS 
+
+A partir del siguiente modelo se va desarrollando las distintas clases y se estructura la parte de Backend del proyecto.
+
+![image](https://github.com/FranciscoBautistaSomo/proyectoFinal2DAW/assets/128459948/e5eead54-db77-43f1-a2b0-400756832995)
+
+A continuación y siguiendo el patron de arquitectura de software MVC se estructura el proyecto de Spring Boot en subcarpetas
+
+![image](https://github.com/FranciscoBautistaSomo/proyectoFinal2DAW/assets/128459948/7de9475e-3067-4304-ac52-28098149bd77)
+
 

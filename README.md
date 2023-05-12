@@ -29,15 +29,32 @@ https://www.figma.com/file/F9vmz08bPcICDmfIaz7Fq9/Untitled?node-id=0%3A1&t=bcuWC
   
   
   
-###HISTORICO
-DISEÑO Y MODELADO DE LA BASE DE DATOS 
+### HISTORICO
+**DISEÑO Y MODELADO DE LA BASE DE DATOS** 
 
-A partir del siguiente modelo se va desarrollando las distintas clases y se estructura la parte de Backend del proyecto.
+**10/Abril - 14/Abril:** A partir del siguiente modelo se va desarrollando las distintas clases y se estructura la parte de Backend del proyecto.
 
 ![image](https://github.com/FranciscoBautistaSomo/proyectoFinal2DAW/assets/128459948/e5eead54-db77-43f1-a2b0-400756832995)
 
-A continuación y siguiendo el patron de arquitectura de software MVC se estructura el proyecto de Spring Boot en subcarpetas
+**ESTRUCTURACION Y DISEÑO BACKEND (retroHIF)**
+
+**15/Abril - 21/Abril:** A continuación y siguiendo el patron de arquitectura de software MVC se estructura el proyecto de Spring Boot en subcarpetas y se empieza a desarrollar
 
 ![image](https://github.com/FranciscoBautistaSomo/proyectoFinal2DAW/assets/128459948/7de9475e-3067-4304-ac52-28098149bd77)
 
+**PRIMER PROTOTIPO APLICACIÓN (retroHIFIWebShop_VER2)**
+
+**22/Abril - 7/Mayo:** Se desarrolla las funcionalidades principales del backend y un frontend de prueba de la futura aplicación.
+
+  Funcionalidades desarrolladas:
+    -LOGIN
+    -REGISTRO USUARIOS
+    -ROLES
+    -ESCAPARATE DE PRODUCTOS
+    -PORTAL ADMINISTRADOR
+    -PORTAL USUARIO
+    
+**DESARROLLO DEL FRONT END (retroHIFIWebShop_VER3)**
+
+**8/Mayo - Actualmente:** Se trabaja en el desarrollo de la parte Front y se continua mejorando las funcionalidades del proyecto desde el Backend
 

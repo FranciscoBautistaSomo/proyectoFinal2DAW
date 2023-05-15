@@ -64,3 +64,13 @@ https://www.figma.com/file/F9vmz08bPcICDmfIaz7Fq9/Untitled?node-id=0%3A1&t=bcuWC
 https://drive.google.com/file/d/1HfcuiLi_YQKt90r5afrB4uhPYGLtqgOV/view?usp=share_link
 
 
+**BIBLIOGRAFIA**
+
+  -Formación interna SPRING BOOT
+  -YOUTUBE
+  -OpenWebinnars
+  -https://www.baeldung.com/
+  
+
+
+

@@ -34,7 +34,7 @@ public class AdministradorController {
 
 	@GetMapping("")
 	public String hom(Model model, String busqueda, @RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "4") int pageSize) {
+			@RequestParam(defaultValue = "3") int pageSize) {
 //		List<Producto> productos = productoService.findAll();
 //		model.addAttribute("productos", productos);
 //		return "administrador/home";

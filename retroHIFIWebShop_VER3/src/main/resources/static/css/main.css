@@ -1545,7 +1545,7 @@ input[type="submit"], input[type="reset"], input[type="button"], button,
 	font-weight: 700;
 	height: 3.5em;
 	line-height: 3.65em;
-	padding: 0 2.25em;
+	padding: 0 3.25em;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -3003,7 +3003,7 @@ body, input, select, textarea {
   text-align: justify;
   color: #e5474b;
   /*box-shadow: 0px 0px 25px #222;*/
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   margin: 1em 0 1em 0;
 }
 
@@ -3345,7 +3345,93 @@ body.is-loading #banner:after {
 	}
 }
 
-/* Footer */
+/* CARD */
+
+#showProductos {
+  box-sizing: border-box;
+}
+
+/*body {
+  font-family: Arial, Helvetica, sans-serif;
+}*/
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  margin: 1em 1em 1em 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.bttn{
+  width: 100%;
+  display: flex;
+  margin-top: 35px;
+  justify-content: center;
+}
+
+
+.bttn a{	
+  width: 80%;
+  height: 50px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bttn a{
+  border: 2px solid #e5474b;
+  background: #fff;
+  color: #e5474b;
+}
+
+.bttn a:hover{
+  /*background: #676767;*/
+  background: #f4c3c4;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}
+
+/***************** FOOTER *****************/
 #footer {
 		/*background-image : url('../assets/img/bg.jpg');
 		background-position:  0px -10em;*/

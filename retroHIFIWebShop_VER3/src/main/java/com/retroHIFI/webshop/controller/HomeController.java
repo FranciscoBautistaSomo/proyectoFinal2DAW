@@ -58,7 +58,7 @@ public class HomeController {
 
 	@GetMapping("usuario/home")
 	public String home(Model model, HttpSession session, String busqueda,
-	@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "4") int pageSize) {
+	@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "3") int pageSize) {
 		List<Producto> productos; 
 		
 		//model.addAttribute("productos", productos);

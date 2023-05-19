@@ -113,39 +113,24 @@
 		<!-- /.row -->
 		
 		<!-- Paginación -->
-				<div class="ms-3">
-					<div class = "row col-sm-12 justify-content-center align-items-center">
-						<hr class="border border-1 opacity-100">
-						<div class = "col-sm-3">
-							Total Productos: <a th:text="${totalProductos}"></a>
-						</div>
-						<div class = "col-sm-3">
-							<p th:if = "${totalPages > 1}">
-								<a th:each="page : ${#numbers.sequence(0, totalPages - 1)}" th:href="@{/administrador(busqueda=${busqueda}, page=${page}, pageSize=${pageSize})}"
-								   th:text="${page + 1}" class="ms-2"></a>
-								<span th:unless="${currentPage != i}">[[${i}]]</span>&nbsp;&nbsp;</p>
-						</div>
-
-						<div class = "col-sm-2" >
-							<a th:if="${currentPage > 0}" th:href="@{/administrador(busqueda=${busqueda}, page=${currentPage - 1}, pageSize=${pageSize})}"
-							   aria-label="Previous" class="mx-4 fs-5 fw-bold text-decoration-none">Anterior
-							</a>
-						</div>
-
-						<div class="col-sm-2">
-							<a th:if="${currentPage < totalPages - 1}" th:href="@{/administrador(busqueda=${busqueda}, page=${currentPage + 1}, pageSize=${pageSize})}"
-							   aria-label="Next" class="mx-4 fs-5 fw-bold text-decoration-none"> Siguiente
-							</a>
-						</div>
-						<p></p><hr class="border border-1 opacity-100">
-					</div>
-				</div>
-		
-		
-		
-		
-		
-
+		<div id="paginas">
+			<ul class="pagination">
+				<!--<li class="icon">
+					 <a><span th:text="'Total Productos: '+${totalProductos}"></span></a>
+				</li>-->
+				<li class="icon">
+				<a th:if="${currentPage > 0}"	th:href="@{/usuario/home(busqueda=${busqueda}, page=${currentPage - 1}, pageSize=${pageSize})}"
+					aria-label="Previous">	<span	class="fas fa-angle-left"></span>Anterior</a>
+				</li>
+				<li th:each="page : ${#numbers.sequence(0, totalPages - 1)}"><a 	th:href="@{/usuario/home(busqueda=${busqueda}, page=${page}, pageSize=${pageSize})}"
+					th:text="${page + 1}" th:classappend=" ${currentPage == page } ? 'active' : ' '  ">[[${i}]]</a>
+				</li>
+				<li class="icon"><a th:if="${currentPage < totalPages - 1}" 	th:href="@{/usuario/home(busqueda=${busqueda}, page=${currentPage + 1}, pageSize=${pageSize})}"
+						aria-label="Next"><span 	class="fas fa-angle-right">&nbsp;</span>Siguiente</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 	</div>
 	<!-- /.container -->
 	<!-- Footer  

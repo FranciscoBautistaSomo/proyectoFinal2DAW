@@ -1,12 +1,16 @@
 package com.retroHIFI.webshop.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.tomcat.util.http.fileupload.UploadContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -127,24 +131,52 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/audio")
-	public String listarAudio(Model model) {
-		model.addAttribute("productos", productoRepository.mostrarAudio());
+	public String listarAudio(Model model, @RequestParam(defaultValue = "0") int page) {
+		
+		Page<Producto> productosPage = productoRepository.mostrarAudios(PageRequest.of(page, 3));
+		List<Producto> productos = productosPage.getContent();
+
+		model.addAttribute("productos", productos);
+		model.addAttribute("productosPage", productosPage);
+
+		List<Producto> totalProductPage = productoRepository.mostrarAudio();
+		long total = totalProductPage.size();
+		model.addAttribute("totalProductos", total);	
+				
 		model.addAttribute("nombreCat", productoRepository.getNombreCategoria(1));
 		
 		return "productos/categoria";
 	}
 	
 	@GetMapping("/video")
-	public String listarVideo(Model model) {
-		model.addAttribute("productos", productoRepository.mostrarVideo());
+	public String listarVideo(Model model, @RequestParam(defaultValue = "0") int page) {
+		Page<Producto> productosPage = productoRepository.mostrarVideos(PageRequest.of(page, 3));
+		List<Producto> productos = productosPage.getContent();
+
+		model.addAttribute("productos", productos);
+		model.addAttribute("productosPage", productosPage);	
+		
+		List<Producto> totalProductPage = productoRepository.mostrarVideo();
+		long total = totalProductPage.size();
+		model.addAttribute("totalProductos", total);
+		
+		
 		model.addAttribute("nombreCat", productoRepository.getNombreCategoria(2));
 		
 		return "productos/categoria";
 	}
 	
 	@GetMapping("/segMano")
-	public String listarSegMano(Model model) {
-		model.addAttribute("productos", productoRepository.mostrarSegMano());
+	public String listarSegMano(Model model, @RequestParam(defaultValue = "0") int page) {
+		Page<Producto> productosPage = productoRepository.mostrarSegManos(PageRequest.of(page, 3));
+		List<Producto> productos = productosPage.getContent();
+
+		model.addAttribute("productos", productos);
+		model.addAttribute("productosPage", productosPage);	
+		
+		List<Producto> totalProductPage = productoRepository.mostrarSegMano();
+		long total = totalProductPage.size();
+		model.addAttribute("totalProductos", total);
 		model.addAttribute("nombreCat", productoRepository.getNombreCategoria(3));
 		
 		return "productos/categoria";

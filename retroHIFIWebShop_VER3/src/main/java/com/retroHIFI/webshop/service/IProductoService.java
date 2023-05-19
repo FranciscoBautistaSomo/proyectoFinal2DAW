@@ -2,7 +2,10 @@ package com.retroHIFI.webshop.service;
 
 import java.util.*;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.retroHIFI.webshop.model.Producto;
 
@@ -14,5 +17,6 @@ public interface IProductoService {
 		public void update(Producto producto);
 		public void delete(Integer id);
 		public List<Producto> findAll();
-		public List<Producto> buscador(String busqueda);		
+		public List<Producto> buscador(String busqueda);
+				
 }

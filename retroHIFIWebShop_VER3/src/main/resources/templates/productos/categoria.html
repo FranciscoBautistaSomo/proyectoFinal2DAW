@@ -94,105 +94,60 @@
 
 	<!-- Page Content -->
 	<div class="container">
-		<!-- Page Features 
-		<div class="row text-center">
 
-			<div class="col-lg-3 col-md-6 mb-4" th:each="producto: ${productos}">
-				<div class="card h-100">
-					<img class="card-img-top"
-						th:src="@{../assets/{img} (img=${producto.imagen})} "  alt="">
-					<div class="card-body">
-						<p class="card-text" th:text="${producto.nombre}"></p>
-					</div>
-					<div class="card-footer">
-						<a th:href="@{/productohome/{id}  (id=${producto.id})  }" class="btn btn-success"  th:classappend=" ${session.idusuario == null} ? 'disabled btn-danger' : ' '  ">Ver
-							producto</a>
-					</div>
-				</div>
-			</div>-->
-
-		<!--  <section>
-      <div class="swiper mySwiper container">
-        <div class="swiper-wrapper content">
-        	<div class="swiper-slide card">
-				<div class="card-content">
-					<div class="image">
-						<img src="" alt="" />
-					</div>
-
-					<div class="media-icons">
-						<i class="fab fa-facebook"></i>
-						<i class="fab fa-twitter"></i>
-						<i class="fab fa-github"></i>
-					</div>
-
-					<div class="name-profession">
-						<span class="name">Someone Name</span>
-						<span class="profession">Web Developer</span>
-					</div>
-
-					<div class="rating">
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="far fa-star"></i>
-						<i class="far fa-star"></i>
-					</div>
-
-					<div class="button">
-						<button class="aboutMe">About Me</button>
-						<button class="hireMe">Hire Me</button>
-					</div>
-				</div>
-          </div>
-        
-        
-
-		</div>
-	 </div>
-	 
-	 <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>	 
-	</section>-->
-
-		<!--  <div class="card" th:each="producto: ${productos}">
-			<img th:src="@{../assets/{img} (img=${producto.imagen})} " alt="Producto" style="width: 100%">
-			<h1 th:text="${producto.nombre}"></h1>
-			<p class="price" th:text="${producto.precio}"></p>
-			<p>Some text about the jeans..</p>
-			<p>
-				<a th:href="@{/productohome/{id}  (id=${producto.id})  }" class="button alt"  th:classappend=" ${session.idusuario == null} ? 'disabled btn-danger' : ' '  ">Ver
-							producto</a>
-			</p>
-		</div>-->
 		<div class="row" id="showProductos">
 			<div class="column" th:each="producto: ${productos}">
 				<div class="card">
-					<img th:src="@{../assets/{img} (img=${producto.imagen})} "
+					<img class="imgProduct"
+						th:src="@{../assets/{img} (img=${producto.imagen})} "
 						alt="Producto" style="width: 100%">
 					<h3 th:text="${producto.nombre}"></h3>
-					<h3  th:text="'Precio: '+${producto.precio}+' €'"></h3>
-					<span class="bttn">
-						<a class="" th:href="@{/productohome/{id}  (id=${producto.id})  }" th:classappend=" ${session.idusuario == null} ? 'disabled' : ' '  ">Ver producto</a>
+					<h3 th:text="'Precio: '+${producto.precio}+' €'"></h3>
+					<span class="bttn"> <a class=""
+						th:href="@{/productohome/{id}  (id=${producto.id})  }"
+						th:classappend=" ${session.idusuario == null} ? 'disabled' : ' '  ">Ver
+							producto</a>
 					</span>
 				</div>
 			</div>
 		</div>
+		<hr style="height:2px; border-width:0; color: #e5474b; background-color:#e5474b">
+		<!-- Paginación -->
+		<div id="paginas" th:if="${productosPage != null}">
+			<ul class="pagination">
+				<!--<li class="icon">
+					 <a><span th:text="'Total Productos: '+${totalProductos}"></span></a>
+				</li>-->
+				<!-- BOTON ANTERIOR -->
+				<li class="icon">
+				  <th:block th:if="${productosPage.hasPrevious()}">
+						<a th:href="@{${#httpServletRequest.requestURI}(page=${productosPage.previousPageable().pageNumber})}"
+							aria-label="Previous"> <span class="fas fa-angle-left"></span>Anterior
+						</a>
+					</th:block>
+				</li>
+				<!-- NUMERO PAGINAS -->
+				<li th:each="i : ${#numbers.sequence(0, productosPage.totalPages - 1)}">
+				<a th:href="@{${#httpServletRequest.requestURI}(page=${i})}"
+					th:text="${i + 1}"
+					th:classappend=" ${productosPage.number == i } ? 'active' : ' '  ">[[${i}]]</a>
+				</li>
+				<!-- BOTON SIGUIENTE -->
+				<li class="icon">
+				<th:block th:if="${productosPage.hasNext()}">
+					<a th:href="@{${#httpServletRequest.requestURI}(page=${productosPage.nextPageable().pageNumber})}"
+						aria-label="Next"><span class="fas fa-angle-right">&nbsp;</span>Siguiente
+						</a>
+				</th:block>
+				</li>
+			</ul>
+		</div>
 
-
-
-
+		<!-- /.container -->
 	</div>
+
+
 	<!-- /.row -->
-
-	</div>
-	<!-- /.container -->
-
-	<!-- Footer
-	<footer class="footer py-4">
-		<div th:include="usuario/template_usuario.html::footer"></div>
-	</footer> -->
 
 	<!-- Footer -->
 	<section id="footer">
@@ -215,7 +170,7 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	
+
 	<!-- Scripts -->
 	<script th:src="@{/vendor/js/skel.min.js}"></script>
 	<script th:src="@{/vendor/js/util.js}"></script>

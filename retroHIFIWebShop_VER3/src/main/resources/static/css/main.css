@@ -1,7 +1,9 @@
 @import url(./font-awesome.min.css);
-/*@import url("https://use.fontawesome.com/releases/v5.0.8/js/brands.js");
+@import url("https://use.fontawesome.com/releases/v5.0.8/js/brands.js");
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,700|Pacifico");
-@import	url("https://fonts.googleapis.com/css2?family=Braah+One&display=swap|Retro");*/
+@import	url("https://fonts.googleapis.com/css2?family=Braah+One&display=swap|Retro");
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 @import	url("https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap");
 
@@ -20,6 +22,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+	box-sizing: border-box;
+  	font-family: "Poppins", sans-serif;
 	/*vertical-align: baseline;*/
 	/*vertical-align: sub;*/
 }
@@ -31,6 +35,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup,
 
 body {
 	line-height: 1;
+	
 }
 
 ol, ul {
@@ -53,6 +58,7 @@ table {
 
 body {
 	-webkit-text-size-adjust: none;
+	background: linear-gradient(147deg, #f6b323 0%, #f23b26 74%);
 }
 
 p {
@@ -1294,6 +1300,7 @@ body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 /* Type */
 body {
 	background-color: #fff;
+	/*background: linear-gradient(147deg, #f6b323 0%, #f23b26 74%);*/
 	color: #111111;
 }
 
@@ -1662,6 +1669,14 @@ input[type="submit"].special:active, input[type="reset"].special:active,
 	text-decoration: none;
 	white-space: nowrap;
 	color: #e23135;
+}
+
+#login {
+	margin-top: 0.6em;
+}
+
+#register{
+	margin-top: 0.6em;
 }
 
 /* Form */
@@ -2677,7 +2692,7 @@ body {
 	cursor: default;
 	height: 5em;
 	left: 0;
-	line-height: 5em;
+	line-height: 5.4em;
 	position: fixed;
 	text-align: right;
 	top: 0;
@@ -2767,12 +2782,12 @@ body, input, select, textarea {
 	-ms-transition: color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out;
 	display: inline-block;
-	padding: 0 2em 0 2em;
+	padding: 0 1em 0 1.5em;
 	color:  rgba(206, 208, 206, 1);;
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 700;
-	font-size: .9em;
+	font-size: 1em;
 }
 
 #header a:hover {
@@ -3383,11 +3398,15 @@ body.is-loading #banner:after {
 
 /* Style the counter cards */
 .card {
-  margin: 1em 1em 1em 1em;
+  margin: 1em 1em 2em 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
+}
+
+.pnombre{
+	margin-top: 1em;
 }
 
 .bttn{
@@ -3425,13 +3444,134 @@ body.is-loading #banner:after {
   text-decoration: none;
 }
 
+.imgProduct{
+	border-radius: 50%;
+}
+
 .disabled {
   pointer-events: none;
   cursor: default;
   opacity: 0.6;
 }
+/***************** PAGINATION *****************/
+
+#paginas {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  text-align: center;  
+}
+::selection {
+  color: #fff;
+  background: #f23b26;
+}
+
+.containerShop {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  box-shadow: 0px 0.5vh 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.containerShop .title {
+  font-size: 50px;
+  font-weight: 600;
+}
+.containerShop p {
+  font-size: 19px;
+}
+
+.pagination {
+  margin: 25px 0 15px 0;
+}
+
+.pagination,
+.pagination li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pagination li {
+  background: #f23b26;
+  list-style: none;
+}
+.pagination li a {
+  text-decoration: none;
+  color: #fdfdfd;
+  height: 50px;
+  width: 50px;
+  font-size: 18px;
+  padding-top: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-right-width: 0px;
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.35);
+}
+
+.pagination li:last-child a {
+  border-right-width: 1px;
+}
+.pagination li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-top-color: rgba(0, 0, 0, 0.35);
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+.pagination li a:focus,
+.pagination li a:active {
+  padding-top: 4px;
+  border-left-width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.25);
+}
+.pagination li.icon a {
+  min-width: 120px;
+}
+.pagination li:first-child span {
+  padding-right: 8px;
+}
+.pagination li:last-child span {
+  padding-left: 8px;
+}
+
+.pagination a.active {
+  background-color: #fdfdfd;
+  color: #f23b26;
+  border: 1px solid #f23b26;
+}
 
 /***************** FOOTER *****************/
+
+#footer ::-moz-placeholder {
+	color: #f8d1d2 !important;
+}
+
+#footer :-ms-input-placeholder {
+	color: #f8d1d2 !important;
+}
+
+#footer .formerize-placeholder {
+	color: #f8d1d2 !important;
+}
+.pagination li:first-child span {
+  padding-right: 8px;
+}
+
+@media screen and (max-width: 480px) {
+	#footer .inner {
+		max-width: 90%;
+		width: 90%;
+	}
+}
+
+
+
+
+
 #footer {
 		/*background-image : url('../assets/img/bg.jpg');
 		background-position:  0px -10em;*/

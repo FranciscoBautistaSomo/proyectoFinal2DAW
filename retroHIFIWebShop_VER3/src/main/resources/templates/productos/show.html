@@ -35,12 +35,12 @@
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</span></a>
 			<nav id="nav">
-				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
-				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
-				<a th:href="@{/productos/audio}">Audio</a>
-				<a th:href="@{/productos/video}">Video</a>
-				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" 	th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
+					th:href="@{/productos/video}">Video</a> <a
+					th:href="@{/productos/segMano}">Segunda Mano</a> <a
+					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
+					src="../static/assets/img/entrar.png"
+					th:src="@{/assets/img/entrar.png}" height="45em" /></a>
 				<!-- MENU USUARIO-->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
@@ -57,7 +57,9 @@
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false"
-						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img
+						src="../static/assets/img/entrar.png"
+						th:src="@{/assets/img/admin.png}" height="30em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a
 							th:href="@{/administrador/usuarios}">Usuarios</a> <a
@@ -70,22 +72,17 @@
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
-	<!-- Banner -->
-	<section id="banner" style="background-image : url('../assets/img/infographic7.jpg');">
-		<div class="inner">
-			<div id="blur">
-				<h1> ADMINISTRACION</h1>
-				<h3>Listado de Productos</h3>
-			</div>
-		</div>
-	</section>
-
-
 
 	<!-- Page Content -->
 	<div class="container">
 
-		<!--Breadcrumbs -->
+
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">
+			Spring eCommerce
+			<h3>Productos</h3>
+		</h1>
+
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
 			<li class="breadcrumb-item active">Ver Productos</li>
@@ -94,6 +91,28 @@
 		<a class="btn btn-primary" th:href="@{/productos/create}"> Crear
 			Producto</a>
 		<h2>Productos</h2>
+		<div class="row py-3">
+			<div class="col-sm-6">
+				<input type="text" id="searchInput" placeholder="Filtrar por por..." />
+			</div>
+			<div class="col-sm-6">
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="0" id="check1" name="filtro" checked>Nombre
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="3" id="check2" name="filtro" >Precio
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="4" id="check3" name="filtro">Categoria
+					</label>
+				</div>
+			</div>
+		</div>
 		<table class="table">
 			<thead>
 				<tr>
@@ -107,7 +126,7 @@
 					<th scope="col" class="text-center">Eliminar</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="names">
 				<tr th:each="producto:${productos}">
 					<td th:text="${producto.nombre}"></td>
 					<td th:text="${producto.descripcion}"></td>
@@ -119,21 +138,18 @@
 						th:onclick="deshabilitarProduc([[${producto.id}]], [[${producto.enabled}]])"><span
 							th:text="${producto.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a>
 					</td>
-					<td><a class="btn btn-warning"
-						th:href="@{productos/edit/{id} (id=${producto.id}) }">Editar</a></td>
-					<td>
-						<!--<a  class="btn btn-danger" th:href="@{productos/delete/{id} (id=${producto.id}) }">Eliminar</a>-->
-						<a th:onclick="eliminar([[${producto.id}]])"
-						class="btn btn-danger">Eliminar</a>
-					</td>
+					<td class="text-center"><a
+						th:href="@{productos/edit/{id} (id=${producto.id}) }"
+						class="text-success"><span class="fas fa-edit">&nbsp;</a></td>
+					<td class="text-danger text-center"><a
+						th:onclick="eliminar([[${producto.id}]])"><span
+							class="fas fa-trash-alt">&nbsp;</a></td>
 				</tr>
 			</tbody>
 		</table>
 
 	</div>
 	<!-- /.container -->
-	<!-- FOOTER 
-	<div th:include="administrador/template_admin.html::footer"></div>-->
 
 	<!-- Bootstrap core JavaScript -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
@@ -147,7 +163,7 @@
 		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
 		crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="vendor/jquery/funciones.js"></script>
+	<script src="vendor/js/funciones.js"></script>
 </body>
 
 </html>

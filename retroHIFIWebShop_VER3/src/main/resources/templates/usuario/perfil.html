@@ -46,13 +46,13 @@
 					th:href="@{/productos/segMano}">Segunda Mano</a> <a
 					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
 					src="../static/assets/img/entrar.png"
-					th:src="@{/assets/img/entrar.png}" height="40em" /></a>
+					th:src="@{/assets/img/entrar.png}" height="30em" /></a>
 				<!-- USER MENU -->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/usuario.png}" height="45em" /></a>
+						th:src="@{/assets/img/usuario.png}" height="30em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a> <a
 							th:href="@{/usuario/compras}">Compras</a> <a
@@ -85,7 +85,7 @@
 		</ul>
 		<form action="#">
 			<th:block th:each="usuario : ${usuarios}">
-				<h1>Usuario <i th:text="${usuario.username}"></i></h1>
+				<h2>Usuario <i th:text="${usuario.username}"></i></h2>
 					<h3>Datos del Perfil</h3>				
 				<div class="row">
 					<div class="col-25">

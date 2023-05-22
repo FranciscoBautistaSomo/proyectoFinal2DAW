@@ -13,7 +13,7 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
-	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	b, u, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
 	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
 	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
 	output, ruby, section, summary, time, mark, audio, video {
@@ -25,7 +25,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	box-sizing: border-box;
   	font-family: "Poppins", sans-serif;
 	/*vertical-align: baseline;*/
-	/*vertical-align: sub;*/
+	vertical-align: sub;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -1664,7 +1664,7 @@ input[type="submit"].special:active, input[type="reset"].special:active,
 	font-weight: 700;
 	height: 3em;
 	line-height: 1.10em;
-	padding: 0 1.25em;
+	padding: 1em 1.5em;
 	text-align: center;
 	text-decoration: none;
 	white-space: nowrap;
@@ -1672,7 +1672,7 @@ input[type="submit"].special:active, input[type="reset"].special:active,
 }
 
 #login {
-	margin-top: 0.6em;
+	margin-top: 0.7em;
 }
 
 #register{
@@ -1799,7 +1799,7 @@ textarea {
 	padding: 0.75em 1em;
 }
 
-input[type="checkbox"], input[type="radio"] {
+/*input[type="checkbox"], input[type="radio"] {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
@@ -1810,7 +1810,7 @@ input[type="checkbox"], input[type="radio"] {
 	opacity: 0;
 	width: 1em;
 	z-index: -1;
-}
+}*/
 
 input[type="checkbox"]+label, input[type="radio"]+label {
 	text-decoration: none;
@@ -2078,7 +2078,7 @@ ul.actions {
 ul.actions li {
 	display: inline-block;
 	padding: 0 1em 0 0;
-	vertical-align: middle;
+	vertical-align: sub;
 }
 
 ul.actions li:last-child {
@@ -2692,7 +2692,7 @@ body {
 	cursor: default;
 	height: 5em;
 	left: 0;
-	line-height: 5.4em;
+	line-height: 5em;
 	position: fixed;
 	text-align: right;
 	top: 0;
@@ -2782,12 +2782,12 @@ body, input, select, textarea {
 	-ms-transition: color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out;
 	display: inline-block;
-	padding: 0 1em 0 1.5em;
+	padding: 0 2.2em 0 2.2em;
 	color:  rgba(206, 208, 206, 1);;
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 700;
-	font-size: 1em;
+	font-size: .7em;	
 }
 
 #header a:hover {

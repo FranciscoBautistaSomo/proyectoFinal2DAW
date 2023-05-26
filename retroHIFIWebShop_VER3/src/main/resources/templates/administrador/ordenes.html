@@ -18,6 +18,7 @@
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/tableResponsive.css}" />
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet"
@@ -30,16 +31,20 @@
 
 	<!-- Navigation 
 	<div th:include="administrador/template_admin.html::header"></div>-->
-		<header id="header">
+	<header id="header">
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
-				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
-				<a th:href="@{/productos/audio}">Audio</a>
-				<a th:href="@{/productos/video}">Video</a>
-				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" 	th:src="@{/assets/img/entrar.png}" height="35em" /></a>
+				<a th:href="@{/usuario/home}"
+					sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a> <a
+					th:href="@{/administrador}"
+					sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a> <a
+					th:href="@{/productos/audio}">Audio</a> <a
+					th:href="@{/productos/video}">Video</a> <a
+					th:href="@{/productos/segMano}">Segunda Mano</a> <a
+					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
+					src="../static/assets/img/entrar.png"
+					th:src="@{/assets/img/entrar.png}" height="35em" /></a>
 				<!-- MENU USUARIO-->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
@@ -56,7 +61,9 @@
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false"
-						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="35em"/></a>
+						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img
+						src="../static/assets/img/entrar.png"
+						th:src="@{/assets/img/admin.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a
 							th:href="@{/administrador/usuarios}">Usuarios</a> <a
@@ -70,21 +77,20 @@
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
 	<!-- Banner -->
-	<section id="banner" style="background-image : url('../assets/img/infographic7.jpg');">
+	<section id="banner"
+		style="background-image: url('../assets/img/infographic7.jpg');">
 		<div class="inner">
 			<div id="blur">
-				<h1> ADMINISTRACION</h1>
+				<h1>ADMINISTRACION</h1>
 				<h3>Listado de Ordenes</h3>
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Page Content -->
 	<div class="container">
-
-
 		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
+		<ol class="breadcrumb my-4">
 			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
 			<li class="breadcrumb-item active">Ordenes</li>
 		</ol>
@@ -95,18 +101,19 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="form-check-inline">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" value="0" id="check1" name="filtro" checked>Numero Orden
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" value="0" id="check1" name="filtro"
+						checked>Numero Orden
 					</label>
 				</div>
 				<div class="form-check-inline">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" value="1" id="check2" name="filtro" >Fecha
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" value="1" id="check2" name="filtro">Fecha
 					</label>
 				</div>
 				<div class="form-check-inline">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" value="2" id="check3" name="filtro">Valor
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" value="2" id="check3" name="filtro">Valor
 					</label>
 				</div>
 			</div>
@@ -114,33 +121,33 @@
 		<!-- /BUSCADOR -->
 
 		<!-- Blog Post -->
-		<div class="card mb-4">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-lg-12">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">No. de Orden</th>
-									<th scope="col">Fecha</th>
-									<th scope="col">Valor</th>
-									<th scope="col">Acción</th>
-								</tr>
-							</thead>
-							<tbody id="names">
-								<tr th:each="orden:${ordenes}">
-									<td th:text="${orden.numero}"></td>
-									<td th:text="${orden.fechaCreacion}"></td>
-									<td th:text="${orden.total}"></td>
-									<td><a th:href="@{/administrador/detalles/{id} (id=${orden.id}) }" class="btn btn-success">Ver
-											Detalle</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">No. de Orden</th>
+						<th scope="col">Fecha</th>
+						<th scope="col">Valor</th>
+						<th scope="col">Acción</th>
+					</tr>
+				</thead>
+				<tbody id="names">
+					<tr th:each="orden:${ordenes}">
+						<td title="Nº Orden" th:text="${orden.numero}"></td>
+						<td title="Fecha Creación" th:text="${orden.fechaCreacion}"></td>
+						<td title="Total" th:text="${orden.total}"></td>
+						<td title="Detalles"><a
+							th:href="@{/administrador/detalles/{id} (id=${orden.id}) }"
+							class="btn btn-success">Ver Detalle</a></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+		<!--  <div class="card mb-4">
+			<div class="card-body">
+				<div class="row"></div>
+			</div>
+		</div>-->
 	</div>
 	<!-- /.container -->
 

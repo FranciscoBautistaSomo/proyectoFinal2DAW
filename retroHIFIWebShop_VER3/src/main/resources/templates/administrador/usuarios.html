@@ -17,6 +17,7 @@
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/tableResponsive.css}"/>
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet"
@@ -83,7 +84,7 @@
 <div class="container">
 
   <!-- Breadcrumbs -->
-  <ol class="breadcrumb">
+  <ol class="breadcrumb my-4">
     <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
     <li class="breadcrumb-item active">Ver Usuarios</li>
   </ol>
@@ -130,7 +131,7 @@
 			</div>
 	</div>
 	<!-- /Filtro -->
-	  <table class="table table-hover table-sm table-responsive">
+	  <table>
 	    <thead class="table-info">
 	      <tr>
 	      	<th scope="col" class="text-center">Username</th>
@@ -145,14 +146,14 @@
 	    </thead>
 	    <tbody id="names">
 	      <tr th:each="usuario:${usuarios}">
-	       <td th:text="${usuario.username}"></td>
-	        <td th:text="${usuario.nombre}"></td>
-	        <td th:text="${usuario.apellidos}"></td>
-	        <td class="text-center" th:text="${usuario.email}"></td>
-	        <td th:text="${usuario.direccion}"></td>
-	        <td class="text-center" th:text="${usuario.telefono}"></td>
+	       <td title="Username" th:text="${usuario.username}"></td>
+	        <td title="Nombre" th:text="${usuario.nombre}"></td>
+	        <td title="Apellidos" th:text="${usuario.apellidos}"></td>
+	        <td title="Email" class="text-center" th:text="${usuario.email}"></td>
+	        <td title="Direccion" th:text="${usuario.direccion}"></td>
+	        <td title="Telefono" class="text-center" th:text="${usuario.telefono}"></td>
 	        <!-- <td th:text="${usuario.enabled}"></td> -->
-	        <td class="text-center"><a  class="btn" th:classappend=" ${usuario.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarUser([[${usuario.id}]], [[${usuario.enabled}]])"><span th:text="${usuario.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
+	        <td title="Deshabilitar" class="text-center"><a  class="btn" th:classappend=" ${usuario.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarUser([[${usuario.id}]], [[${usuario.enabled}]])"><span th:text="${usuario.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
 	      </tr>       
 	    </tbody>
 	  </table>

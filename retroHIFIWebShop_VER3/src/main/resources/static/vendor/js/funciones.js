@@ -156,8 +156,27 @@ function filtro() {
 		filas[i].style.display = lenguaje.toUpperCase().indexOf(valor) > -1 ? "" : "none";
 	}
 }
-
 // Se agrega un escuchador de eventos a la entrada de texto
 // para activar la función de filtrado cada vez que el usuario
 // ingresa texto en la entrada
 document.getElementById("searchInput").addEventListener("keyup", filtro);
+
+
+var ShowCells = function() {
+	var tbody = jQuery('tbody');
+	var row = jQuery('tbody > tr');
+	row.addClass('closed');
+	row.click(function() {
+		if ((!jQuery(this).hasClass('closed')) && (jQuery(this).parent().is("tbody"))) {
+			jQuery(this).attr('class', 'closed');
+		}
+		else {
+			row.addClass('closed');
+			jQuery(this).removeClass('closed');
+		}
+	});
+}
+
+jQuery(document).ready(function() {
+	ShowCells();
+});

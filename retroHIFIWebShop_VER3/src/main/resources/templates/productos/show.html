@@ -18,6 +18,7 @@
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/tableResponsive.css}"/>
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet"
@@ -45,7 +46,7 @@
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/usuario.png}" height="45em" /></a>
+						th:src="@{/assets/img/usuario.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a> <a
 							th:href="@{/usuario/compras}">Compras</a> <a
@@ -84,7 +85,7 @@
 	<!-- Page Content -->
 	<div class="container">
 		<!-- Breadcrumbs -->
-		<ol class="breadcrumb">
+		<ol class="breadcrumb my-4">
 			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
 			<li class="breadcrumb-item active">Ver Productos</li>
 		</ol>
@@ -125,9 +126,10 @@
 			</div>
 		</div>
 		<!-- /BUSCADOR -->
-		<div class="table-responsive">
-			<table class="table table-hover table-sm">
-				<thead class="table-info">
+		<!-- TABLA DE DATOS -->
+		<div>
+			<table>
+				<thead>
 					<tr>
 						<th scope="col" class="text-center">Nombre</th>
 						<th scope="col" class="text-center">Descripción</th>
@@ -141,27 +143,25 @@
 				</thead>
 				<tbody id="names">
 					<tr th:each="producto:${productos}">
-						<td th:text="${producto.nombre}"></td>
-						<td th:text="${producto.descripcion}"></td>
-						<td class="text-center" th:text="${producto.cantidad}"></td>
-						<td class="text-center" th:text="${producto.precio}+'€'"></td>
-						<td class="text-center" th:text="${producto.categoria.nombre}"></td>
-						<td><a class="btn "
-							th:classappend=" ${producto.enabled == false} ? 'btn-success' : 'btn-danger '  "
-							th:onclick="deshabilitarProduc([[${producto.id}]], [[${producto.enabled}]])"><span
-								th:text="${producto.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a>
+						<td title="Nombre" th:text="${producto.nombre}"></td>
+						<td title="Descripción" th:text="${producto.descripcion}"></td>
+						<td title="Cantidad" class="text-center" th:text="${producto.cantidad}"></td>
+						<td title="Precio" class="text-center" th:text="${producto.precio}+'€'"></td>
+						<td title="Nombre" class="text-center" th:text="${producto.categoria.nombre}"></td>
+						<td title="Deshabilitar">
+							<a class="btn "	 th:classappend=" ${producto.enabled == false} ? 'btn-success' : 'btn-danger '  " th:onclick="deshabilitarProduc([[${producto.id}]], [[${producto.enabled}]])"><span th:text="${producto.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a>
 						</td>
-						<td class="text-center"><a
-							th:href="@{productos/edit/{id} (id=${producto.id}) }"><h1
-									class="fas fa-edit text-success">&nbsp;</h1></a></td>
-						<td class="text-danger text-center"><a
-							th:onclick="eliminar([[${producto.id}]])"><h1
-									class="fas fa-trash-alt">&nbsp;</h1></a></td>
+						<td title="Editar">
+							<a  th:href="@{productos/edit/{id} (id=${producto.id}) }">	<h1	class="fas fa-edit text-success">&nbsp;</h1></a>
+						</td>
+						<td title="Eliminar">
+							<a th:onclick="eliminar([[${producto.id}]])">	<h1	class="fas fa-trash-alt">&nbsp;</h1></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
+	<!-- /TABLA DE DATOS -->
 	</div>
 	<!-- /.container -->
 

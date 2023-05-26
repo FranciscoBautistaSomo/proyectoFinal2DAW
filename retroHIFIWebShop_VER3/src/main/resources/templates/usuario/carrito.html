@@ -18,6 +18,7 @@
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/tableResponsive.css}" />
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -76,16 +77,17 @@
 			RETRO HI-FI <h3>Carrito</h3>
 		</h1>
 
-		<ol class="breadcrumb">
+		<ol class="breadcrumb my-4">
 			<li class="breadcrumb-item"><a th:href="@{/usuario/home}">Home</a></li>
 			<li class="breadcrumb-item active">Carrito</li>
 		</ol>
+		<input type="hidden" id="searchInput" placeholder="Filtrar por por..." />
 
 		<!-- Blog Post -->
-		<div class="card mb-4">
+		<div class="card">
 			<div class="card-body">
 				<div class="row">
-					<div class="col-lg-9">
+					<div class="col-lg-8">
 						<table class="table">
 							<thead>
 								<tr>
@@ -93,23 +95,24 @@
 									<th scope="col">Precio</th>
 									<th scope="col">Cantidad</th>
 									<th scope="col">Total</th>
-									<th scope="col">Acción</th>
+									<th scope="col">Eliminar</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="dorden:${cart}">									
-									<td th:text="${dorden.nombre}"></td>
-									<td th:text="${dorden.precio}"></td>
-									<td th:text="${dorden.cantidad}"></td>
-									<td th:text="${dorden.total}"></td>
-									<td><a th:href="@{/delete/cart/{id}   (id=${dorden.producto.id}) }" class="btn btn-danger">Quitar</a></td>
+									<td title="Nombre" th:text="${dorden.nombre}"></td>
+									<td title="Precio" th:text="${dorden.precio}"></td>
+									<td title="Cantidad" th:text="${dorden.cantidad}"></td>
+									<td title="Total" th:text="${dorden.total}"></td>
+									<td title="Eliminar"><a th:href="@{/delete/cart/{id}   (id=${dorden.producto.id}) }" class="btn btn-danger">Quitar</a></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<!--  <div class="col-lg-2"></div>-->
 
-					<div class="col-lg-3">
-						<h2 class="card-title">SUBTOTAL</h2>
+					<div class="col-lg-4">
+						<h3 class="card-title">SUBTOTAL</h3>
 
 						<ul class="list-group">
 							<li class="list-group-item"><h5 th:text="${orden.total}"></h5></li>
@@ -148,7 +151,9 @@
 	<!-- Scripts -->
 	<script th:src="@{/vendor/js/skel.min.js}"></script>
 	<script th:src="@{/vendor/js/util.js}"></script>
-	<script th:src="@{/vendor/js/main.js}"></script>	
+	<script th:src="@{/vendor/js/main.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+	<script src="/vendor/js/funciones.js"></script>
 	
 </body>
 

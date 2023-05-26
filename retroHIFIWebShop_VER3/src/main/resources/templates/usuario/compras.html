@@ -17,6 +17,7 @@
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/tableResponsive.css}" />
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -76,16 +77,14 @@
         RETRO HI-FI <h3> Tus Compras</h3>
       </h1>
 
-      <ol class="breadcrumb">
+      <ol class="breadcrumb my-4">
         <li class="breadcrumb-item"><a th:href="@{/usuario/home}">Home</a></li>
         <li class="breadcrumb-item active">Compras</li>
       </ol>
+      <input type="hidden" id="searchInput" placeholder="Filtrar por por..." />
 
       <!-- Blog Post -->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
-           <div class="col-lg-12">
+       <div >
             <table class="table">
               <thead class="table-info">
                 <tr>
@@ -97,17 +96,21 @@
               </thead>
               <tbody>
                 <tr th:each="orden: ${ordenes}">
-                  <td th:text="${orden.numero}"></td>
-                  <td th:text="${orden.fechaCreacion}" ></td>
-                  <td th:text="${orden.total}" ></td>
-                  <td><a th:href="@{/usuario/detalle/{id} (id=${orden.id}) }" class="btn btn-success">Ver Detalle</a></td>
+                  <td title="Nº Orden" th:text="${orden.numero}"></td>
+                  <td title="Fecha creación" th:text="${orden.fechaCreacion}" ></td>
+                  <td title="Total" th:text="${orden.total}" ></td>
+                  <td title="Detalles"><a th:href="@{/usuario/detalle/{id} (id=${orden.id}) }" class="btn btn-success">Ver Detalle</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
+      <!--<div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+          
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
   <!-- /.container -->
 
@@ -122,6 +125,8 @@
 	<script th:src="@{/vendor/js/skel.min.js}"></script>
 	<script th:src="@{/vendor/js/util.js}"></script>
 	<script th:src="@{/vendor/js/main.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+	<script src="/vendor/js/funciones.js"></script>
 	
 </body>
 

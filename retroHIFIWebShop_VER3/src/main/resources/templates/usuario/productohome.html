@@ -18,7 +18,8 @@
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
+	rel='stylesheet'>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -30,55 +31,68 @@
 <body>
 
 	<!-- Navigation -->
-		
+
 	<!--  <div th:switch="${session.idusuario}">
 		<div th:include="administrador/template_admin.html::header" th:case ="${ 1 }" ></div>
 		<div th:include="usuario/template_usuario.html::header"  th:case ="${ null}"></div>
 		<div th:include="usuario/template_usuario.html::header-user"  th:case=" * " ></div>
 	</div>-->
-	
+
 	<header id="header">
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
-				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
-				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
-				<a th:href="@{/productos/audio}">Audio</a>
-				<a th:href="@{/productos/video}">Video</a>
-				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="45em"/></a>	
-				<!-- MENU USUARIO--> 
+				<a th:href="@{/usuario/home}"
+					sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a> <a
+					th:href="@{/administrador}"
+					sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a> <a
+					th:href="@{/productos/audio}">Audio</a> <a
+					th:href="@{/productos/video}">Video</a> <a
+					th:href="@{/productos/segMano}">Segunda Mano</a> <a
+					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
+					src="../static/assets/img/entrar.png"
+					th:src="@{/assets/img/entrar.png}" height="35em" /></a>
+				<!-- MENU USUARIO-->
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
+					<a href="#" role="button" aria-haspopup="true"
+						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
+						src="../static/assets/img/entrar.png"
+						th:src="@{/assets/img/usuario.png}" height="35em" /></a>
 					<div class="dropdown-content">
-						<a th:href="@{/usuario/perfil}">Perfil</a>
-						<a th:href="@{/usuario/compras}">Compras</a>
-						<a th:href="@{/getCart}">Carrito</a>
-						<a th:href="@{/usuario/cerrar}">Salir</a>
+						<a th:href="@{/usuario/perfil}">Perfil</a> <a
+							th:href="@{/usuario/compras}">Compras</a> <a
+							th:href="@{/getCart}">Carrito</a> <a th:href="@{/usuario/cerrar}">Salir</a>
 					</div>
 				</div>
-				<!-- MENU ADMINISTRADOR--> 
+				<!-- MENU ADMINISTRADOR-->
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+					<a href="#" role="button" aria-haspopup="true"
+						aria-expanded="false"
+						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img
+						src="../static/assets/img/entrar.png"
+						th:src="@{/assets/img/admin.png}" height="30em" /></a>
 					<div class="dropdown-content">
-						<a th:href="@{/productos}">Productos</a>
-						<a th:href="@{/administrador/usuarios}">Usuarios</a>
-						<a th:href="@{/administrador/ordenes}">Ordenes</a>
-						<a th:href="@{/usuario/cerrar}">Salir</a>
+						<a th:href="@{/productos}">Productos</a> <a
+							th:href="@{/administrador/usuarios}">Usuarios</a> <a
+							th:href="@{/administrador/ordenes}">Ordenes</a> <a
+							th:href="@{/usuario/cerrar}">Salir</a>
 					</div>
-				</div>				
-			</nav>			
+				</div>
+			</nav>
 		</div>
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-	
-	
+
+
 	<!-- Page Content -->
-	<div class="container">		
-		
-		 <!-- Page Heading/Breadcrumbs -->
+	<div class="container">
+
+		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			RETRO HI-FI <h3>Detalles Producto</he>
+			RETRO HI-FI
+			<h3>
+				Detalles Producto
+				</he>
 		</h1>
 
 		<ol class="breadcrumb">
@@ -102,19 +116,28 @@
 
 							<ul class="list-group">
 								<li class="list-group-item"><h3
-										th:text=" 'Precio: '+ ${producto.precio} + ' €'"></h3></li>
+										th:text="${producto.precio} + ' €'"></h3></li>
 								<li class="list-group-item">
 									<p th:text=" 'Descripción: '+ ${producto.descripcion} "></p>
+								</li>									
+								<li class="list-group-item">
+									<h3>Cantidad:</h3>
+									<div class="input-group mb-3">									
+										<div class="row">
+											<div class="col-sm"><button type="button" class="btn btn-secondary" onclick="disminuir()" style="width:3em;">-</button></div>
+											<div class="col-sm"><input type="text" id="cantidad" name="cantidad" value="1"  onchange="comprobar()"></div>
+											<div class="col-sm"><button type="button" class="btn btn-info" onclick="aumentar()" style="width:3em;">+</button></div>
+										</div>
+									</div> <!--  <h6>	Cantidad: <input type="number" id="cantidad" name="cantidad"
+											autocomplete="off" min="1" max="5" value="1"></h6>-->
 								</li>
-								<li class="list-group-item"><h6>
-										Cantidad: <input type="number" id="cantidad" name="cantidad"
-											autocomplete="off" min="1" max="5" value="1">
-									</h6></li>
 							</ul>
+							<input type="hidden" th:value="${producto.cantidad}" id="stock">
 
-							<!-- <div th:text=" ' Tipo: '+${session.idusuario}"></div> --> 
-							<button type="submit" class=""   th:classappend=" ${session.idusuario > 0} ? 'btn-success' : 'disabled '  ">Añadir al
-								carrito</button>
+							<!-- <div th:text=" ' Tipo: '+${session.idusuario}"></div> -->
+							<button type="submit" class="mt-3"
+								th:classappend=" ${session.idusuario > 0} ? 'btn-success' : 'disabled '  ">Añadir
+								al carrito</button>							
 						</form>
 					</div>
 				</div>
@@ -127,20 +150,23 @@
 
 	<!-- Footer 
 	<div th:include="usuario/template_usuario.html::footer"></div>-->
-	
+
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner">
-					<h2>CONTACTO</h2>
-					<ul class="actions">
-						<li><span class='bx bxs-phone'></span> <a href="#">(000) 000-0000</a></li>
-						<li><span class='bx bxs-envelope'></span> <a href="#">info@retrohifi.es</a></li>
-						<li><span class='bx bx-world'></span> C. Frederick Terman, 3, 29590 Málaga</li>
-					</ul>
-				</div>
-				<div class="copyright">
-					RETRO HI-FI Diseñado y desarrollado por  Francisco Alberto Bautista Somosierra 2ºDAW</a>.
-				</div>
+			<h2>CONTACTO</h2>
+			<ul class="actions">
+				<li><span class='bx bxs-phone'></span> <a href="#">(000)
+						000-0000</a></li>
+				<li><span class='bx bxs-envelope'></span> <a href="#">info@retrohifi.es</a></li>
+				<li><span class='bx bx-world'></span> C. Frederick Terman, 3,
+					29590 Málaga</li>
+			</ul>
+		</div>
+		<div class="copyright">
+			RETRO HI-FI Diseñado y desarrollado por Francisco Alberto Bautista
+			Somosierra 2ºDAW</a>.
+		</div>
 	</section>
 
 	<!-- Bootstrap core JavaScript -->
@@ -150,7 +176,12 @@
 	<script th:src="@{/vendor/js/skel.min.js}"></script>
 	<script th:src="@{/vendor/js/util.js}"></script>
 	<script th:src="@{/vendor/js/main.js}"></script>
-
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="/vendor/js/funciones.js"></script>
+	<script src="/vendor/js/masmenos.js"></script>
 </body>
 
 </html>

@@ -28,8 +28,7 @@
 
 <body>
 
-	<!-- Navigation 
-   <div th:include="administrador/template_admin.html::header" ></div>-->
+	<!-- Navigation-->
 
 	<header id="header">
 		<div class="inner">
@@ -40,7 +39,7 @@
 					th:href="@{/productos/segMano}">Segunda Mano</a> <a
 					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
 					src="../static/assets/img/entrar.png"
-					th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+					th:src="@{/assets/img/entrar.png}" height="35em" /></a>
 				<!-- MENU USUARIO-->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
@@ -59,7 +58,7 @@
 						aria-expanded="false"
 						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/admin.png}" height="30em" /></a>
+						th:src="@{/assets/img/admin.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a
 							th:href="@{/administrador/usuarios}">Usuarios</a> <a
@@ -72,81 +71,96 @@
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
+	<!-- Banner -->
+	<section id="banner" style="background-image : url('../assets/img/infographic7.jpg');">
+		<div class="inner">
+			<div id="blur">
+				<h1> ADMINISTRACION</h1>
+				<h3>Listado de Productos</h3>
+			</div>
+		</div>
+	</section>
 
 	<!-- Page Content -->
 	<div class="container">
-
-
-		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">
-			Spring eCommerce
-			<h3>Productos</h3>
-		</h1>
-
+		<!-- Breadcrumbs -->
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
 			<li class="breadcrumb-item active">Ver Productos</li>
 		</ol>
 
-		<a class="btn btn-primary" th:href="@{/productos/create}"> Crear
-			Producto</a>
-		<h2>Productos</h2>
+		<div class="row">
+			<div class="col-sm-6 align-middle">
+				<h2>Productos</h2>
+			</div>
+			<div class="col-sm-6 d-flex justify-content-end">
+				<span ><a  class="btn btn-warning" th:href="@{/productos/create}"> Crear
+					Producto</a></span>
+			</div>
+		</div>
+		
+		
+		<!-- BUSCADOR -->
 		<div class="row py-3">
 			<div class="col-sm-6">
-				<input type="text" id="searchInput" placeholder="Filtrar por por..." />
+				<input type="text" id="searchInput" placeholder="Filtrar por. . ." />
 			</div>
 			<div class="col-sm-6">
 				<div class="form-check-inline">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" value="0" id="check1" name="filtro" checked>Nombre
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" value="0" id="check1" name="filtro"
+						checked>Nombre
 					</label>
 				</div>
 				<div class="form-check-inline">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" value="3" id="check2" name="filtro" >Precio
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" value="3" id="check2" name="filtro">Precio
 					</label>
 				</div>
 				<div class="form-check-inline">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" value="4" id="check3" name="filtro">Categoria
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" value="4" id="check3" name="filtro">Categoria
 					</label>
 				</div>
 			</div>
 		</div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col" class="text-center">Nombre</th>
-					<th scope="col" class="text-center">Descripción</th>
-					<th scope="col" class="text-center">Inventario</th>
-					<th scope="col" class="text-center">Precio</th>
-					<th scope="col" class="text-center">Categoría</th>
-					<th scope="col" class="text-center">Estado</th>
-					<th scope="col" class="text-center">Edición</th>
-					<th scope="col" class="text-center">Eliminar</th>
-				</tr>
-			</thead>
-			<tbody id="names">
-				<tr th:each="producto:${productos}">
-					<td th:text="${producto.nombre}"></td>
-					<td th:text="${producto.descripcion}"></td>
-					<td class="text-center" th:text="${producto.cantidad}"></td>
-					<td class="text-center" th:text="${producto.precio}"></td>
-					<td class="text-center" th:text="${producto.categoria.nombre}"></td>
-					<td><a class="btn "
-						th:classappend=" ${producto.enabled == false} ? 'btn-success' : 'btn-danger '  "
-						th:onclick="deshabilitarProduc([[${producto.id}]], [[${producto.enabled}]])"><span
-							th:text="${producto.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a>
-					</td>
-					<td class="text-center"><a
-						th:href="@{productos/edit/{id} (id=${producto.id}) }"
-						class="text-success"><span class="fas fa-edit">&nbsp;</a></td>
-					<td class="text-danger text-center"><a
-						th:onclick="eliminar([[${producto.id}]])"><span
-							class="fas fa-trash-alt">&nbsp;</a></td>
-				</tr>
-			</tbody>
-		</table>
+		<!-- /BUSCADOR -->
+		<div class="table-responsive">
+			<table class="table table-hover table-sm">
+				<thead class="table-info">
+					<tr>
+						<th scope="col" class="text-center">Nombre</th>
+						<th scope="col" class="text-center">Descripción</th>
+						<th scope="col" class="text-center">Inventario</th>
+						<th scope="col" class="text-center">Precio</th>
+						<th scope="col" class="text-center">Categoría</th>
+						<th scope="col" class="text-center">Estado</th>
+						<th scope="col" class="text-center">Edición</th>
+						<th scope="col" class="text-center">Eliminar</th>
+					</tr>
+				</thead>
+				<tbody id="names">
+					<tr th:each="producto:${productos}">
+						<td th:text="${producto.nombre}"></td>
+						<td th:text="${producto.descripcion}"></td>
+						<td class="text-center" th:text="${producto.cantidad}"></td>
+						<td class="text-center" th:text="${producto.precio}+'€'"></td>
+						<td class="text-center" th:text="${producto.categoria.nombre}"></td>
+						<td><a class="btn "
+							th:classappend=" ${producto.enabled == false} ? 'btn-success' : 'btn-danger '  "
+							th:onclick="deshabilitarProduc([[${producto.id}]], [[${producto.enabled}]])"><span
+								th:text="${producto.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a>
+						</td>
+						<td class="text-center"><a
+							th:href="@{productos/edit/{id} (id=${producto.id}) }"><h1
+									class="fas fa-edit text-success">&nbsp;</h1></a></td>
+						<td class="text-danger text-center"><a
+							th:onclick="eliminar([[${producto.id}]])"><h1
+									class="fas fa-trash-alt">&nbsp;</h1></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 	<!-- /.container -->

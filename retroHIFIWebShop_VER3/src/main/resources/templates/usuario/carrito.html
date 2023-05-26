@@ -41,14 +41,14 @@
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
 				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
-				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/usuario/home}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
 				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="30em"/></a>	
+				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="35em"/></a>	
 				<!-- MENU USUARIO--> 
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="30em"/></a>
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a>
 						<a th:href="@{/usuario/compras}">Compras</a>
@@ -58,7 +58,7 @@
 				</div>
 				<!-- MENU ADMINISTRADOR--> 
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a>
 						<a th:href="@{/administrador/usuarios}">Usuarios</a>
@@ -113,7 +113,7 @@
 
 						<ul class="list-group">
 							<li class="list-group-item"><h5 th:text="${orden.total}"></h5></li>
-							<a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
+							<a th:href="@{/order}" class="btn btn-dark">Ordenar</a>
 						</ul>
 					</div>
 

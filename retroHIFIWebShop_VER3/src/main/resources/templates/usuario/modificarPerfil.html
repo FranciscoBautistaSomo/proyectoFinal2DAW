@@ -48,13 +48,13 @@
 					th:href="@{/productos/segMano}">Segunda Mano</a> <a
 					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
 					src="../static/assets/img/entrar.png"
-					th:src="@{/assets/img/entrar.png}" height="40em" /></a>
+					th:src="@{/assets/img/entrar.png}" height="35em" /></a>
 				<!-- USER MENU -->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/usuario.png}" height="45em" /></a>
+						th:src="@{/assets/img/usuario.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a> <a
 							th:href="@{/usuario/compras}">Compras</a> <a
@@ -67,7 +67,7 @@
 						aria-expanded="false"
 						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/admin.png}" height="30em" /></a>
+						th:src="@{/assets/img/admin.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a
 							th:href="@{/administrador/usuarios}">Usuarios</a> <a

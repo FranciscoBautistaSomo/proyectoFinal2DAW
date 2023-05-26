@@ -39,13 +39,13 @@
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
 				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" 	th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" 	th:src="@{/assets/img/entrar.png}" height="35em" /></a>
 				<!-- MENU USUARIO-->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/usuario.png}" height="45em" /></a>
+						th:src="@{/assets/img/usuario.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a> <a
 							th:href="@{/usuario/compras}">Compras</a> <a
@@ -56,7 +56,7 @@
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false"
-						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a
 							th:href="@{/administrador/usuarios}">Usuarios</a> <a
@@ -88,6 +88,30 @@
 			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
 			<li class="breadcrumb-item active">Ordenes</li>
 		</ol>
+		<!-- BUSCADOR -->
+		<div class="row py-3">
+			<div class="col-sm-6">
+				<input type="text" id="searchInput" placeholder="Filtrar por por..." />
+			</div>
+			<div class="col-sm-6">
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="0" id="check1" name="filtro" checked>Numero Orden
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="1" id="check2" name="filtro" >Fecha
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="2" id="check3" name="filtro">Valor
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- /BUSCADOR -->
 
 		<!-- Blog Post -->
 		<div class="card mb-4">
@@ -103,7 +127,7 @@
 									<th scope="col">Acción</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="names">
 								<tr th:each="orden:${ordenes}">
 									<td th:text="${orden.numero}"></td>
 									<td th:text="${orden.fechaCreacion}"></td>
@@ -130,6 +154,7 @@
 	<script th:src="@{/vendor/js/skel.min.js}"></script>
 	<script th:src="@{/vendor/js/util.js}"></script>
 	<script th:src="@{/vendor/js/main.js}"></script>
+	<script src="/vendor/js/funciones.js"></script>
 </body>
 
 </html>

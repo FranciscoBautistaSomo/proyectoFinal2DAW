@@ -26,10 +26,7 @@
 
 <body>
 
-  <!-- Navigation 
-   <div th:include="administrador/template_admin.html::header" ></div>-->
-
-<header id="header">
+ <header id="header">
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
@@ -64,14 +61,21 @@
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
+	<!-- Banner -->
+	<section id="banner" style="background-image : url('../assets/img/infographic7.jpg');">
+		<div class="inner">
+			<div id="blur">
+				<h1> ADMINISTRACION</h1>
+				<h3>Introducir nuevos Productos</h3>
+			</div>
+		</div>
+	</section>
 
 <!-- Page Content -->
 <div class="container">
 
 
   <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3"> RETRO HI-FI <h3>Crear Producto</h3></h1>
-
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
     <li class="breadcrumb-item"><a th:href="@{/productos}">Productos</a></li>

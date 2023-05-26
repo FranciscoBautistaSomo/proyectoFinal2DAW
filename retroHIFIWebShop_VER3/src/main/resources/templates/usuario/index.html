@@ -23,9 +23,9 @@
 				<a href="#one">Sobre nosotros</a>
 				<a href="#two">Productos</a> <a href="#footer">Contacto</a>
 				<a th:href="@{/usuario/home}">Tienda</a>
-				<a th:href="@{/usuario/registro}" sec:authorize="isAnonymous()"><img id="register" src="../static/assets/img/sign-in.png" th:src="@{/assets/img/sign-in.png}" height="55em"/></a>
-				<a class="navbar-brand" th:href="@{/usuario/cerrar}"  sec:authorize="isAuthenticated()"><img src="../static/assets/img/salir.png"  th:src="@{/assets/img/salir.png}" height="45em"/></a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img id="login" src="../static/assets/img/login.png" th:src="@{/assets/img/login.png}" height="55em"/></a>
+				<a th:href="@{/usuario/registro}" sec:authorize="isAnonymous()"><img id="register" src="../static/assets/img/sign-in.png" th:src="@{/assets/img/sign-in.png}" height="40em"/></a>
+				<a class="navbar-brand" th:href="@{/usuario/cerrar}"  sec:authorize="isAuthenticated()"><img src="../static/assets/img/salir.png"  th:src="@{/assets/img/salir.png}" height="40em"/></a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img id="login" src="../static/assets/img/login.png" th:src="@{/assets/img/login.png}" height="40em"/></a>
 			</nav>
 		</div>
 	</header>

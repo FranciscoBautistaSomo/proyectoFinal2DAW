@@ -43,10 +43,10 @@
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
 				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
+				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="35em"/></a>	
 				<!-- USER MENU --> 
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a>
 						<a th:href="@{/usuario/compras}">Compras</a>
@@ -56,7 +56,7 @@
 				</div>
 				<!--  ADMIN MENU--> 
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a>
 						<a th:href="@{/administrador/usuarios}">Usuarios</a>
@@ -88,20 +88,36 @@
           <div class="row">
            <div class="col-lg-9">
              <div class="card-body">
-              <h5 class="card-title">
-                DATOS ORDEN
-              </h5>              
-             <h6 th:text=" 'Nombre: '+ ${usuario.nombre}"> </h6>
-             <h6 th:text=" 'Apellidos: '+ ${usuario.apellidos}"> </h6> 
-              <h6 th:text="'Correo: '+  ${usuario.email}"></h6>
-              <h6 th:text="'Dirección: '+ ${usuario.direccion}" ></h6>
-
+             	<h5 class="card-title">Datos orden</h5>
+				<form>
+					<div class="row ">
+						<div class="col-md-6">
+							<span class="help-block text-muted small-font">Nombre</span>
+							<input type="text" class="form-control" 	placeholder="Nombre usuario" th:value="${usuario.nombre}" disabled />
+						</div>
+						<div class="col-md-6">
+							<span class="help-block text-muted small-font">Apellidos</span>
+							<input type="text" class="form-control" 	placeholder="Apellidos usuario" th:value="${usuario.apellidos}" disabled/>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-md-6">
+							<span class="help-block text-muted small-font">Correo</span>
+							<input type="email" class="form-control" placeholder="Email" th:value="${usuario.email}" disabled/>
+						</div>
+						<div class="col-md-6">
+							<span class="help-block text-muted small-font">Dirección</span>
+							<input type="text" class="form-control" placeholder="Dirección" th:value="${usuario.direccion}" disabled/>
+						</div>										
+					</div>
+				</form>
+			
               <h5 class="card-title">
                 PRODUCTOS
               </h5>
               <div class="alert alert-light" role="alert">
                 <table class="table">
-                  <thead>
+                  <thead class="table-info">
                     <tr>
                       <th scope="col">Producto</th>
                       <th scope="col">Precio</th>
@@ -111,10 +127,10 @@
                   </thead>
                   <tbody>
                     <tr th:each="dtorden:${cart}">
-                     <td th:text="${dtorden.nombre}"></td>
-                     <td th:text="${dtorden.precio}"></td>
-                     <td th:text="${dtorden.cantidad}"></td>
-                     <td th:text="${dtorden.total}"></td>
+	                     <td class="text-center" th:text="${dtorden.nombre}"></td>
+	                     <td th:text="${dtorden.precio}+ ' €'"></td>
+	                     <td th:text="${dtorden.cantidad}"></td>
+	                     <td th:text="${dtorden.total}+ ' €'"></td>
                    </tr>
                  </tbody>
                </table>
@@ -124,7 +140,7 @@
          <div class="col-lg-3">
           <h2 class="card-title">Resumen Orden</h2>
           <ul class="list-group">
-            <li class="list-group-item"><h5 th:text=" 'Total: '+ ${orden.total} "> </h5></li>
+            <li class="list-group-item"><h5 th:text=" 'Total: '+ ${orden.total}+ ' €' "> </h5></li>
             <a th:href="@{saveOrder}" class="btn btn-dark">Comprar</a>
           </ul>
         </div>

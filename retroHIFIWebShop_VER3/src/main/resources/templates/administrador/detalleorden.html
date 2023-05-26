@@ -39,7 +39,7 @@
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
 				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="35em" /></a>
 				<!-- USER MENU -->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
@@ -56,7 +56,7 @@
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false"
-						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a
 							th:href="@{/administrador/usuarios}">Usuarios</a> <a
@@ -90,34 +90,83 @@
         <li class="breadcrumb-item"><a th:href="@{/administrador/ordenes}">Ordenes</a></li>
         <li class="breadcrumb-item active">Detalle de Compra</li>
       </ol>
-
-      <!-- Blog Post -->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
-           <div class="col-lg-12">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Producto</th>                  
-                  <th scope="col">Precio</th>
-                  <th scope="col">Total</th>                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="detalle:${detalles}">
-                  <td th:text="${detalle.cantidad}"></td>
-                  <td th:text="${detalle.nombre}"></td>
-                  <td th:text="${detalle.precio}"></td>
-                  <td th:text="${detalle.total}"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+      
+    <div>  
+	<h5 class="card-header">Desglose orden</h5>
+			<div class="card-body">
+				<h5 class="card-title">Datos orden</h5>
+				<form>
+					<div class="row ">
+						<div class="col-md-2">
+							<span class="help-block text-muted small-font">Nº  orden</span>
+							<input type="text" class="form-control" 	placeholder="Numero de orden" th:value="${orden.numero}" disabled />
+						</div>
+						<div class="col-md-3">
+							<span class="help-block text-muted small-font">Username:</span>
+							<input type="text" class="form-control" 	placeholder="Numero de orden" th:value="${usuario.username}" disabled />
+						</div>
+						<div class="col-md-3">
+							<span class="help-block text-muted small-font">Nombre:</span>
+							<input type="text" class="form-control" 	placeholder="Numero de orden" th:value="${usuario.nombre}" disabled />
+						</div>
+						<div class="col-md-4">
+							<span class="help-block text-muted small-font">Apellidos:</span>
+							<input type="text" class="form-control" 	placeholder="Numero de orden" th:value="${usuario.apellidos}" disabled />
+						</div>						
+					</div>
+					<div class="row ">
+						<div class="col-md-3">
+							<span class="help-block text-muted small-font">Correo:</span>
+							<input type="text" class="form-control" 	placeholder="Numero de orden" th:value="${usuario.email}" disabled />
+						</div>	
+						<div class="col-md-6">
+							<span class="help-block text-muted small-font">Direccion de entrega</span>
+							<input type="text" class="form-control" 	placeholder="Direccion de entrega" th:value="${usuario.direccion}" disabled/>
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<span class="help-block text-muted small-font"> Fecha de pedido</span>
+							<input type="text" class="form-control" placeholder="Fecha pedido" th:value="${orden.fechaCreacion}" disabled/>
+						</div>
+						<!--  <div class="col-md-3 col-sm-3 col-xs-3">
+							<span class="help-block text-muted small-font"> Fecha de entrega</span>
+							<input type="text" class="form-control" placeholder="Fecha entrega" th:value="${orden.fechaRecibida}" disabled/>
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<span class="help-block text-muted small-font"> Total</span> 
+							<input	type="text" class="form-control" placeholder="Total" th:value="${orden.total}+ ' €'" disabled/>
+						</div>-->						
+					</div>
+				</form>
+			</div>		
+			
+	      <!-- Blog Post -->
+	      <div class="card mb-4">
+	        <div class="card-body">
+	          <div class="row">
+	           <div class="col-lg-12">
+	            <table class="table">
+	              <thead>
+	                <tr>
+	                  <th scope="col">Cantidad</th>
+	                  <th scope="col">Producto</th>                  
+	                  <th scope="col">Precio</th>
+	                  <th scope="col">Total</th>                  
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <tr th:each="detalle:${detalles}">
+	                  <td th:text="${detalle.cantidad}"></td>
+	                  <td th:text="${detalle.nombre}"></td>
+	                  <td th:text="${detalle.precio}"></td>
+	                  <td th:text="${detalle.total}"></td>
+	                </tr>
+	              </tbody>
+	            </table>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
   </div>
   <!-- /.container -->
 

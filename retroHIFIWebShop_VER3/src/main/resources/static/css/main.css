@@ -14,7 +14,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
 	b, u, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
-	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	table, caption, tbody, tfoot, thead, tr, th, article, aside, canvas,
 	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
 	output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
@@ -98,7 +98,7 @@ p {
 }
 
 .container {
-	width: 80em;
+	width: 100em;
 }
 
 @media screen and (max-width: 1680px) {
@@ -1309,6 +1309,7 @@ body, input, select, textarea {
 	font-size: 15pt;
 	font-weight: 300;
 	line-height: 2;
+	text-align: rigth;
 }
 
 @media screen and (max-width: 1680px) {
@@ -1384,6 +1385,7 @@ h1 {
 
 h2 {
 	font-size: 1.75em;
+	color: #8fbdd3;
 }
 
 h3 {
@@ -1490,7 +1492,7 @@ strong, b {
 	color: #e5474b;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h3, h4, h5, h6 {
 	color: #e5474b;
 }
 
@@ -1660,7 +1662,7 @@ input[type="submit"].special:active, input[type="reset"].special:active,
 
 #header .login{
 	cursor: pointer;	
-	font-size: 1.8em;
+	font-size: 1.9em;
 	font-weight: 700;
 	height: 3em;
 	line-height: 1.10em;
@@ -1750,7 +1752,11 @@ input[type="text"], input[type="password"], input[type="email"], select,
 	outline: 0;
 	padding: 0 1em;
 	text-decoration: none;
-	width: 100%;
+	width: 100%;	
+}
+
+#cantidad{
+	text-align: end;
 }
 
 input[type="text"]:invalid, input[type="password"]:invalid, input[type="email"]:invalid,
@@ -2165,6 +2171,10 @@ section .inner {
 	margin: 0 auto;
 }
 
+#one{
+	background-color: #ede6db;
+}
+
 @media screen and (max-width: 480px) {
 	section .inner {
 		max-width: 90%;
@@ -2214,14 +2224,15 @@ table tbody tr {
 }
 
 table td {
-	padding: 0.75em 0.75em;
+	padding: 0.7em 0.7em;
+	text-align: center;
 }
 
 table th {
-	font-size: 0.9em;
+	font-size: 0.8em;
 	font-weight: 700;
 	padding: 0 0.75em 0.75em 0.75em;
-	text-align: left;
+	text-align: center;
 }
 
 table thead {
@@ -3034,7 +3045,7 @@ body, input, select, textarea {
 	text-align: left;
 	position: relative;
 	z-index: 9999;
-	margin-bottom: 2em;
+	/*margin-bottom: 0em;*/
 }
 
 #banner input, #banner select, #banner textarea {
@@ -3402,7 +3413,11 @@ body.is-loading #banner:after {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #ede6db;
+}
+
+.card h6{
+	text-align: left;
 }
 
 .pnombre{
@@ -3452,6 +3467,7 @@ body.is-loading #banner:after {
   pointer-events: none;
   cursor: default;
   opacity: 0.6;
+  color: grey;
 }
 /***************** PAGINATION *****************/
 
@@ -3576,7 +3592,7 @@ body.is-loading #banner:after {
 		/*background-image : url('../assets/img/bg.jpg');
 		background-position:  0px -10em;*/
 		padding: 6em 0 4em 0;
-		background: #25a2c3;
+		background: #a2b38b;
 		text-align: center;
 		color: #c8e7f0;
 	}

@@ -39,11 +39,11 @@
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
 				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" 	th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" 	th:src="@{/assets/img/entrar.png}" height="35em" /></a>
 				<!-- MENU USUARIO-->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
-						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img 	src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em" /></a>
+						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img 	src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a>
 						<a th:href="@{/usuario/compras}">Compras</a>
@@ -54,7 +54,7 @@
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false"
-						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a>
 						<a th:href="@{/administrador/usuarios}">Usuarios</a>
@@ -82,40 +82,80 @@
 <!-- Page Content -->
 <div class="container">
 
-
   <!-- Breadcrumbs -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
     <li class="breadcrumb-item active">Ver Usuarios</li>
   </ol>
+  
+  
+  
   <h2>Usuarios</h2>
-  <table class="table">
-    <thead>
-      <tr>
-      	<th scope="col" class="text-center">Username</th>
-        <th scope="col" class="text-center">Nombre</th>
-        <th scope="col" class="text-center">Apellidos</th>
-        <th scope="col" class="text-center">Email</th>
-        <th scope="col" class="text-center">Dirección</th>
-         <th scope="col" class="text-center">Telefono</th>
-         <!-- <th class="text-center" scope="col" class="text-center">Estado</th>-->
-         <th scope="col" class="text-center">Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="usuario:${usuarios}">
-       <td th:text="${usuario.username}"></td>
-        <td th:text="${usuario.nombre}"></td>
-        <td th:text="${usuario.apellidos}"></td>
-        <td class="text-center" th:text="${usuario.email}"></td>
-        <td th:text="${usuario.direccion}"></td>
-        <td class="text-center" th:text="${usuario.telefono}"></td>
-        <!-- <td th:text="${usuario.enabled}"></td> -->
-        <td class="text-center"><a  class="btn " th:classappend=" ${usuario.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarUser([[${usuario.id}]], [[${usuario.enabled}]])"><span th:text="${usuario.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
-      </tr>       
-    </tbody>
-  </table>
-
+  <!-- Filtro -->
+  <div class="row py-3">
+			<div class="col-sm-3">
+				<input type="text" id="searchInput" placeholder="Filtrar por por..." />
+			</div>
+			<div class="col-sm-9">
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="0" id="check1" name="filtro" checked>Username
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="1" id="check2" name="filtro" >Nombre
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="2" id="check3" name="filtro">Apellidos
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="3" id="check4" name="filtro">Email
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="4" id="check5" name="filtro">Dirección
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" value="5" id="check6" name="filtro">Teléfono
+					</label>
+				</div>
+			</div>
+	</div>
+	<!-- /Filtro -->
+	  <table class="table table-hover table-sm table-responsive">
+	    <thead class="table-info">
+	      <tr>
+	      	<th scope="col" class="text-center">Username</th>
+	        <th scope="col" class="text-center">Nombre</th>
+	        <th scope="col" class="text-center">Apellidos</th>
+	        <th scope="col" class="text-center">Email</th>
+	        <th scope="col" class="text-center">Dirección</th>
+	         <th scope="col" class="text-center">Telefono</th>
+	         <!-- <th class="text-center" scope="col" class="text-center">Estado</th>-->
+	         <th scope="col" class="text-center">Acción</th>
+	      </tr>
+	    </thead>
+	    <tbody id="names">
+	      <tr th:each="usuario:${usuarios}">
+	       <td th:text="${usuario.username}"></td>
+	        <td th:text="${usuario.nombre}"></td>
+	        <td th:text="${usuario.apellidos}"></td>
+	        <td class="text-center" th:text="${usuario.email}"></td>
+	        <td th:text="${usuario.direccion}"></td>
+	        <td class="text-center" th:text="${usuario.telefono}"></td>
+	        <!-- <td th:text="${usuario.enabled}"></td> -->
+	        <td class="text-center"><a  class="btn" th:classappend=" ${usuario.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarUser([[${usuario.id}]], [[${usuario.enabled}]])"><span th:text="${usuario.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
+	      </tr>       
+	    </tbody>
+	  </table>
 </div>
 <!-- /.container -->
 

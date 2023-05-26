@@ -41,10 +41,10 @@
 				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
-				<a th:href="@{/productos/segMano}">Segunda Mano</a> <a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="30em"/></a>	
+				<a th:href="@{/productos/segMano}">Segunda Mano</a> <a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="35em"/></a>	
 				<!-- MENU USUARIO--> 
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="30em"/></a>
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a>
 						<a th:href="@{/usuario/compras}">Compras</a>
@@ -54,7 +54,7 @@
 				</div>
 				<!-- MENU ADMINISTRADOR--> 
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a>
 						<a th:href="@{/administrador/usuarios}">Usuarios</a>
@@ -87,7 +87,7 @@
           <div class="row">
            <div class="col-lg-12">
             <table class="table">
-              <thead>
+              <thead class="table-info">
                 <tr>
                   <th scope="col">No. de Orden</th>
                   <th scope="col">Fecha</th>

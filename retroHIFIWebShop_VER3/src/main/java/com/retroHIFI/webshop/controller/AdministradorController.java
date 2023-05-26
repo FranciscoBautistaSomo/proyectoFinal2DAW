@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.retroHIFI.webshop.model.Orden;
 import com.retroHIFI.webshop.model.Producto;
+import com.retroHIFI.webshop.model.Usuario;
 import com.retroHIFI.webshop.service.IOrdenService;
 import com.retroHIFI.webshop.service.IProductoService;
 import com.retroHIFI.webshop.service.IUsuarioService;
@@ -31,6 +34,8 @@ public class AdministradorController {
 
 	@Autowired
 	private IOrdenService ordenService;
+	
+	private final Logger logger= LoggerFactory.getLogger(UsuarioController.class);
 
 	@GetMapping("")
 	public String hom(Model model, String busqueda, @RequestParam(defaultValue = "0") int page,
@@ -75,9 +80,13 @@ public class AdministradorController {
 
 	@GetMapping("/detalles/{id}")
 	public String detalle(Model model, @PathVariable Integer id) {
-
+		
 		Orden orden = ordenService.findById(id).get();
-
+		Usuario usuario= orden.getUsuario();
+		
+		logger.info("Usuario detalle: {}", usuario);
+		model.addAttribute("usuario",usuario);
+		model.addAttribute("orden",orden);
 		model.addAttribute("detalles", orden.getDetalle());
 
 		return "administrador/detalleorden";

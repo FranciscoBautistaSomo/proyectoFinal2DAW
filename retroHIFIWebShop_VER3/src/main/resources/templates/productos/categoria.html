@@ -24,37 +24,22 @@
 
 <body>
 
-	<!-- Navigation 
-	<div th:switch="${session.idusuario}">
-		<div th:include="administrador/template_admin.html::header" th:case ="${ 1 }" ></div>
-		<div th:include="usuario/template_usuario.html::header"  th:case ="${ null}"></div>
-		<div th:include="usuario/template_usuario.html::header-user"  th:case=" * " ></div>
-	</div>-->
-	<!--  <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">	
-	</div>
-	
-	<div th:include="usuario/template_usuario.html::header-user"  th:unless="${sesion==null}"> </div>-->
-
 	<header id="header">
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</span></a>
 			<nav id="nav">
-				<a th:href="@{/usuario/home}"
-					sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a> <a
-					th:href="@{/administrador}"
-					sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a> <a
-					th:href="@{/productos/audio}">Audio</a> <a
-					th:href="@{/productos/video}">Video</a> <a
-					th:href="@{/productos/segMano}">Segunda Mano</a> <a
-					th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img
-					src="../static/assets/img/entrar.png"
-					th:src="@{/assets/img/entrar.png}" height="45em" /></a>
+				<a th:href="@{/usuario/home}" sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
+				<a th:href="@{/usuario/home}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/productos/audio}">Audio</a>
+				<a th:href="@{/productos/video}">Video</a>
+				<a th:href="@{/productos/segMano}">Segunda Mano</a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png"	th:src="@{/assets/img/entrar.png}" height="35em" />	</a>
 				<!-- MENU USUARIO-->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true"
 						aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/usuario.png}" height="45em" /></a>
+						th:src="@{/assets/img/usuario.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a> <a
 							th:href="@{/usuario/compras}">Compras</a> <a
@@ -67,7 +52,7 @@
 						aria-expanded="false"
 						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img
 						src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/admin.png}" height="30em" /></a>
+						th:src="@{/assets/img/admin.png}" height="35em" /></a>
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a
 							th:href="@{/administrador/usuarios}">Usuarios</a> <a
@@ -101,13 +86,18 @@
 					<img class="imgProduct"
 						th:src="@{../assets/{img} (img=${producto.imagen})} "
 						alt="Producto" style="width: 100%">
-					<h3 th:text="${producto.nombre}"></h3>
-					<h3 th:text="'Precio: '+${producto.precio}+' €'"></h3>
-					<span class="bttn"> <a class=""
+					<h2 th:text="${producto.nombre}"></h2>
+					<h3 th:text="${producto.precio}+' €'"></h3>
+					<span class="bttn" th:classappend=" ${producto.cantidad == 0} ? 'disabled' : ' '  "> <a class=""
 						th:href="@{/productohome/{id}  (id=${producto.id})  }"
 						th:classappend=" ${session.idusuario == null} ? 'disabled' : ' '  ">Ver
 							producto</a>
 					</span>
+					<div style="display:flex; justify-content:center;">
+						<div th:if="${producto.cantidad == 0}" style="margin-top:1em; text-align: center; text-shadow: 2px 2px #D9D919;">
+							<h3 style="color:#FF1CAE;"><i class="fas fa-ban">&nbsp;</i>SIN STOCK&nbsp;<i class="fas fa-ban"></i></h3>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -36,10 +36,10 @@
 				<a href="/">Home</a> <a th:href="@{/productos/audio}">Audio</a> <a
 					th:href="@{/productos/video}">Video</a> <a
 					th:href="@{/productos/segMano}">Segunda Mano</a> <a
-					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
+					th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="35em"/></a>	
 				<!-- USER MENU--> 
 				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
+					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="35em"/></a>
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a>
 						<a th:href="@{/usuario/compras}">Compras</a>
@@ -75,6 +75,7 @@
 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+			<li class="breadcrumb-item"><a th:href="@{/productos}">Productos</a></li>
 			<li class="breadcrumb-item active">Actualizar Producto</li>
 		</ol>
 

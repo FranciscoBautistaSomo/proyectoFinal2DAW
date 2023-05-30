@@ -86,7 +86,7 @@
       <!-- Blog Post -->
        <div >
             <table class="table">
-              <thead class="table-info">
+              <thead>
                 <tr>
                   <th scope="col">No. de Orden</th>
                   <th scope="col">Fecha</th>
@@ -99,7 +99,7 @@
                   <td title="Nº Orden" th:text="${orden.numero}"></td>
                   <td title="Fecha creación" th:text="${orden.fechaCreacion}" ></td>
                   <td title="Total" th:text="${orden.total}" ></td>
-                  <td title="Detalles"><a th:href="@{/usuario/detalle/{id} (id=${orden.id}) }" class="btn btn-success">Ver Detalle</a></td>
+                  <td title="Detalles"><a th:href="@{/usuario/detalle/{id} (id=${orden.id}) }" class="button">Ver Detalle</a></td>
                 </tr>
               </tbody>
             </table>

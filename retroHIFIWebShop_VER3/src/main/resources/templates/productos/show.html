@@ -86,7 +86,7 @@
 	<div class="container">
 		<!-- Breadcrumbs -->
 		<ol class="breadcrumb my-4">
-			<li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+			<li class="breadcrumb-item"><a th:href="@{/usuario/home}">Home</a></li>
 			<li class="breadcrumb-item active">Ver Productos</li>
 		</ol>
 
@@ -155,7 +155,7 @@
 							<a  th:href="@{productos/edit/{id} (id=${producto.id}) }">	<h1	class="fas fa-edit text-success">&nbsp;</h1></a>
 						</td>
 						<td title="Eliminar">
-							<a th:onclick="eliminar([[${producto.id}]])">	<h1	class="fas fa-trash-alt">&nbsp;</h1></a>
+							<a th:onclick="eliminar([[${producto.id}]])"><h1	class="fas fa-trash-alt">&nbsp;</h1></a>
 						</td>
 					</tr>
 				</tbody>

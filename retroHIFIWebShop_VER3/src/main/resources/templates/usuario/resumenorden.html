@@ -17,6 +17,7 @@
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/tableResponsive.css}" />
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -111,11 +112,10 @@
 						</div>										
 					</div>
 				</form>
-			
-              <h5 class="card-title">
-                PRODUCTOS
-              </h5>
-              <div class="alert alert-light" role="alert">
+			<input type="hidden" id="searchInput" placeholder="Filtrar por por..." />	
+			<div class="row">
+				<h5 class="card-title"> PRODUCTOS </h5>
+              <div class="col-12">
                 <table class="table">
                   <thead class="table-info">
                     <tr>
@@ -127,21 +127,22 @@
                   </thead>
                   <tbody>
                     <tr th:each="dtorden:${cart}">
-	                     <td class="text-center" th:text="${dtorden.nombre}"></td>
-	                     <td th:text="${dtorden.precio}+ ' €'"></td>
-	                     <td th:text="${dtorden.cantidad}"></td>
-	                     <td th:text="${dtorden.total}+ ' €'"></td>
+	                     <td  title="Nombre" class="text-center" th:text="${dtorden.nombre}"></td>
+	                     <td  title="Precio" th:text="${dtorden.precio}+ ' €'"></td>
+	                     <td title="Cantidad" th:text="${dtorden.cantidad}"></td>
+	                     <td title="Total" th:text="${dtorden.total}+ ' €'"></td>
                    </tr>
                  </tbody>
                </table>
-             </div>
+             </div>			
+			</div>              
            </div>
          </div>
          <div class="col-lg-3">
           <h2 class="card-title">Resumen Orden</h2>
           <ul class="list-group">
             <li class="list-group-item"><h5 th:text=" 'Total: '+ ${orden.total}+ ' €' "> </h5></li>
-            <a th:href="@{saveOrder}" class="btn btn-dark">Comprar</a>
+            <a th:href="@{saveOrder}" th:onclick="confirm([[${orden.total}]])" class="btn btn-dark my-3">Comprar</a>
           </ul>
         </div>
       </div>
@@ -176,6 +177,9 @@
 	<script th:src="@{/vendor/js/skel.min.js}"></script>
 	<script th:src="@{/vendor/js/util.js}"></script>
 	<script th:src="@{/vendor/js/main.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="vendor/js/funciones.js"></script>
 
 </body>
 

@@ -31,7 +31,7 @@
 			<a href="/" class="logo">RETRO HI-FI</a>
 			<nav id="nav">
 				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
-				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
+				<a th:href="@{/usuario/home}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
 				<a th:href="@{/productos/segMano}">Segunda Mano</a>

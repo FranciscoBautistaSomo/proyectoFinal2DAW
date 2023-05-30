@@ -38,16 +38,19 @@
 
 	<!-- Banner -->
 	<section id="banner">
-		<div class="inner">
-			<div class="logoRetro">
-				<img th:src="@{/assets/img/LOGO_2.svg}" alt="Logo" />
-			</div>
+		<div class="inner">.
+		<div id="blur">
+				<div class="logoRetro">
+					<img th:src="@{/assets/img/LOGO_2.svg}" alt="Logo" />
+				</div>
+		</div>
 			<div id="blur">
 				<h1>La tienda para los amantes del audio-visual que no atienden a modas.</h1>			
-			</div>
+			
 			<ul class="actions">
 				<li><a href="#two" class="button alt">Que ofrecemos</a></li>
 			</ul>
+			</div>
 		</div>
 	</section>
 
@@ -128,7 +131,7 @@
 					<ul class="actions">
 						<li><span class='bx bxs-phone'></span> <a href="#">(000) 000-0000</a></li>
 						<li><span class='bx bxs-envelope'></span> <a href="#">info@retrohifi.es</a></li>
-						<li><span class='bx bx-world'></span> C. Frederick Terman, 3, 29590 Málaga</li>
+						<li><span class='bx bx-world'></span><a href="#">C. Frederick Terman, 3, 29590 Málaga</a></li>
 					</ul>
 				</div>
 				<div class="copyright">
@@ -140,6 +143,6 @@
 	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
 	<script th:src="@{vendor/js/skel.min.js}"></script>
 	<script th:src="@{vendor/js/util.js}"></script>
-	<script th:src="@{vendor/js/main.js}"></script>
+	<script th:src="@{/vendor/js/main.js}"></script>
 </body>
 </html>

@@ -1,4 +1,29 @@
 
+function confirm(orden_total) {
+	var totalOrden = orden_total;
+	/*swal({
+		title: "Enhorabuena!",
+		text: "Su pedido por un importe de" + totalOrden + ", ha sido confirmado.",
+		icon: "success",
+		buttons: true,
+		dangerMode: true,
+	}).then((OK) => {
+		if (OK) {
+			location.href = "/usuario/home";
+		}
+	});*/
+	swal({
+		title: "Enhorabuena!",
+		text: "Su pedido por un importe de" + totalOrden + ", ha sido confirmado.",
+		icon: "success",		
+		buttons: ["Cancelar", true],
+		dangerMode: true,
+	}).then((OK) => {
+		if (OK) {
+				location.href = "/usuario/home";
+			}		
+	});
+}
 
 //Función para mostrar mensaje de confirmación antes de eliminar un registro.
 function eliminar(producto_id) {
@@ -9,26 +34,25 @@ function eliminar(producto_id) {
 		icon: "warning",
 		buttons: ["Cancelar", true],
 		dangerMode: true,
-	})
-		.then((OK) => {
-			if (OK) {
-				$.ajax({
-					url: "/productos/delete/" + id,
-					success: function(res) {
-						console.log(res);
-					}
-				});
-				swal("El producto se ha borrado con éxito.", {
-					icon: "success",
-				}).then((ok) => {
-					if (ok) {
-						location.href = "/productos";
-					}
-				});
-			} else {
-				swal("Operacion de borrado cancelada.");
-			}
-		});
+	}).then((OK) => {
+		if (OK) {
+			$.ajax({
+				url: "/productos/delete/" + id,
+				success: function(res) {
+					console.log(res);
+				}
+			});
+			swal("El producto se ha borrado con éxito.", {
+				icon: "success",
+			}).then((ok) => {
+				if (ok) {
+					location.href = "/productos";
+				}
+			});
+		} else {
+			swal("Operacion de borrado cancelada.");
+		}
+	});
 }
 
 function deshabilitarProduc(producto_id, producto_enabled) {

@@ -14,7 +14,7 @@
 			$body = $('body');
 
 		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+			/*$body.addClass('is-loading');
 
 			$window.on('load', function() {
 				window.setTimeout(function() {
@@ -23,7 +23,7 @@
 			});
 
 		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+		$('form').placeholder();
 
 		// Prioritize "important" elements on medium.
 			skel.on('+medium -medium', function() {
@@ -31,7 +31,7 @@
 					'.important\\28 medium\\29',
 					skel.breakpoint('medium').active
 				);
-			});
+			});*/
 
 		// Off-Canvas Navigation.
 

@@ -1349,9 +1349,9 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+/*a:hover {
 	text-decoration: underline;
-}
+}*/
 
 strong, b {
 	font-weight: 700;
@@ -1604,13 +1604,15 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 
 input[type="submit"], input[type="reset"], input[type="button"], button,
 	.button {
-	background-color: #a2b38b;
-	color: #ffffff !important;
+	background-color: #5a5a5a;
+	/*background-color: #a2b38b;*/
+	color: #fdfdfd !important;
 }
 
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover,
 	button:hover, .button:hover {
-	background-color: #c9d3bb;
+	/*background-color: #c9d3bb;*/
+	color:  #cca000 !important;
 }
 
 input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active,
@@ -3014,7 +3016,17 @@ body, input, select, textarea {
 	position: relative;
 	width: 300px;
 	height: 300px;
+	-webkit-animation: tiembla 3s linear infinite;
+  	-moz-animation: tiembla 3s linear infinite;
 }
+
+
+@-webkit-keyframes tiembla {
+  0%  { -webkit-transform:scale(1); }
+  50% { -webkit-transform:scale(1.03); }
+  100%{ -webkit-transform:scale(1);}
+}
+
 
 .logoRetro img {
 	position: absolute;
@@ -3208,7 +3220,8 @@ body.is-loading #banner:after {
 		padding: 4em 0 2em 0;
 	}
 	#banner h1 {
-		font-size: 1.75em;
+		text-align: left;
+		font-size: 1.7em;
 	}
 }
 

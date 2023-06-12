@@ -28,6 +28,12 @@
 		<div class="inner">
 			<a href="/" class="logo">RETRO HI-FI</span></a>
 			<nav id="nav">
+				<a sec:authorize="hasAnyAuthority('ROLE_USER')" class="search-container">
+					<form th:action="@{#}" method="get">
+						<input id="txtSearch" type="text" name="busqueda" placeholder="Buscar producto . . .">
+						<button class="btnSearch" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</a>
 				<a th:href="@{/usuario/home}" sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
 				<a th:href="@{/usuario/home}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
 				<a th:href="@{/productos/audio}">Audio</a>
@@ -72,13 +78,19 @@
 			<div id="blur">
 				<h1 th:text="'Bienvenido a la sección de '+${nombreCat}"></h1>
 				<br /> <br /> <br />
-				<h3>PRODUCTO DISPONIBLES. . .</h3>
+				
+			</div>
+			<div id="blur">
+				
 			</div>
 		</div>
 	</section>
 
 	<!-- Page Content -->
 	<div class="container">
+		<div class="subtitle">
+			<h2>PRODUCTO DISPONIBLES. . .</h2>
+		</div>
 
 		<div class="row" id="showProductos">
 			<div class="column" th:each="producto: ${productos}">
@@ -86,7 +98,7 @@
 					<img class="imgProduct"
 						th:src="@{../assets/{img} (img=${producto.imagen})} "
 						alt="Producto" style="width: 100%">
-					<h2 th:text="${producto.nombre}"></h2>
+					<h3 th:text="${producto.nombre}"></h3>
 					<h3 th:text="${producto.precio}+' €'"></h3>
 					<span class="bttn" th:classappend=" ${producto.cantidad == 0} ? 'disabled' : ' '  "> <a class=""
 						th:href="@{/productohome/{id}  (id=${producto.id})  }"

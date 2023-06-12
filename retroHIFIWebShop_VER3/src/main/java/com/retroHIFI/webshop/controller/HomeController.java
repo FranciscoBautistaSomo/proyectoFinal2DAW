@@ -65,9 +65,9 @@ public class HomeController {
 		
 		if (busqueda != null) {
 			productos = productoService.buscador(busqueda);
-			} else {
+		} else {
 			productos = productoService.findAll();
-			}
+		}
 
 		// Session
 		model.addAttribute("sesion", session.getAttribute("idusuario"));

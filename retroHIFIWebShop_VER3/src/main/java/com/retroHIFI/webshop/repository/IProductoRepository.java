@@ -40,4 +40,13 @@ public interface IProductoRepository  extends JpaRepository<Producto, Integer>{
 	@Query(value="SELECT * FROM Productos p WHERE p.nombre LIKE %:busqueda% AND p.enabled = 1", nativeQuery=true)
 	List<Producto> buscador(@Param("busqueda") String busqueda);
 	
+	@Query(value="SELECT * FROM Productos p WHERE p.nombre LIKE %:busqueda% AND p.categoria_id_categoria = 1 AND p.enabled = 1", nativeQuery=true)
+	List<Producto> buscarAudio(@Param("busqueda") String busqueda);
+	
+	@Query(value="SELECT * FROM Productos p WHERE p.nombre LIKE %:busqueda% AND p.categoria_id_categoria = 2 AND p.enabled = 1", nativeQuery=true)
+	List<Producto> buscarVideo(@Param("busqueda") String busqueda);
+	
+	@Query(value="SELECT * FROM Productos p WHERE p.nombre LIKE %:busqueda% AND p.categoria_id_categoria = 3 AND p.enabled = 1", nativeQuery=true)
+	List<Producto> buscarSegMano(@Param("busqueda") String busqueda);
+	
 }

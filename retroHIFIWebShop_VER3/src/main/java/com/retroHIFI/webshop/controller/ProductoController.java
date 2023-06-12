@@ -44,6 +44,7 @@ public class ProductoController {
 	
 	@GetMapping("")
 	public String show(Model model) {
+		
 		model.addAttribute("productos", productoService.findAll());
 		return "productos/show";
 	}
@@ -131,10 +132,18 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/audio")
-	public String listarAudio(Model model, @RequestParam(defaultValue = "0") int page) {
+	public String listarAudio(Model model, String busqueda, @RequestParam(defaultValue = "0") int page) {
 		
-		Page<Producto> productosPage = productoRepository.mostrarAudios(PageRequest.of(page, 3));
-		List<Producto> productos = productosPage.getContent();
+		List<Producto> productos;
+		Page<Producto> productosPage = null;
+		
+		
+		if (busqueda != null) {
+			productos = productoService.buscarAudio(busqueda);
+		} else {
+			productosPage = productoRepository.mostrarAudios(PageRequest.of(page, 3));
+			productos = productosPage.getContent();
+		}	
 
 		model.addAttribute("productos", productos);
 		model.addAttribute("productosPage", productosPage);
@@ -149,10 +158,17 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/video")
-	public String listarVideo(Model model, @RequestParam(defaultValue = "0") int page) {
-		Page<Producto> productosPage = productoRepository.mostrarVideos(PageRequest.of(page, 3));
-		List<Producto> productos = productosPage.getContent();
-
+	public String listarVideo(Model model, String busqueda, @RequestParam(defaultValue = "0") int page) {
+		List<Producto> productos;
+		Page<Producto> productosPage = null;
+		
+		if (busqueda != null) {
+			productos = productoService.buscarVideo(busqueda);
+		} else {
+			productosPage = productoRepository.mostrarVideos(PageRequest.of(page, 3));
+			productos = productosPage.getContent();
+		}		
+		
 		model.addAttribute("productos", productos);
 		model.addAttribute("productosPage", productosPage);	
 		
@@ -167,10 +183,17 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/segMano")
-	public String listarSegMano(Model model, @RequestParam(defaultValue = "0") int page) {
-		Page<Producto> productosPage = productoRepository.mostrarSegManos(PageRequest.of(page, 3));
-		List<Producto> productos = productosPage.getContent();
-
+	public String listarSegMano(Model model, String busqueda, @RequestParam(defaultValue = "0") int page) {
+		List<Producto> productos;
+		Page<Producto> productosPage = null;
+		
+		if (busqueda != null) {
+			productos = productoService.buscarSegMano(busqueda);
+		} else {
+			productosPage = productoRepository.mostrarSegManos(PageRequest.of(page, 3));
+			productos = productosPage.getContent();
+		}	
+		
 		model.addAttribute("productos", productos);
 		model.addAttribute("productosPage", productosPage);	
 		

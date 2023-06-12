@@ -18,5 +18,8 @@ public interface IProductoService {
 		public void delete(Integer id);
 		public List<Producto> findAll();
 		public List<Producto> buscador(String busqueda);
+		public List<Producto> buscarAudio(String busqueda);
+		public List<Producto> buscarVideo(String busqueda);
+		public List<Producto> buscarSegMano(String busqueda);
 				
 }

@@ -51,7 +51,22 @@ public class ProductoServiceImpl implements IProductoService {
 
 	@Override
 	public List<Producto> buscador(String busqueda) {
-		return productoRepository.buscador(busqueda	);
+		return productoRepository.buscador(busqueda);
+	}
+
+	@Override
+	public List<Producto> buscarAudio(String busqueda) {
+		return productoRepository.buscarAudio(busqueda);
+	}
+
+	@Override
+	public List<Producto> buscarVideo(String busqueda) {
+		return productoRepository.buscarVideo(busqueda);
+	}
+
+	@Override
+	public List<Producto> buscarSegMano(String busqueda) {
+		return productoRepository.buscarSegMano(busqueda);
 	}
 
 }

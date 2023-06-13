@@ -102,9 +102,14 @@
 
 	<div class="containerShop">
 		<!-- Page Features-->
-		<div class="subtitle">
+		<div class="subtitle" th:if="!${notFound}">
 			<h2>PRODUCTO DISPONIBLES. . .</h2>
+		</div >
+		<div class="noEncontrado" th:if="${notFound}">
+			<img th:src="@{/assets/img/notFound.png}" alt="Producto no encontrado"/>
+			<h3 th:text="${notFound}"></h3>			
 		</div>
+		
 
 		<div class="row" id="showProductos">
 			<div class="column" th:each="producto: ${productos}">
@@ -132,7 +137,7 @@
 		<hr style="width: 100%; height:2px; border-width:0; color: #9d5353; background-color:#9d5353">
 
 		<!-- Paginación -->
-		<div id="paginas">
+		<div id="paginas" th:if="!${notFound}">
 			<ul class="pagination">
 				<!--<li class="icon">
 					 <a><span th:text="'Total Productos: '+${totalProductos}"></span></a>

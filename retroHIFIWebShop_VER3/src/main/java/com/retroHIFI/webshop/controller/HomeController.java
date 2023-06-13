@@ -57,9 +57,11 @@ public class HomeController {
 	Orden orden = new Orden();
 
 	@GetMapping("usuario/home")
-	public String home(Model model, HttpSession session, String busqueda,
+	public String home(Model model, HttpSession session, String busqueda, String resultBusqueda,
 	@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "3") int pageSize) {
-		List<Producto> productos; 
+		List<Producto> productos;
+		
+		String noEncontrado = " ";
 		
 		//model.addAttribute("productos", productos);
 		
@@ -69,6 +71,13 @@ public class HomeController {
 			productos = productoService.findAll();
 		}
 
+		if(productos.isEmpty()) {
+			noEncontrado = "El producto, "+"\""+busqueda+"\""+", no existe.";
+			resultBusqueda = noEncontrado;
+			model.addAttribute("notFound", noEncontrado);
+		}
+		
+		
 		// Session
 		model.addAttribute("sesion", session.getAttribute("idusuario"));
 		
@@ -79,7 +88,7 @@ public class HomeController {
 		model.addAttribute("productos", productosPaginados);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", (int) Math.ceil((double) productos.size() / pageSize));
-		model.addAttribute("pageSize", pageSize);		
+		model.addAttribute("pageSize", pageSize);	
 
 		long totalProductos = productos.size();
 		model.addAttribute("totalProductos", totalProductos);	
@@ -233,8 +242,16 @@ public class HomeController {
 		// limpiar lista y orden
 		orden = new Orden();
 		detalles.clear();
+		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "redirect:/usuario/home";
+		
 	}
 
 //	@PostMapping("/search")

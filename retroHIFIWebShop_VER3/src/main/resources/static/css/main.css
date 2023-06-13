@@ -1754,7 +1754,7 @@ textarea {
 	font-size: 15pt;
 	font-weight: 300;
 	line-height: 2;
-	text-align: rigth;
+	/*text-align: rigth;*/
 }
 
 @media screen and (max-width: 1680px) {
@@ -2122,7 +2122,7 @@ button,
 .button {
 	background-color: #5a5a5a;
 	/*background-color: #a2b38b;*/
-	color: #fdfdfd !important;
+	/*color: #fdfdfd !important;*/
 }
 
 input[type="submit"]:hover,
@@ -2305,7 +2305,7 @@ textarea {
 }
 
 #cantidad {
-	text-align: end;
+	text-align: left;
 }
 
 input[type="text"]:invalid,
@@ -2452,7 +2452,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 select,
-textarea {
+textarea {	
 	background: none;
 	border-color: #fceced;
 }
@@ -2512,6 +2512,19 @@ input[type="radio"]:focus+label:before {
 
 .formerize-placeholder {
 	color: #717171 !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0;
+  text-align: left; 
+  
+}
+
+input[type=number] {
+	 -moz-appearance:textfield;
+	 text-align: left;
 }
 
 /* Icon */
@@ -3590,6 +3603,7 @@ textarea {
 	font-weight: normal;
 	text-transform: none !important;
 	content: "\f012";
+	/*content: "\f0c9";*/
 	width: 3em;
 	height: 3em;
 	line-height: 3em;
@@ -4249,33 +4263,29 @@ body.is-loading #banner:after {
 	border: 1px solid #9d5353;
 }
 
-/***************** FOOTER *****************/
-
-#footer ::-moz-placeholder {
-	color: #f8d1d2 !important;
+.swal-button.swal-button--cancel{
+	color:black;
 }
-
-#footer :-ms-input-placeholder {
-	color: #f8d1d2 !important;
-}
-
-#footer .formerize-placeholder {
-	color: #f8d1d2 !important;
-}
-
-.pagination li:first-child span {
-	padding-right: 8px;
-}
-
-@media screen and (max-width: 480px) {
-	#footer .inner {
-		max-width: 90%;
-		width: 90%;
-	}
-}
-
 
 /*ESTILOS BARRA DE BUSQUEDA */
+
+.noEncontrado{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	/*position:relative;
+    width:30%;*/	
+}
+
+.noEncontrado img{
+	display:block;
+	position: relative;
+	width: 50%;
+	top: 25%;
+	right: 0;
+	left: 0;
+	margin: 0 auto;   
+}
 
 /*.search-container {
 	
@@ -4371,6 +4381,35 @@ body.is-loading #banner:after {
 #nav .search-container button:hover {
   background: #f89598 !important;
 }
+
+
+
+
+/***************** FOOTER *****************/
+
+#footer ::-moz-placeholder {
+	color: #f8d1d2 !important;
+}
+
+#footer :-ms-input-placeholder {
+	color: #f8d1d2 !important;
+}
+
+#footer .formerize-placeholder {
+	color: #f8d1d2 !important;
+}
+
+.pagination li:first-child span {
+	padding-right: 8px;
+}
+
+@media screen and (max-width: 480px) {
+	#footer .inner {
+		max-width: 90%;
+		width: 90%;
+	}
+}
+
 
 
 /*ESTILOS FOOTER*/

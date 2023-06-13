@@ -14,13 +14,23 @@ function confirm(orden_total) {
 	});*/
 	swal({
 		title: "Enhorabuena!",
-		text: "Su pedido por un importe de" + totalOrden + ", ha sido confirmado.",
+		text: "Su pedido por un importe de " + totalOrden + " €, ha sido confirmado.",
 		icon: "success",		
 		buttons: ["Cancelar", true],
 		dangerMode: true,
 	}).then((OK) => {
 		if (OK) {
-				location.href = "/usuario/home";
+				$.ajax({
+				//url: "/productos/delete/" + id,
+				success: function(res) {
+					console.log(res);
+				}
+				}).then((ok) => {
+				if (ok) {
+					location.href = "/usuario/home";
+					}
+				});
+				
 			}		
 	});
 }

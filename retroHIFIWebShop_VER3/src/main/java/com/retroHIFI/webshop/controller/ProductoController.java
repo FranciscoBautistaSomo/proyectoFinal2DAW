@@ -132,18 +132,25 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/audio")
-	public String listarAudio(Model model, String busqueda, @RequestParam(defaultValue = "0") int page) {
+	public String listarAudio(Model model, String busqueda, String resultBusqueda, @RequestParam(defaultValue = "0") int page) {
 		
 		List<Producto> productos;
 		Page<Producto> productosPage = null;
 		
+		String noEncontrado = " ";
 		
 		if (busqueda != null) {
 			productos = productoService.buscarAudio(busqueda);
 		} else {
 			productosPage = productoRepository.mostrarAudios(PageRequest.of(page, 3));
 			productos = productosPage.getContent();
-		}	
+		}
+		
+		if(productos.isEmpty()) {
+			noEncontrado = "El producto, "+"\""+busqueda+"\""+", no existe.";
+			resultBusqueda = noEncontrado;
+			model.addAttribute("notFound", noEncontrado);
+		}
 
 		model.addAttribute("productos", productos);
 		model.addAttribute("productosPage", productosPage);
@@ -158,16 +165,24 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/video")
-	public String listarVideo(Model model, String busqueda, @RequestParam(defaultValue = "0") int page) {
+	public String listarVideo(Model model, String busqueda, String resultBusqueda, @RequestParam(defaultValue = "0") int page) {
 		List<Producto> productos;
 		Page<Producto> productosPage = null;
+		
+		String noEncontrado = " ";
 		
 		if (busqueda != null) {
 			productos = productoService.buscarVideo(busqueda);
 		} else {
 			productosPage = productoRepository.mostrarVideos(PageRequest.of(page, 3));
 			productos = productosPage.getContent();
-		}		
+		}
+		
+		if(productos.isEmpty()) {
+			noEncontrado = "El producto, "+"\""+busqueda+"\""+", no existe.";
+			resultBusqueda = noEncontrado;
+			model.addAttribute("notFound", noEncontrado);
+		}
 		
 		model.addAttribute("productos", productos);
 		model.addAttribute("productosPage", productosPage);	
@@ -183,16 +198,25 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/segMano")
-	public String listarSegMano(Model model, String busqueda, @RequestParam(defaultValue = "0") int page) {
+	public String listarSegMano(Model model, String busqueda, String resultBusqueda, @RequestParam(defaultValue = "0") int page) {
 		List<Producto> productos;
 		Page<Producto> productosPage = null;
+		
+		String noEncontrado = " ";
 		
 		if (busqueda != null) {
 			productos = productoService.buscarSegMano(busqueda);
 		} else {
 			productosPage = productoRepository.mostrarSegManos(PageRequest.of(page, 3));
 			productos = productosPage.getContent();
-		}	
+		}
+		
+		if(productos.isEmpty()) {
+			noEncontrado = "El producto, "+"\""+busqueda+"\""+", no existe.";
+			resultBusqueda = noEncontrado;
+			model.addAttribute("notFound", noEncontrado);
+		}
+		
 		
 		model.addAttribute("productos", productos);
 		model.addAttribute("productosPage", productosPage);	

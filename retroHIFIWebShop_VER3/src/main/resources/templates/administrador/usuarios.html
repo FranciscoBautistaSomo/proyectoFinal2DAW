@@ -153,7 +153,7 @@
 	        <td title="Direccion" th:text="${usuario.direccion}"></td>
 	        <td title="Telefono" class="text-center" th:text="${usuario.telefono}"></td>
 	        <!-- <td th:text="${usuario.enabled}"></td> -->
-	        <td title="Deshabilitar" class="text-center"><a  class="btn" th:classappend=" ${usuario.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarUser([[${usuario.id}]], [[${usuario.enabled}]])"><span th:text="${usuario.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
+	        <td title="Deshabilitar" class="text-center"><a th:if="${usuario.username}!='admin'" class="btn" th:classappend=" ${usuario.enabled == false} ? 'btn-success' : 'btn-danger '  "  th:onclick="deshabilitarUser([[${usuario.id}]], [[${usuario.enabled}]])"><span th:text="${usuario.enabled == false} ? 'Habilitar': 'Deshabilitar'"></span></a> </td>
 	      </tr>       
 	    </tbody>
 	  </table>

@@ -20,43 +20,6 @@
 </head>
 
 <body>
-
-	<!-- Navigation -->
-	<!--<header id="header">
-		<div class="inner">
-			<a href="/" class="logo">RETRO HI-FI</a>
-			<!--  <nav id="nav">
-				<a th:href="@{/usuario/home}"  sec:authorize="hasAnyAuthority('ROLE_USER')">Home</a>
-				<a th:href="@{/administrador}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Home</a>
-				<a th:href="@{/productos/audio}">Audio</a>
-				<a  th:href="@{/productos/video}">Video</a>
-				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}"  sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/entrar.png}" height="40em"/></a>	
-				<!-- USER MENU 
-				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/usuario.png}" height="45em"/></a>
-					<div class="dropdown-content">
-						<a th:href="@{/usuario/perfil}">Perfil</a>
-						<a th:href="@{/usuario/compras}">Compras</a>
-						<a th:href="@{/getCart}">Carrito</a>
-						<a th:href="@{/usuario/cerrar}">Salir</a>
-					</div>
-				</div>-->
-	<!--  ADMIN MENU
-				<div class="dropdown">
-					<a  href="#" role="button" aria-haspopup="true" aria-expanded="false" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png" th:src="@{/assets/img/admin.png}" height="30em"/></a>
-					<div class="dropdown-content">
-						<a th:href="@{/productos}">Productos</a>
-						<a th:href="@{/administrador/usuarios}">Usuarios</a>
-						<a th:href="@{/administrador/ordenes}">Ordenes</a>
-						<a th:href="@{/usuario/cerrar}">Salir</a>
-					</div>
-				</div>				
-			</nav>			
-		</div>-->
-	</header>
-
-
 	<!-- Page Content -->
 	<div class="container">
 		<div class="title">Registro</div>
@@ -69,43 +32,108 @@
 			Error al registrarse, revise la información  introducida.
 		</div>
 		<div class="content">
-			<form th:action="@{/usuario/save}" method="post">
+			<form th:action="@{/usuario/save}" class="formulario" id="formulario" method="post">
 				<div class="user-details">
-					<div class="input-box">
-						<span class="details">Username</span> <input type="text"
-							placeholder="Introduzca su nombre de usuario" name="username"
-							required>
+					
+					<!-- Grupo: Username -->
+					<div class="formulario__grupo input-box" id="grupo__username">
+							<span class="details">Username</span>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="username" id="username" placeholder="Introduzca su nombre de usuario">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El usuario tiene que ser de 4 a 20 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 					</div>
-					<div class="input-box">
-						<span class="details">Password</span> <input type="password"
-							placeholder="Introduzca su password" name="password" required>
+					
+					<!-- Grupo: Nombre -->
+					<div class="formulario__grupo input-box" id="grupo__nombre">
+							<span class="details">Nombre</span>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Introduzca su nombre">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El nombre tiene que ser de 4 a 40 dígitos y solo puede letras y espacios.</p>
 					</div>
-					<div class="input-box">
-						<span class="details">Nombre</span> <input type="text"
-							placeholder="Introduzca su nombre" name="nombre" required>
+					
+					<!-- Grupo: Apellidos -->
+					<div class="formulario__grupo input-box" id="grupo__apellidos">
+							<span class="details">Apellidos</span>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="apellidos" id="apellidos" placeholder="Introduzca sus apellidos">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">Los apellidos tienen que ser de 4 a 40 dígitos y solo puede letras y espacios.</p>
 					</div>
-					<div class="input-box">
-						<span class="details">Apellidos</span> <input type="text"
-							placeholder="Introduzca sus apellidos" name="apellidos" required>
+					
+					<!-- Grupo: Email -->
+					<div class="formulario__grupo input-box" id="grupo__correo">
+							<span class="details">Email</span>
+						<div class="formulario__grupo-input">
+							<input type="email" class="formulario__input" name="email" id="correo" placeholder="Introduzca sus email">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
 					</div>
-					<div class="input-box">
-						<span class="details">Email</span> <input type="email"
-							placeholder="Introduzca su email" name="email" required>
+					
+					<!-- Grupo: Teléfono -->
+					<div class="formulario__grupo input-box" id="grupo__telefono">
+							<span class="details">Teléfono</span>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="Introduzca sus teléfono">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El telefono solo admite un maximo de 11 dígitos.</p>
 					</div>
-					<div class="input-box">
-						<span class="details">Teléfono</span> <input type="text"
-							placeholder="Introduzca su telefono" name="telefono" required>
+					
+					<!-- Grupo: Dirección -->
+					<div class="formulario__grupo input-box" id="grupo__direccion">
+							<span class="details">Dirección</span>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="direccion" id="direccion" placeholder="Introduzca sus direccion">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">La dirección no admite caracteres especiales.</p>
 					</div>
-					<div class="input-box">
-						<span class="details">Direccion</span> <input type="text"
-							placeholder="Introduzca su dirección" name="direccion" required>
+					
+					<!-- Grupo: Contraseña -->
+					<div class="formulario__grupo input-box" id="grupo__password">
+							<span class="details">Password</span>
+						<div class="formulario__grupo-input">
+							<input type="password" class="formulario__input" name="password" id="password" placeholder="Introduzca su password">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
 					</div>
+					
+					<!-- Grupo: Contraseña2 -->
+					<div class="formulario__grupo input-box" id="grupo__password2">
+							<span class="details">Repetir Contraseña</span>
+						<div class="formulario__grupo-input">
+							<input type="password" class="formulario__input" name="password2" id="password2" placeholder="Repita su password">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+					</div>
+					
+					<!-- Grupo: Terminos y Condiciones -->
+					<div class="formulario__grupo" id="grupo__terminos">
+						<label class="formulario__label">
+						<input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+						Acepto los Terminos y Condiciones
+						</label>
+					</div>
+					
+					<div class="formulario__mensaje" id="formulario__mensaje">
+						<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+					</div>
+					
 					<div class="input-box">
 						<input type="hidden" name="enabled" value="1" required>
 					</div>
 				</div>
 				<div class="button">
-					<input type="submit" value="Registrarse">
+					<input type="submit" value="Registrarse" id="submit" disabled>
+					<!--<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>-->
 				</div>
 			</form>
 			<form th:action="@{/}">
@@ -113,14 +141,13 @@
 					<input type="submit" value="VOLVER" />
 				</div>
 			</form>
-
-
 		</div>
 	</div>
 
 	<!-- Scripts -->
 	<script src="/vendor/jquery/funciones.js"></script>
-
+	<script src="/vendor/js/formulario.js"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
 </body>
 

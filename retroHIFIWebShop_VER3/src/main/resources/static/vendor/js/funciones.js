@@ -16,7 +16,7 @@ function confirm(orden_total) {
 		title: "Enhorabuena!",
 		text: "Su pedido por un importe de " + totalOrden + " €, ha sido confirmado.",
 		icon: "success",		
-		buttons: ["Cancelar", true],
+		/*buttons: ["Cancelar", true],*/
 		dangerMode: true,
 	}).then((OK) => {
 		if (OK) {

@@ -95,10 +95,12 @@ const validarPassword2 = () => {
 
 function check(){	
 	if(campos.username && campos.nombre && campos.apellidos && campos.telefono && campos.correo && campos.direccion && campos.password && terminos.checked ){
-		document.getElementById('submit').removeAttribute('disabled');
+		//document.getElementById('submit').removeAttribute('disabled');
+		document.getElementById('submit').classList.remove('disabled');
 		document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
 	}else{
-		document.getElementById('submit').setAttribute("disabled", "");
+		//document.getElementById('submit').setAttribute("disabled", "");
+		document.getElementById('submit').classList.add('disabled');
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}	
 }
@@ -114,5 +116,18 @@ var eventcheck = document.querySelector("input[name=terminos]");
 	    if(this.checked) {
 	        check();
 	    }
-    });
+});
+
+function cerrar() {
+	var close = document.getElementsByClassName("closebtn");
+	var i;
+
+	for (i = 0; i < close.length; i++) {
+		close[i].onclick = function() {
+			var div = this.parentElement;
+			div.style.opacity = "0";
+			setTimeout(function() { div.style.display = "none"; }, 600);
+		}
+	}
+}
 

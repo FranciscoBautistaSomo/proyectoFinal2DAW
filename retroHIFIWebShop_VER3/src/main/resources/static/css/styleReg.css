@@ -152,6 +152,13 @@ form .button input:hover {
 
 /*Validación formulario*/
 
+.disabled {
+	pointer-events: none;
+	cursor: default;
+	opacity: 0.6;
+	color: grey;	
+}
+
 .formulario__input-error {
 	font-size: 12px;
 	margin-bottom: 0;

@@ -52,13 +52,18 @@
 				<a th:href="@{/productos/audio}">Audio</a>
 				<a th:href="@{/productos/video}">Video</a>
 				<a th:href="@{/productos/segMano}">Segunda Mano</a>
-				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img src="../static/assets/img/entrar.png"
-						th:src="@{/assets/img/entrar.png}" height="35em" /></a>
+				<a th:href="@{/usuario/registro}" sec:authorize="isAnonymous()"><img id="register" src="../static/assets/img/sign-in.png" th:src="@{/assets/img/sign-in.png}" height="40em"/></a>
+				<a th:href="@{/usuario/login}" sec:authorize="isAnonymous()"><img id="login" src="../static/assets/img/login.png"
+						th:src="@{/assets/img/login.png}" height="40em"/></a>
+						
+						<!--<img src="../static/assets/img/entrar.png"
+						th:src="@{/assets/img/entrar.png}" height="35em" /> -->
 				<!-- USER MENU -->
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true" aria-expanded="false"
 						sec:authorize="hasAnyAuthority('ROLE_USER')"><img src="../static/assets/img/entrar.png"
-							th:src="@{/assets/img/usuario.png}" height="35em" /></a>
+							th:src="@{/assets/img/usuario.png}" height="35em" /> </a>
+						    <!---->
 					<div class="dropdown-content">
 						<a th:href="@{/usuario/perfil}">Perfil</a> <a th:href="@{/usuario/compras}">Compras</a> <a
 							th:href="@{/getCart}">Carrito</a> <a th:href="@{/usuario/cerrar}">Salir</a>
@@ -68,7 +73,7 @@
 				<div class="dropdown">
 					<a href="#" role="button" aria-haspopup="true" aria-expanded="false"
 						sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><img src="../static/assets/img/entrar.png"
-							th:src="@{/assets/img/admin.png}" height="35em" /></a>
+							th:src="@{/assets/img/admin.png}" height="35em" /></a>						
 					<div class="dropdown-content">
 						<a th:href="@{/productos}">Productos</a> <a th:href="@{/administrador/usuarios}">Usuarios</a> <a
 							th:href="@{/administrador/ordenes}">Ordenes</a> <a th:href="@{/usuario/cerrar}">Salir</a>
@@ -103,7 +108,7 @@
 	<div class="containerShop">
 		<!-- Page Features-->
 		<div class="subtitle" th:if="!${notFound}">
-			<h2>PRODUCTO DISPONIBLES. . .</h2>
+			<h2>PRODUCTOS DISPONIBLES. . .</h2>
 		</div >
 		<div class="noEncontrado" th:if="${notFound}">
 			<img th:src="@{/assets/img/notFound.png}" alt="Producto no encontrado"/>

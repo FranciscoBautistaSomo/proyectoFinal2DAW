@@ -1,9 +1,12 @@
+//Script de validación para el formularia de registro
+//Validation script for the registration form
+
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 const valido = false;
 
-
-
+//Expresiones regulares
+//Regular expressions
 const expresiones = {
 	username: /^[a-zA-Z0-9\_\-]{4,20}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{4,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -118,6 +121,8 @@ var eventcheck = document.querySelector("input[name=terminos]");
 	    }
 });
 
+//Function to close pop-up message
+//Función para cerrar mensaje emergente
 function cerrar() {
 	var close = document.getElementsByClassName("closebtn");
 	var i;

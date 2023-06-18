@@ -1,17 +1,8 @@
-
+//Función para la gestion de mensaje de confirmación
+//Confirmation message management function
 function confirm(orden_total) {
 	var totalOrden = orden_total;
-	/*swal({
-		title: "Enhorabuena!",
-		text: "Su pedido por un importe de" + totalOrden + ", ha sido confirmado.",
-		icon: "success",
-		buttons: true,
-		dangerMode: true,
-	}).then((OK) => {
-		if (OK) {
-			location.href = "/usuario/home";
-		}
-	});*/
+	
 	swal({
 		title: "Enhorabuena!",
 		text: "Su pedido por un importe de " + totalOrden + " €, ha sido confirmado.",
@@ -36,6 +27,7 @@ function confirm(orden_total) {
 }
 
 //Función para mostrar mensaje de confirmación antes de eliminar un registro.
+//Function to display confirmation message before deleting a record.
 function eliminar(producto_id) {
 	var id = producto_id;
 	console.log(id);
@@ -65,6 +57,9 @@ function eliminar(producto_id) {
 	});
 }
 
+
+//Función para deshabilitar un producto de la tienda.
+//Function to disable a product from the shop.
 function deshabilitarProduc(producto_id, producto_enabled) {
 	var id = producto_id;
 	var enabled = producto_enabled;
@@ -107,6 +102,8 @@ function deshabilitarProduc(producto_id, producto_enabled) {
 		});
 }
 
+//Función para deshabilitar a un usuario de la aplicación.
+//Function to disable a user from the application.
 function deshabilitarUser(usuario_id, usuario_enabled) {
 	var id = usuario_id;
 	var enabled = usuario_enabled;
@@ -149,6 +146,8 @@ function deshabilitarUser(usuario_id, usuario_enabled) {
 		});
 }
 
+//Function to close pop-up message
+//Función para cerrar mensaje emergente
 function cerrar() {
 	var close = document.getElementsByClassName("closebtn");
 	var i;
@@ -162,6 +161,8 @@ function cerrar() {
 	}
 }
 
+//Funcion para realizar un filtrado en las tablas de administración.
+//Function to perform filtering on the administration tables.
 var seleccion = 0;
 
 $("input[name='filtro']").on('change', function() {
@@ -190,6 +191,7 @@ function filtro() {
 		filas[i].style.display = lenguaje.toUpperCase().indexOf(valor) > -1 ? "" : "none";
 	}
 }
+
 // Se agrega un escuchador de eventos a la entrada de texto
 // para activar la función de filtrado cada vez que el usuario
 // ingresa texto en la entrada

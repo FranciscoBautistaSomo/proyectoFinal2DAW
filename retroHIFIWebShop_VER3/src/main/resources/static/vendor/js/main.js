@@ -1,3 +1,5 @@
+//Funcion para la animación del menu hamburguesa 
+//Function for hamburger menu animation
 (function($) {
 
 	skel.breakpoints({

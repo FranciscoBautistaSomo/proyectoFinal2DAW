@@ -1,3 +1,5 @@
+//Función para generar la barra de navegación del menu hamburguesa
+//Function to generate the navigation bar of the hamburger menu
 (function($) {
 
 	/**
